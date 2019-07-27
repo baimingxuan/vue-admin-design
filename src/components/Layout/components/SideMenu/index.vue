@@ -1,5 +1,8 @@
 <template>
-  <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+  <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
+           background-color="#304156"
+           text-color="#fff"
+           active-text-color="#409eff">
     <template>
       <router-link to="home">
         <el-menu-item index="1">

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .main-view{
+  .main-view {
     position: absolute;
     top: 120px;
     right: 0;
