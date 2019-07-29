@@ -31,6 +31,12 @@ html {
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+  background: none;
+  outline: none;
+}
+
 .fr {
   float: right;
 }
