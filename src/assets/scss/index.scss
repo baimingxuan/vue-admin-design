@@ -38,3 +38,12 @@ html {
 .fl {
   float: left;
 }
+
+.clear-fix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
