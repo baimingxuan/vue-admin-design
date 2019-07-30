@@ -32,11 +32,41 @@
         <SvgIcon class="icon" icon-class="vue-sys-icon-mm"></SvgIcon>
         <span slot="title">组件</span>
       </template>
-      <el-menu-item index="4-1">富文本编辑器</el-menu-item>
-      <el-menu-item index="4-2">头像上传</el-menu-item>
-      <el-menu-item index="4-3">拖拽列表</el-menu-item>
-      <el-menu-item index="4-4">树形结构</el-menu-item>
-      <el-menu-item index="4-5">图片裁剪</el-menu-item>
+      <template>
+        <router-link to="/packages/rich-text">
+          <el-menu-item index="4-1">
+            <span slot="title">富文本编辑器</span>
+          </el-menu-item>
+        </router-link>
+      </template>
+      <template>
+        <router-link to="/packages/avatar-upload">
+          <el-menu-item index="4-2">
+            <span slot="title">头像上传</span>
+          </el-menu-item>
+        </router-link>
+      </template>
+      <template>
+        <router-link to="/packages/drag-list">
+          <el-menu-item index="4-3">
+            <span slot="title">拖拽列表</span>
+          </el-menu-item>
+        </router-link>
+      </template>
+      <template>
+        <router-link to="/packages/tree">
+          <el-menu-item index="4-4">
+            <span slot="title">树形结构</span>
+          </el-menu-item>
+        </router-link>
+      </template>
+      <template>
+        <router-link to="/packages/image-crop">
+          <el-menu-item index="4-5">
+            <span slot="title">图片裁剪</span>
+          </el-menu-item>
+        </router-link>
+      </template>
     </el-submenu>
     <el-menu-item index="5">
       <SvgIcon class="icon" icon-class="vue-sys-icon-mcs"></SvgIcon>

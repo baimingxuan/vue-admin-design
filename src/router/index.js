@@ -41,15 +41,55 @@ export default new Router({
       }]
     },
     {
-      path: '/',
-      name: 'Layout',
+      path: '/packages',
+      name: 'packages',
       component: Layout,
+      meta: {
+        title: '组件',
+        icon: 'el-icon-ali-home'
+      },
       children: [{
-        path: 'package',
-        name: 'package',
-        component: () => import('../views/package'),
+        path: 'avatar-upload',
+        name: 'packages-avatar-upload',
+        component: () => import('../views/packages/avatar-upload'),
         meta: {
-          title: '组件',
+          title: '头像上传',
+          icon: 'el-icon-ali-home'
+        }
+      },
+      {
+        path: 'drag-list',
+        name: 'packages-drag-list',
+        component: () => import('../views/packages/drag-list'),
+        meta: {
+          title: '拖拽列表',
+          icon: 'el-icon-ali-home'
+        }
+      },
+      {
+        path: 'image-crop',
+        name: 'packages-image-crop',
+        component: () => import('../views/packages/image-crop'),
+        meta: {
+          title: '图片裁剪',
+          icon: 'el-icon-ali-home'
+        }
+      },
+      {
+        path: 'rich-text',
+        name: 'packages-rich-text',
+        component: () => import('../views/packages/rich-text'),
+        meta: {
+          title: '富文本编辑器',
+          icon: 'el-icon-ali-home'
+        }
+      },
+      {
+        path: 'tree',
+        name: 'packages-tree',
+        component: () => import('../views/packages/tree'),
+        meta: {
+          title: '树形结构',
           icon: 'el-icon-ali-home'
         }
       }]

@@ -10,7 +10,10 @@
 </template>
 
 <script>
-import { HeaderBar, SideMenu, TagsNav, MainView } from './components'
+import HeaderBar from './components/HeaderBar/index'
+import SideMenu from './components/SideMenu/index'
+import TagsNav from './components/TagsNav/index'
+import MainView from './components/MainView'
 export default {
   name: 'Layout',
   components: {
