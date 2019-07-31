@@ -16,6 +16,7 @@ export default new Router({
       path: '/',
       name: 'Layout',
       component: Layout,
+      redirect: '/home',
       children: [{
         path: 'home',
         name: 'home',
@@ -27,8 +28,8 @@ export default new Router({
       }]
     },
     {
-      path: '/',
-      name: 'Layout',
+      path: '/doc',
+      name: 'doc',
       component: Layout,
       children: [{
         path: 'document',
@@ -36,6 +37,20 @@ export default new Router({
         component: () => import('../views/document'),
         meta: {
           title: '文档',
+          icon: 'el-icon-ali-home'
+        }
+      }]
+    },
+    {
+      path: '/ico',
+      name: 'ico',
+      component: Layout,
+      children: [{
+        path: 'icons',
+        name: 'icons',
+        component: () => import('../views/icons'),
+        meta: {
+          title: '图标',
           icon: 'el-icon-ali-home'
         }
       }]
@@ -49,12 +64,19 @@ export default new Router({
         icon: 'el-icon-ali-home'
       },
       children: [{
+        path: 'rich-text',
+        name: 'packages-rich-text',
+        component: () => import('../views/packages/rich-text'),
+        meta: {
+          title: '富文本编辑器'
+        }
+      },
+      {
         path: 'avatar-upload',
         name: 'packages-avatar-upload',
         component: () => import('../views/packages/avatar-upload'),
         meta: {
-          title: '头像上传',
-          icon: 'el-icon-ali-home'
+          title: '头像上传'
         }
       },
       {
@@ -62,8 +84,7 @@ export default new Router({
         name: 'packages-drag-list',
         component: () => import('../views/packages/drag-list'),
         meta: {
-          title: '拖拽列表',
-          icon: 'el-icon-ali-home'
+          title: '拖拽列表'
         }
       },
       {
@@ -71,17 +92,7 @@ export default new Router({
         name: 'packages-image-crop',
         component: () => import('../views/packages/image-crop'),
         meta: {
-          title: '图片裁剪',
-          icon: 'el-icon-ali-home'
-        }
-      },
-      {
-        path: 'rich-text',
-        name: 'packages-rich-text',
-        component: () => import('../views/packages/rich-text'),
-        meta: {
-          title: '富文本编辑器',
-          icon: 'el-icon-ali-home'
+          title: '图片裁剪'
         }
       },
       {
@@ -89,21 +100,20 @@ export default new Router({
         name: 'packages-tree',
         component: () => import('../views/packages/tree'),
         meta: {
-          title: '树形结构',
-          icon: 'el-icon-ali-home'
+          title: '树形结构'
         }
       }]
     },
     {
-      path: '/',
-      name: 'Layout',
+      path: '/in',
+      name: 'in',
       component: Layout,
       children: [{
-        path: 'icons',
-        name: 'icons',
-        component: () => import('../views/icons'),
+        path: 'i18n',
+        name: 'i18n',
+        component: () => import('../views/i18n'),
         meta: {
-          title: '图标',
+          title: '文档',
           icon: 'el-icon-ali-home'
         }
       }]

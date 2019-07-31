@@ -4,7 +4,7 @@
            text-color="#fff"
            active-text-color="#409eff">
     <template>
-      <router-link to="home">
+      <router-link to="/home">
         <el-menu-item index="1">
           <SvgIcon class="icon" icon-class="vue-sys-icon-home"></SvgIcon>
           <span slot="title">首页</span>
@@ -12,7 +12,7 @@
       </router-link>
     </template>
     <template>
-      <router-link to="document">
+      <router-link to="/doc/document">
         <el-menu-item index="2">
           <SvgIcon class="icon" icon-class="vue-sys-icon-mms"></SvgIcon>
           <span slot="title">文档</span>
@@ -20,7 +20,7 @@
       </router-link>
     </template>
     <template>
-      <router-link to="icons">
+      <router-link to="/ico/icons">
         <el-menu-item index="3">
           <SvgIcon class="icon" icon-class="vue-sys-icon-about"></SvgIcon>
           <span slot="title">图标</span>
@@ -68,10 +68,14 @@
         </router-link>
       </template>
     </el-submenu>
-    <el-menu-item index="5">
-      <SvgIcon class="icon" icon-class="vue-sys-icon-mcs"></SvgIcon>
-      <span slot="title">国际化</span>
-    </el-menu-item>
+    <template>
+      <router-link to="/in/i18n">
+        <el-menu-item index="5">
+          <SvgIcon class="icon" icon-class="vue-sys-icon-mcs"></SvgIcon>
+          <span slot="title">国际化</span>
+        </el-menu-item>
+      </router-link>
+    </template>
     <!--<el-submenu index="4">-->
       <!--<template slot="title">-->
         <!--<SvgIcon class="icon" icon-class="vue-sys-icon-mm"></SvgIcon>-->
