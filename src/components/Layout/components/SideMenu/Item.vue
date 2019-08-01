@@ -1,10 +1,10 @@
 <template>
-  <div>这是文档</div>
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: 'Document'
+  name: 'Item'
 }
 </script>
 

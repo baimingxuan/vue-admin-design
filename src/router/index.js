@@ -28,18 +28,13 @@ export default new Router({
       }]
     },
     {
-      path: '/doc',
+      path: 'https://github.com/LoveHins/vue-admin-system',
       name: 'doc',
       component: Layout,
-      children: [{
-        path: 'document',
-        name: 'document',
-        component: () => import('../views/document'),
-        meta: {
-          title: '文档',
-          icon: 'el-icon-ali-home'
-        }
-      }]
+      meta: {
+        title: '文档',
+        icon: 'el-icon-ali-home'
+      }
     },
     {
       path: '/ico',

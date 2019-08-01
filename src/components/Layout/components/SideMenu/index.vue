@@ -12,12 +12,12 @@
       </router-link>
     </template>
     <template>
-      <router-link to="/doc/document">
+      <a href="https://github.com/LoveHins/vue-admin-system" target="_blank" rel="noopener">
         <el-menu-item index="2">
           <SvgIcon class="icon" icon-class="vue-sys-icon-mms"></SvgIcon>
           <span slot="title">文档</span>
         </el-menu-item>
-      </router-link>
+      </a>
     </template>
     <template>
       <router-link to="/ico/icons">
