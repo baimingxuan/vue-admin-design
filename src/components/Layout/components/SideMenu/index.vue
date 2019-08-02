@@ -1,5 +1,8 @@
 <template>
-  <el-menu default-active="1-4-1" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
+  <el-menu default-active="1-4-1"
+           @open="handleOpen"
+           @close="handleClose"
+           :collapse="isCollapse"
            background-color="#304156"
            text-color="#fff"
            active-text-color="#409eff">
@@ -76,19 +79,6 @@
         </el-menu-item>
       </router-link>
     </template>
-    <!--<el-submenu index="4">-->
-      <!--<template slot="title">-->
-        <!--<SvgIcon class="icon" icon-class="vue-sys-icon-mm"></SvgIcon>-->
-        <!--<span slot="title">组件</span>-->
-      <!--</template>-->
-      <!--<el-submenu index="4-1">-->
-        <!--<span slot="title">选项4</span>-->
-        <!--<el-menu-item index="4-1-1">选项1</el-menu-item>-->
-        <!--<el-menu-item index="4-1-2">选项2</el-menu-item>-->
-        <!--<el-menu-item index="4-1-3">选项3</el-menu-item>-->
-      <!--</el-submenu>-->
-      <!--<el-menu-item index="4-2">选项9</el-menu-item>-->
-    <!--</el-submenu>-->
   </el-menu>
 </template>
 
