@@ -1,17 +1,23 @@
 <template>
   <div v-if="!item.hidden" class="side-menu-item">
-    <template>
-      <ItemLink :to="resolvePath(onlyOneChild.path)">
-        <el-menu-item index="2">
-          <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title"></Item>
+    <template v-if="hasOneShowChild(item, item.children) && (onlyOneChild.noShowChildren || !onlyOneChild.children)">
+      <ItemLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
+        <el-menu-item :index="resolvePath(onlyOneChild.path)">
+          <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title"/>
         </el-menu-item>
       </ItemLink>
     </template>
 
-    <el-submenu index="4" popper-append-to-body>
+    <el-submenu v-else :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
-        <Item :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title"></Item>
+        <Item :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title"/>
       </template>
+      <SideMenuItem
+        v-for="child in item.children"
+        :key="child.path"
+        :item="child"
+        :basePath="resolvePath(child.path)"
+      />
     </el-submenu>
   </div>
 </template>
@@ -45,6 +51,25 @@ export default {
     Item
   },
   methods: {
+    hasOneShowChild (parent, children = []) {
+      const showChildren = children.filter(item => {
+        if (item.hidden) {
+          return false
+        } else {
+          this.onlyOneChild = item
+          return true
+        }
+      })
+      if (showChildren.length === 1) {
+        return true
+      }
+      if (showChildren.length === 0) {
+        this.onlyOneChild = { ...parent, noShowChildren: true }
+        return true
+      }
+
+      return false
+    },
     resolvePath (routePath) {
       if (isExternal(routePath)) {
         return routePath

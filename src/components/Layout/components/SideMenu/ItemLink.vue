@@ -1,6 +1,6 @@
 <template>
   <!-- eslint-disable vue/require-component-is -->
-  <component :="renderTag(to)">
+  <component v-bind="renderTag(to)">
     <slot/>
   </component>
 </template>
