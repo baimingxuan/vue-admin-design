@@ -6,12 +6,13 @@
     <div class="tags-views" ref="tagsViews" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <div class="tags-cont" ref="tagsCont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
-          <TagItem
-            v-for="(tag, index) in tags"
-            :key="tag.name"
-            @on-close="handleClose(index)">
-            {{ tag.title }}
-          </TagItem>
+          <router-link v-for="(tag, index) in displayTags"
+                       :to="{ path: tag.path }"
+                       :key="tag.name">
+            <TagItem @on-close="handleClose(index)">
+              {{ tag.title }}
+            </TagItem>
+          </router-link>
         </transition-group>
       </div>
     </div>
@@ -35,54 +36,73 @@
 <script>
 import SvgIcon from '../../../../components/SvgIcon'
 import TagItem from './TagItem'
+import path from 'path'
 export default {
   data () {
     return {
       tagsContLeft: 0,
-      tags: [{
-        title: 'Tab 1',
-        name: '1',
-        content: 'Tab 1 content'
-      }, {
-        title: 'Tab 2',
-        name: '2',
-        content: 'Tab 2 content'
-      }, {
-        title: 'Tab 3',
-        name: '3',
-        content: 'Tab 3 content'
-      }, {
-        title: 'Tab 4',
-        name: '4',
-        content: 'Tab 4 content'
-      }, {
-        title: 'Tab 5',
-        name: '5',
-        content: 'Tab 5 content'
-      }, {
-        title: 'Tab 6',
-        name: '6',
-        content: 'Tab 6 content'
-      }, {
-        title: 'Tab 7',
-        name: '7',
-        content: 'Tab 7 content'
-      }, {
-        title: 'Tab 8',
-        name: '8',
-        content: 'Tab 8 content'
-      }, {
-        title: 'Tab 9',
-        name: '9',
-        content: 'Tab 9 content'
-      }]
+      affixTags: []
     }
   },
   components: {
     SvgIcon,
     TagItem
   },
+  computed: {
+    routes () {
+      return this.$router.options.routes
+    },
+    displayTags () {
+      return this.$store.state.tagsNav.displayTags
+    }
+  },
+  watch: {
+    $route () {
+      this.addTags()
+    }
+  },
+  mounted () {
+    this.initTags()
+    this.addTags()
+  },
   methods: {
+    filterAffixTags (routes, basePath = '/') {
+      let tags = []
+      routes.forEach(route => {
+        if (route.meta && route.meta.affix) {
+          const tagPath = path.resolve(basePath, route.path)
+          tags.push({
+            fullPath: tagPath,
+            path: tagPath,
+            name: route.name,
+            meta: { ...route.meta }
+          })
+        }
+        if (route.children) {
+          const tempTags = this.filterAffixTags(route.children, route.path)
+          if (tempTags.length >= 1) {
+            tags = [...tags, ...tempTags]
+          }
+        }
+      })
+      return tags
+    },
+    initTags () {
+      const affixTags = this.affixTags = this.filterAffixTags(this.routes)
+      for (const tag of affixTags) {
+        // Must have tag name
+        if (tag.name) {
+          this.$store.dispatch('addDisplayTags', tag)
+        }
+      }
+    },
+    addTags () {
+      const { name } = this.$route
+      if (name) {
+        this.$store.dispatch('addTags', this.$route)
+      }
+      return false
+    },
     handlescroll (e) {
       let type = e.type
       let distance = 0
@@ -109,7 +129,7 @@ export default {
       }
     },
     handleClose (index) {
-      this.tags.splice(index, 1)
+      this.displayTags.splice(index, 1)
     },
     handleCtrl (command) {
       if (command === 'all') {

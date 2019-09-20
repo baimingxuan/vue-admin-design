@@ -23,7 +23,8 @@ export default new Router({
         component: () => import('../views/home'),
         meta: {
           title: '首页',
-          icon: 'el-icon-ali-home'
+          icon: 'el-icon-ali-home',
+          affix: true
         }
       }]
     },

@@ -1,6 +1,8 @@
 <script>
+import SvgIcon from '../../../../components/SvgIcon'
 export default {
   name: 'Item',
+  functional: true,
   props: {
     icon: {
       type: String,
@@ -15,10 +17,10 @@ export default {
     const { icon, title } = context.props
     const vnodes = []
     if (icon) {
-      vnodes.push(`<SvgIcon class="icon" icon-class=${icon}></SvgIcon>`)
+      vnodes.push(<SvgIcon class="icon" icon-class={icon}></SvgIcon>)
     }
     if (title) {
-      vnodes.push(`<span slot="title">${title}</span>`)
+      vnodes.push(<span slot="title">{title}</span>)
     }
     return vnodes
   }
