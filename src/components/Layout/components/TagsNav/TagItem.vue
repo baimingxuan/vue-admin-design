@@ -52,11 +52,16 @@ export default {
       position: relative;
       top: 1px;
       display: inline-block;
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       margin-right: 8px;
       border-radius: 50%;
       background: #e8eaec;
+    }
+  }
+  .tag-item.active {
+    .tag-item-dot{
+      background: #409eff;
     }
   }
 </style>

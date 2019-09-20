@@ -9,7 +9,9 @@
           <router-link v-for="(tag, index) in displayTags"
                        :to="{ path: tag.path }"
                        :key="tag.name">
-            <TagItem @on-close="handleClose(index)">
+            <TagItem
+              @on-close="handleClose(index)"
+              :class="{active: isActive(tag)}">
               {{ tag.title }}
             </TagItem>
           </router-link>
@@ -66,6 +68,9 @@ export default {
     this.addTags()
   },
   methods: {
+    isActive (tag) {
+      return tag.path === this.$route.path
+    },
     filterAffixTags (routes, basePath = '/') {
       let tags = []
       routes.forEach(route => {
