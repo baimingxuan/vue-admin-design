@@ -16,11 +16,11 @@ export default new Router({
       path: '/',
       name: 'Layout',
       component: Layout,
-      redirect: '/home',
+      redirect: '/Home',
       children: [{
-        path: 'home',
-        name: 'home',
-        component: () => import('../views/home'),
+        path: 'Home',
+        name: 'Home',
+        component: () => import('../views/Home'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
