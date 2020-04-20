@@ -4,13 +4,15 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import ECharts from 'vue-echarts'
 
 import './assets/icon-fonts/iconfont.css'
 import './assets/icon-fonts/iconfont'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI, { size: 'small' })
-
+// 注册组件后即可使用
+Vue.component('Charts', ECharts)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

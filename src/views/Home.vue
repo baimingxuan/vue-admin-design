@@ -4,7 +4,7 @@
       <el-col :span="4">
         <el-card shadow="hover" :body-style="{padding: '0px'}">
           <div class="label-box">
-            <i class="dp-icon-md-locate icon-box" style="background: #2d8cf0"></i>
+            <i class="vue-sys-icon-dianji icon-box" style="background: #2d8cf0"></i>
             <div class="label-content">
               <p class="count">682</p>
               <p class="title">今日点击</p>
@@ -15,7 +15,7 @@
       <el-col :span="4">
         <el-card shadow="hover" :body-style="{padding: '0px'}">
           <div class="label-box">
-            <i class="dp-icon-md-person-add icon-box" style="background: #19be6b"></i>
+            <i class="vue-sys-icon-xinzeng icon-box" style="background: #19be6b"></i>
             <div class="label-content">
               <p class="count">259</p>
               <p class="title">新增用户</p>
@@ -26,7 +26,7 @@
       <el-col :span="4">
         <el-card shadow="hover" :body-style="{padding: '0px'}">
           <div class="label-box">
-            <i class="dp-icon-md-mail icon-box" style="background: #ff9900"></i>
+            <i class="vue-sys-icon-xinfeng icon-box" style="background: #ff9900"></i>
             <div class="label-content">
               <p class="count">1262</p>
               <p class="title">信息发送</p>
@@ -37,7 +37,7 @@
       <el-col :span="4">
         <el-card shadow="hover" :body-style="{padding: '0px'}">
           <div class="label-box">
-            <i class="dp-icon-md-thumbs-up icon-box" style="background: #e46cbb"></i>
+            <i class="vue-sys-icon-dianzan icon-box" style="background: #e46cbb"></i>
             <div class="label-content">
               <p class="count">508</p>
               <p class="title">点赞统计</p>
@@ -48,7 +48,7 @@
       <el-col :span="4">
         <el-card shadow="hover" :body-style="{padding: '0px'}">
           <div class="label-box">
-            <i class="dp-icon-md-heart icon-box" style="background: #9a66e4"></i>
+            <i class="vue-sys-icon-heart icon-box" style="background: #9a66e4"></i>
             <div class="label-content">
               <p class="count">379</p>
               <p class="title">累计收藏</p>

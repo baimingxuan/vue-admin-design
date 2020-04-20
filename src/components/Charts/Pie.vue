@@ -1,17 +1,12 @@
 <template>
-  <div>
+  <div class="pie-wrapper">
     <Charts :options="options" :auto-resize="true"/>
   </div>
 </template>
 
 <script>
-import 'echarts/lib/chart/bar' // 柱状图
-import 'echarts/lib/chart/pie' // 饼图
-import 'echarts/lib/component/tooltip' // 提示
-import 'echarts/lib/component/legend' // 图例
-import 'echarts/lib/component/title' // 标题
 export default {
-  name: 'icons',
+  name: 'Pie',
   data () {
     return {
       options: {}
@@ -21,10 +16,10 @@ export default {
     this.options = {
       // 标题
       title: {
-        text: '某某图',
+        text: '用户访问来源',
         x: 'center',
         textStyle: {
-          color: '#fff',
+          color: '#516b91',
           fontSize: 18,
           fontWeight: 'normal'
         }
@@ -41,12 +36,12 @@ export default {
         bottom: 20,
         data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
         textStyle: {
-          color: '#fff',
+          color: '#a9a9a9',
           fontSize: 20
         }
       },
       // 各个部分的颜色
-      color: ['#18DBDF', '#F6EF7B', '#3DE16F', '#EF69FB', '#FE5679'],
+      color: ['#2d8cf0', '#19be6b', '#ff9900', '#e46cbb', '#9a66e4'],
       // 拖拽的时候重新渲染  默认关闭
       calculable: true,
       // 工具箱
@@ -95,11 +90,11 @@ export default {
           center: ['50%', '60%'],
           // 数据
           data: [
-            {value: 335, name: '直接访问'},
-            {value: 310, name: '邮件营销'},
-            {value: 234, name: '联盟广告'},
-            {value: 135, name: '视频广告'},
-            {value: 1548, name: '搜索引擎'}
+            { name: '直接访问', value: 1920 },
+            { name: '邮件营销', value: 1169 },
+            { name: '联盟广告', value: 986 },
+            { name: '视屏广告', value: 621 },
+            { name: '搜索引擎', value: 3256 }
           ]
         }
       ]
@@ -108,6 +103,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 </style>
