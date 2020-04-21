@@ -2,7 +2,7 @@
   <div class="data-panel">
     <el-row class="date-block" :gutter="20">
       <el-col :span="4">
-        <el-card shadow="hover" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="label-box">
             <i class="vue-sys-icon-dianji icon-box" style="background: #2d8cf0"></i>
             <div class="label-content">
@@ -13,7 +13,7 @@
         </el-card>
       </el-col>
       <el-col :span="4">
-        <el-card shadow="hover" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="label-box">
             <i class="vue-sys-icon-xinzeng icon-box" style="background: #19be6b"></i>
             <div class="label-content">
@@ -24,7 +24,7 @@
         </el-card>
       </el-col>
       <el-col :span="4">
-        <el-card shadow="hover" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="label-box">
             <i class="vue-sys-icon-xinfeng icon-box" style="background: #ff9900"></i>
             <div class="label-content">
@@ -35,7 +35,7 @@
         </el-card>
       </el-col>
       <el-col :span="4">
-        <el-card shadow="hover" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="label-box">
             <i class="vue-sys-icon-dianzan icon-box" style="background: #e46cbb"></i>
             <div class="label-content">
@@ -46,7 +46,7 @@
         </el-card>
       </el-col>
       <el-col :span="4">
-        <el-card shadow="hover" :body-style="{padding: '0px'}">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="label-box">
             <i class="vue-sys-icon-heart icon-box" style="background: #9a66e4"></i>
             <div class="label-content">
