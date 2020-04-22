@@ -57,49 +57,50 @@
         </el-card>
       </el-col>
     </el-row>
-<!--    <el-row class="date-block" :gutter="20">-->
-<!--      <el-col :span="7">-->
-<!--        <el-card shadow="hover" :body-style="{padding: '0px'}">-->
-<!--          <schart class="item-desc" canvas-id="pie" type="pie" :data="pieData" :options="optionsPie"></schart>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--      <el-col :span="6">-->
-<!--        <el-card shadow="hover" :body-style="{padding: '0px'}">-->
-<!--          <div class="item-desc lang-box">-->
-<!--            <div class="title">项目语言构成</div>-->
-<!--            <div class="lang-item"><label>VUE</label><el-progress :percentage="66" :stroke-width="15"></el-progress></div>-->
-<!--            <div class="lang-item"><label>ES6</label><el-progress :percentage="18" :stroke-width="15" color="#19be6b"></el-progress></div>-->
-<!--            <div class="lang-item"><label>Less</label><el-progress :percentage="12" :stroke-width="15" color="#ff9900"></el-progress></div>-->
-<!--            <div class="lang-item"><label>HTML</label><el-progress :percentage="4" :stroke-width="15" color="#e46cbb"></el-progress></div>-->
-<!--          </div>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--      <el-col :span="7">-->
-<!--        <el-card shadow="hover" :body-style="{padding: '0px'}">-->
-<!--          <schart class="item-desc" canvas-id="ring" type="ring" :data="pieData" :options="optionsPie"></schart>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--    </el-row>-->
-<!--    <el-row class="date-block" :gutter="20">-->
-<!--      <el-col :span="10">-->
-<!--        <el-card shadow="hover" :body-style="{padding: '0px'}">-->
-<!--          <schart class="schart" canvasId="bar" type="bar" :data="chartData" :options="optionsBar"></schart>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--      <el-col :span="10">-->
-<!--        <el-card shadow="hover" :body-style="{padding: '0px'}">-->
+    <el-row class="date-block" :gutter="20">
+      <el-col :span="7">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
+          <ChartsPie class="item-desc"/>
+        </el-card>
+      </el-col>
+      <el-col :span="6">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
+          <div class="item-desc lang-box">
+            <div class="title">项目语言构成</div>
+            <div class="lang-item"><label>VUE</label><el-progress :percentage="66" :stroke-width="15"></el-progress></div>
+            <div class="lang-item"><label>ES6</label><el-progress :percentage="18" :stroke-width="15" color="#19be6b"></el-progress></div>
+            <div class="lang-item"><label>Less</label><el-progress :percentage="12" :stroke-width="15" color="#ff9900"></el-progress></div>
+            <div class="lang-item"><label>HTML</label><el-progress :percentage="4" :stroke-width="15" color="#e46cbb"></el-progress></div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :span="7">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
+          <ChartsPie class="item-desc"/>
+        </el-card>
+      </el-col>
+    </el-row>
+    <el-row class="date-block" :gutter="20">
+      <el-col :span="10">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
+          <ChartsBar class="schart"/>
+        </el-card>
+      </el-col>
+      <el-col :span="10">
+        <el-card shadow="always" :body-style="{padding: '0px'}">
 <!--          <schart class="schart"  canvasId="line" type="line" :data="chartData" :options="optionsLine"></schart>-->
-<!--        </el-card>-->
-<!--      </el-col>-->
-<!--    </el-row>-->
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
+import ChartsPie from '../components/Charts/Pie'
+import ChartsBar from '../components/Charts/Bar'
 export default {
   name: 'Home',
-  components: {
-  },
+  components: { ChartsPie, ChartsBar },
   data () {
     return {
       pieData: [
