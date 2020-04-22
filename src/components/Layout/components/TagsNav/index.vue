@@ -146,7 +146,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .tags-nav {
     width: 100%;
     height: 40px;

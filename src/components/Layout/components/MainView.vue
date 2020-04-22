@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .main-view {
     position: absolute;
     top: 120px;

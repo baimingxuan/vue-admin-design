@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .icon{
     width: 18px;
     height: 18px;

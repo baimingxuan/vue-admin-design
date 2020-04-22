@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .bread-crumbs {
     float: left;
     width: 30%;

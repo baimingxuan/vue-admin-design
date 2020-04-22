@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .tag-item {
     display: inline-block;
     vertical-align: middle;

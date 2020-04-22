@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .github-link {
     float: left;
     width: 26px;

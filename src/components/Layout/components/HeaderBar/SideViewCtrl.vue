@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .side-view-ctrl {
     float: left;
     width: 26px;

@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .header-bar{
     height: 32px;
     padding: 16px 20px;

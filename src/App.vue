@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  @import "./assets/scss/index";
+<style lang="less">
+  @import "assets/less/index.less";
 </style>

@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .lang-switch {
     float: left;
     width: 26px;

@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
   .svg-icon {
     width: 1em;
     height: 1em;

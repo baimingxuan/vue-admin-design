@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .app-wrapper {
   position: relative;
   width: 100%;
