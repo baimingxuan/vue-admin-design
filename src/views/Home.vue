@@ -16,36 +16,35 @@
     <el-row class="date-box" :gutter="20">
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie :title=text type="pie" :data="chartsPieData" class="item-desc"/>
+          <ChartsPie :title=text type="pie" :data="chartsPieData" class="data-desc"/>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <div class="item-desc lang-box">
-            <div class="title">项目语言构成</div>
-            <div class="lang-item"><label>VUE</label><el-progress :percentage="45" :stroke-width="15"></el-progress></div>
-            <div class="lang-item"><label>ES6</label><el-progress :percentage="32" :stroke-width="15" color="#19be6b"></el-progress></div>
-            <div class="lang-item"><label>TS</label><el-progress :percentage="4" :stroke-width="15" color="#ff9900"></el-progress></div>
-            <div class="lang-item"><label>Less</label><el-progress :percentage="13" :stroke-width="15" color="#e46cbb"></el-progress></div>
-            <div class="lang-item"><label>HTML</label><el-progress :percentage="6" :stroke-width="15" color="#9a66e4"></el-progress></div>
+          <div class="data-desc data-lang-box">
+            <div class="data-lang-title">项目语言构成</div>
+            <div v-for="(item, index) in langsData" :key="index" class="data-lang-item">
+              <label>{{ item.name }}</label>
+              <el-progress :percentage="item.value" :stroke-width="16" :color="item.color"/>
+            </div>
           </div>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie :title=text type="ring" :data="chartsPieData" class="item-desc"/>
+          <ChartsPie :title=text type="ring" :data="chartsPieData" class="data-desc"/>
         </el-card>
       </el-col>
     </el-row>
     <el-row class="date-box" :gutter="20">
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsBar :title=title :data=commonChartsData class="schart"/>
+          <ChartsBar :title=title :data=commonChartsData class="data-chart"/>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsLine :title=title :data=commonChartsData class="schart"/>
+          <ChartsLine :title=title :data=commonChartsData class="data-chart"/>
         </el-card>
       </el-col>
     </el-row>
@@ -63,6 +62,13 @@ export default {
     return {
       text: '用户访问来源',
       title: '近七天用户访问量条形图',
+      langsData: [
+        { name: 'VUE', value: 45, color: '#2d8cf0' },
+        { name: 'ES6', value: 32, color: '#19be6b' },
+        { name: 'TS', value: 4, color: '#ff9900' },
+        { name: 'LESS', value: 13, color: '#e46cbb' },
+        { name: 'HTML', value: 6, color: '#9a66e4' }
+      ],
       cardInfoData: [
         { title: '今日点击', icon: 'vue-sys-icon-dianji', count: 682, color: '#2d8cf0' },
         { title: '新增用户', icon: 'vue-sys-icon-xinzeng', count: 259, color: '#19be6b' },
