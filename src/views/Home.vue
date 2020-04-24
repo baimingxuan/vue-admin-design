@@ -52,9 +52,9 @@
 </template>
 
 <script>
-import ChartsPie from '../components/Charts/ChartsPie'
-import ChartsBar from '../components/Charts/ChartsBar'
-import ChartsLine from '../components/Charts/ChartsLine'
+import ChartsPie from '../components/charts/ChartsPie'
+import ChartsBar from '../components/charts/ChartsBar'
+import ChartsLine from '../components/charts/ChartsLine'
 export default {
   name: 'Home',
   components: { ChartsPie, ChartsBar, ChartsLine },
