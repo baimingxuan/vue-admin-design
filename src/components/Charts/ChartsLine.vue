@@ -6,13 +6,22 @@
 import echarts from 'echarts'
 
 export default {
-  name: 'Line',
+  name: 'ChartsLine',
   data () {
     return {
       dom: null
     }
   },
-  props: {},
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    data: {
+      type: Object,
+      default: () => {}
+    }
+  },
   mounted () {
     this.drawing()
   },
@@ -24,10 +33,12 @@ export default {
       this.dom.resize()
     },
     drawing () {
+      let xAxisData = Object.keys(this.data)
+      let seriesData = Object.values(this.data)
       let options = {
         // 标题
         title: {
-          text: '近七天用户访问量条形图',
+          text: this.title,
           x: 'center',
           y: 15,
           textStyle: {
@@ -37,10 +48,10 @@ export default {
         },
         // 工具提示
         tooltip: {
-          trigger: 'item',
+          trigger: 'axis',
           formatter: '{b} <br/>{a} : {c}',
           axisPointer: {
-            type: 'shadow'
+            type: 'line'
           }
         },
         grid: {
@@ -52,7 +63,7 @@ export default {
         xAxis: [
           {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: xAxisData,
             axisTick: {
               alignWithLabel: true
             }
@@ -60,20 +71,32 @@ export default {
         ],
         yAxis: [
           {
-            type: 'value'
+            type: 'value',
+            max: value => {
+              return Math.ceil(value.max / 100) * 100 + 300
+            }
           }
         ],
         // 颜色配置
-        color: ['#2d8cf0'],
+        color: ['#9a66e4'],
         // 类型配置
         series: [
           {
             name: '直接访问',
             // 类型配置
             type: 'line',
-            barWidth: '50%',
             // 数据配置
-            data: [ 1080, 925, 1166, 812, 328, 222, 1080 ]
+            data: seriesData,
+            itemStyle: {
+              normal: {
+                label: {
+                  show: true,
+                  fontSize: 14,
+                  position: 'top',
+                  formatter: '{c}'
+                }
+              }
+            }
           }
         ]
       }

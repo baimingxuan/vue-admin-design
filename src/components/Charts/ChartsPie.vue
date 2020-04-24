@@ -6,13 +6,26 @@
 import echarts from 'echarts'
 
 export default {
-  name: 'Pie',
+  name: 'ChartsPie',
   data () {
     return {
       dom: null
     }
   },
-  props: {},
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    type: {
+      type: String,
+      default: 'pie'
+    },
+    data: {
+      type: Array,
+      default: () => []
+    }
+  },
   mounted () {
     this.drawing()
   },
@@ -24,10 +37,12 @@ export default {
       this.dom.resize()
     },
     drawing () {
+      let legendData = this.data.map(item => item.name)
+      let radius = this.type === 'pie' ? '70%' : ['50%', '70%']
       let options = {
         // 标题
         title: {
-          text: '用户访问来源',
+          text: this.title,
           x: 'center',
           y: 15,
           textStyle: {
@@ -46,10 +61,10 @@ export default {
           orient: 'vertical',
           left: 10,
           top: 20,
-          itemWidth: 20,
-          itemHeight: 12,
+          itemWidth: 25,
+          itemHeight: 15,
           itemGap: 5,
-          data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎'],
+          data: legendData,
           textStyle: {
             color: '#aaa',
             fontSize: 12
@@ -75,16 +90,10 @@ export default {
             name: '访问来源',
             // 类型配置
             type: 'pie',
-            radius: '70%',
+            radius: radius,
             center: ['52%', '55%'],
             // 数据配置
-            data: [
-              { value: 1920, name: '直接访问' },
-              { value: 1169, name: '邮件营销' },
-              { value: 986, name: '联盟广告' },
-              { value: 621, name: '视频广告' },
-              { value: 3256, name: '搜索引擎' }
-            ]
+            data: this.data
           }
         ]
       }

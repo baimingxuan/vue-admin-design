@@ -16,7 +16,7 @@
     <el-row class="date-box" :gutter="20">
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie class="item-desc"/>
+          <ChartsPie :title=text type="pie" :data="chartsPieData" class="item-desc"/>
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -33,20 +33,19 @@
       </el-col>
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie class="item-desc"/>
+          <ChartsPie :title=text type="ring" :data="chartsPieData" class="item-desc"/>
         </el-card>
       </el-col>
     </el-row>
     <el-row class="date-box" :gutter="20">
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsBar class="schart"/>
+          <ChartsBar :title=title :data=commonChartsData class="schart"/>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsLine class="schart"/>
-<!--          <schart class="schart"  canvasId="line" type="line" :data="chartData" :options="optionsLine"></schart>-->
+          <ChartsLine :title=title :data=commonChartsData class="schart"/>
         </el-card>
       </el-col>
     </el-row>
@@ -54,21 +53,39 @@
 </template>
 
 <script>
-import ChartsPie from '../components/Charts/Pie'
-import ChartsBar from '../components/Charts/Bar'
-import ChartsLine from '../components/Charts/Line'
+import ChartsPie from '../components/Charts/ChartsPie'
+import ChartsBar from '../components/Charts/ChartsBar'
+import ChartsLine from '../components/Charts/ChartsLine'
 export default {
   name: 'Home',
   components: { ChartsPie, ChartsBar, ChartsLine },
   data () {
     return {
+      text: '用户访问来源',
+      title: '近七天用户访问量条形图',
       cardInfoData: [
         { title: '今日点击', icon: 'vue-sys-icon-dianji', count: 682, color: '#2d8cf0' },
         { title: '新增用户', icon: 'vue-sys-icon-xinzeng', count: 259, color: '#19be6b' },
         { title: '信息发送', icon: 'vue-sys-icon-xinfeng', count: 1262, color: '#ff9900' },
         { title: '点赞统计', icon: 'vue-sys-icon-dianzan', count: 508, color: '#e46cbb' },
         { title: '累计收藏', icon: 'vue-sys-icon-heart', count: 379, color: '#9a66e4' }
-      ]
+      ],
+      chartsPieData: [
+        { value: 1920, name: '直接访问' },
+        { value: 1169, name: '邮件营销' },
+        { value: 986, name: '联盟广告' },
+        { value: 621, name: '视频广告' },
+        { value: 3256, name: '搜索引擎' }
+      ],
+      commonChartsData: {
+        Mon: 782,
+        Tue: 925,
+        Wed: 1196,
+        Thu: 812,
+        Fri: 328,
+        Sat: 222,
+        Sun: 1080
+      }
     }
   }
 }

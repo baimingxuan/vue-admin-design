@@ -11,11 +11,15 @@ export default {
 </script>
 
 <style lang="less">
-  .main-view {
-    position: absolute;
-    top: 120px;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-  }
+@import "../../../assets/less/scroll-bar";
+.main-view {
+  position: absolute;
+  top: 120px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: 15px 25px;
+  overflow-y: auto;
+  .scroll-bar
+}
 </style>
