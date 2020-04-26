@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/Home'),
+        component: () => import('../views/form-table/Table'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
