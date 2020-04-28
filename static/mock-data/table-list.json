@@ -7,7 +7,8 @@
       "sex": "男",
       "phone": 15266001235,
       "education": "高中",
-      "married": "未婚",
+      "married": 1,
+      "forbid": true,
       "hobby": "羽毛球、篮球、听歌、阅读"
     },
     {
@@ -16,7 +17,8 @@
       "sex": "男",
       "phone": 15266006621,
       "education": "大专",
-      "married": "离异",
+      "married": 3,
+      "forbid": false,
       "hobby": "乒乓球、排球、游泳"
     },
     {
@@ -25,7 +27,8 @@
       "sex": "男",
       "phone": 15264848125,
       "education": "大学",
-      "married": "单身",
+      "married": 0,
+      "forbid": true,
       "hobby": "旱冰、滑雪、跳高、打游戏"
     },
     {
@@ -34,7 +37,8 @@
       "sex": "男",
       "phone": 15248491001,
       "education": "初中",
-      "married": "已婚",
+      "married": 2,
+      "forbid": false,
       "hobby": "网球、篮球、跳伞"
     },
     {
@@ -43,7 +47,8 @@
       "sex": "女",
       "phone": 15248411021,
       "education": "大学",
-      "married": "单身",
+      "married": 0,
+      "forbid": true,
       "hobby": "滑翔、游泳、篮球、看电影"
     },
     {
@@ -52,7 +57,8 @@
       "sex": "男",
       "phone": 15298621500,
       "education": "大专",
-      "married": "已婚",
+      "married": 2,
+      "forbid": true,
       "hobby": "游泳、篮球、潜水"
     },
     {
@@ -61,7 +67,8 @@
       "sex": "女",
       "phone": 15267499461,
       "education": "高中",
-      "married": "未婚",
+      "married": 1,
+      "forbid": false,
       "hobby": "冲浪、上网、看书、打游戏"
     }
   ],
