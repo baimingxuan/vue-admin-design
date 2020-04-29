@@ -1,6 +1,7 @@
 <template>
   <div class="table-wrapper">
     <el-table
+      v-loading="listLoading"
       ref="multipleTable"
       :data="tableData"
       tooltip-effect="dark"
@@ -49,6 +50,7 @@
         </template>
       </el-table-column>
     </el-table>
+    <Pagination :total="total" :page.sync="listQuery.currentPage" :limit.sync="listQuery.pageSize" @pagination="fetchData"/>
     <el-dialog
       title="编辑"
       :visible.sync="dialogVisible"
@@ -64,22 +66,25 @@
 
 <script>
 import { getTableList } from '../../api'
+import Pagination from '../../components/Pagination'
 
 export default {
   name: 'Table',
   data () {
     return {
+      listLoading: true,
+      listQuery: {
+        currentPage: 1,
+        pageSize: 10
+      },
+      total: 0,
       tableData: [],
       dialogVisible: false
     }
   },
+  components: { Pagination },
   created () {
-    getTableList().then(res => {
-      let data = res.data
-      if (data.code === 0) {
-        this.tableData = data.data
-      }
-    })
+    this.fetchData()
   },
   methods: {
     handleSelectionChange (val) {
@@ -109,6 +114,19 @@ export default {
     },
     handleClose () {
       this.dialogVisible = false
+    },
+    fetchData () {
+      this.listLoading = true
+      getTableList(this.listQuery).then(res => {
+        let data = res.data
+        if (data.code === 0) {
+          this.total = data.data.total
+          this.tableData = data.data.list
+          this.listLoading = false
+        }
+      }).catch(() => {
+        this.listLoading = false
+      })
     }
   }
 }
