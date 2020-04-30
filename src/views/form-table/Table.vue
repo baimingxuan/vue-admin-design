@@ -1,5 +1,29 @@
 <template>
   <div class="table-wrapper">
+    <el-form
+      ref="searchForm"
+      :inline="true"
+      :model="listQuery"
+      label-width="90px"
+      class="search-form">
+      <el-form-item label="编号">
+        <el-input v-model="listQuery.id" placeholder="编号"></el-input>
+      </el-form-item>
+      <el-form-item label="手机">
+        <el-input v-model="listQuery.phone" placeholder="手机"></el-input>
+      </el-form-item>
+      <el-form-item label="婚姻状况">
+        <el-select v-model="listQuery.married" placeholder="婚姻状况">
+          <el-option :value="0" label="单身"/>
+          <el-option :value="1" label="未婚"/>
+          <el-option :value="2" label="已婚"/>
+          <el-option :value="3" label="离异"/>
+        </el-select>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSubmit">查询</el-button>
+      </el-form-item>
+    </el-form>
     <el-table
       v-loading="listLoading"
       ref="multipleTable"
@@ -56,6 +80,35 @@
       :visible.sync="dialogVisible"
       width="30%"
       :before-close="handleClose">
+      <el-form ref="dialogForm" :model="dialogForm" label-width="100px">
+        <el-form-item label="姓名：" prop="name">
+          <el-input v-model="dialogForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="手机：" prop="phone">
+          <el-input v-model="dialogForm.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="婚姻状况：" prop="married">
+          <el-select v-model="dialogForm.married">
+            <el-option :value="0" label="单身"/>
+            <el-option :value="1" label="未婚"/>
+            <el-option :value="2" label="已婚"/>
+            <el-option :value="3" label="离异"/>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="爱好：" prop="hobby">
+          <el-checkbox-group v-model="dialogForm.hobby">
+            <el-checkbox label="羽毛球" name="hobby"></el-checkbox>
+            <el-checkbox label="乒乓球" name="hobby"></el-checkbox>
+            <el-checkbox label="篮球" name="hobby"></el-checkbox>
+            <el-checkbox label="排球" name="hobby"></el-checkbox>
+            <el-checkbox label="网球" name="hobby"></el-checkbox>
+            <el-checkbox label="旱冰" name="hobby"></el-checkbox>
+            <el-checkbox label="滑雪" name="hobby"></el-checkbox>
+            <el-checkbox label="跳高" name="hobby"></el-checkbox>
+            <el-checkbox label="冲浪" name="hobby"></el-checkbox>
+          </el-checkbox-group>
+        </el-form-item>
+      </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
@@ -74,8 +127,17 @@ export default {
     return {
       listLoading: true,
       listQuery: {
+        id: undefined,
+        phone: undefined,
+        married: undefined,
         currentPage: 1,
         pageSize: 10
+      },
+      dialogForm: {
+        name: undefined,
+        phone: undefined,
+        married: undefined,
+        hobby: []
       },
       total: 0,
       tableData: [],
@@ -127,6 +189,10 @@ export default {
       }).catch(() => {
         this.listLoading = false
       })
+    },
+    onSubmit () {
+      this.listQuery.currentPage = 1
+      this.fetchData()
     }
   }
 }
@@ -134,6 +200,11 @@ export default {
 
 <style lang="less">
 .table-wrapper{
+  .search-form{
+    padding-top: 18px;
+    margin-bottom: 15px;
+    background-color: #f7f8fb;
+  }
   .el-table thead {
     font-weight: 600;
     th{
