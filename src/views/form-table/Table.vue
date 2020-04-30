@@ -155,6 +155,10 @@ export default {
     handleEdit (index, row) {
       console.log(index, row)
       this.dialogVisible = true
+      this.dialogForm.name = row.name
+      this.dialogForm.phone = row.phone
+      this.dialogForm.married = row.married
+      this.dialogForm.hobby = row.hobby.split('、')
     },
     handleDelete (index, row) {
       console.log(index, row)
