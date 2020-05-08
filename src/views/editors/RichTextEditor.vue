@@ -1,12 +1,11 @@
 <template>
   <div class="rich-text-editor">
-    <quillEditor v-model="content"/>
+    <Editor></Editor>
   </div>
 </template>
 
 <script>
-import 'quill/dist/quill.snow.css'
-import { quillEditor } from 'vue-quill-editor'
+import Editor from '../../components/Editor'
 
 export default {
   name: 'RichTextEditor',
@@ -15,7 +14,7 @@ export default {
       content: ''
     }
   },
-  components: { quillEditor }
+  components: { Editor }
 }
 </script>
 
