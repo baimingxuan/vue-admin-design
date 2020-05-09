@@ -1,5 +1,9 @@
 <template>
   <div class="markdown-editor">
+    <Hints>
+      <template v-slot:hintName>Markdown编辑器</template>
+      <template v-slot:hintInfo>一段JSON配置自动生成表单，支持view modal drawer</template>
+    </Hints>
     <mavonEditor
       v-model="content"
       ref="markdownEle"
@@ -13,6 +17,7 @@
 import { axios } from 'axios'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'MarkdownEditor',
@@ -22,7 +27,7 @@ export default {
       imageFile: {}
     }
   },
-  components: { mavonEditor },
+  components: { mavonEditor, Hints },
   methods: {
     // 绑定@imgAdd event
     imageAdd (pos, file) {
