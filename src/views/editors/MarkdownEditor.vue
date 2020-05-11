@@ -2,7 +2,10 @@
   <div class="markdown-editor">
     <Hints>
       <template v-slot:hintName>Markdown编辑器</template>
-      <template v-slot:hintInfo>一段JSON配置自动生成表单，支持view modal drawer</template>
+      <template v-slot:hintInfo>
+        <p>mavonEditor：是一款基于vue的Markdown编辑器，比较适合博客系统</p>
+        <p>github地址：立即访问 <a href="https://github.com/hinesboy/mavonEditor" target="_blank">mavonEditor</a></p>
+      </template>
     </Hints>
     <mavonEditor
       v-model="content"

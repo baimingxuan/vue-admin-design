@@ -36,5 +36,8 @@ export default {
     padding-left: 24px;
     line-height: 24px;
   }
+  a{
+    color: #ff9900;
+  }
 }
 </style>

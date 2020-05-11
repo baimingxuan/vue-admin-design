@@ -31,27 +31,6 @@ export default {
     }
     this.editor.customConfig.uploadImgServer = '你的上传图片的接口'
     this.editor.customConfig.uploadFileName = '你自定义的文件名'
-    this.editor.customConfig.menus = [
-      'head',
-      'bold',
-      'fontSize',
-      'fontName',
-      'italic',
-      'underline',
-      'strikeThrough',
-      'foreColor',
-      'backColor',
-      'link',
-      'list',
-      'justify',
-      'quote',
-      'emoticon',
-      'image',
-      'table',
-      'code',
-      'undo',
-      'redo'
-    ]
     // 下面是最重要的的方法
     this.editor.customConfig.uploadImgHooks = {
       before: function (xhr, editor, files) {
