@@ -1,6 +1,6 @@
 <template>
   <div class="editor-wrapper">
-    <div ref="editorEle" style="text-align:left"></div>
+    <div class="editor-container" ref="editorEle"></div>
   </div>
 </template>
 
@@ -11,23 +11,28 @@ export default {
   name: 'Editor',
   data () {
     return {
-      editor: null,
-      editorContent: ''
+      editor: null
     }
   },
-  // 接收父组件的方法
-  props: ['catchData', 'content'],
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    }
+  },
   watch: {
-    content () {
-      this.editor.txt.html(this.content)
+    value (val) {
+      this.editor.txt.html(val)
     }
   },
   mounted () {
     this.editor = new E(this.$refs.editorEle)
     this.editor.customConfig.onchange = (html) => {
-      this.editorContent = html
-      // 把这个html通过catchData的方法传入父组件
-      this.catchData(this.editorContent)
+      this.$emit('input', html)
     }
     this.editor.customConfig.uploadImgServer = '你的上传图片的接口'
     this.editor.customConfig.uploadFileName = '你自定义的文件名'
@@ -79,13 +84,31 @@ export default {
 
     // 创建富文本实例
     this.editor.create()
-    if (!this.content) {
-      this.editor.txt.html('请编辑内容1')
-    }
+    this.editor.txt.html(this.placeholder)
+  },
+  beforeDestroy () {
+    this.editor.destroy()
   }
 }
 </script>
 
 <style lang="less">
-
+  .editor-wrapper{
+    .editor-container{
+      text-align:left;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0;
+      .w-e-toolbar{
+        padding: 5px;
+        border: none!important;
+      }
+      .w-e-text-container{
+        min-height: 450px !important;
+        border: none!important;
+        .w-e-text{
+          padding: 10px;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
 </style>
