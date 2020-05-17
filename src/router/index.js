@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/editors/RichTextEditor'),
+        component: () => import('../views/packages/DragList'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
@@ -78,7 +78,7 @@ export default new Router({
       {
         path: 'drag-list',
         name: 'packages-drag-list',
-        component: () => import('../views/packages/drag-list'),
+        component: () => import('../views/packages/DragList'),
         meta: {
           title: '拖拽列表'
         }
