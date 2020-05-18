@@ -17,6 +17,7 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "mavon-editor": "^2.9.0",
+    "v-org-tree": "^1.0.12",
     "vue": "^2.6.9",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.23.2",

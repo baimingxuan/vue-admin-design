@@ -5,7 +5,7 @@
         <div class="list-title">列表1事项</div>
         <div class="list-cont">
           <Draggable v-model="listOne" :move="onMove" group="list" @end="handleChange($event)">
-            <div class="list-item" v-for="(item, index) in listOne" :key="index">{{ item.name }}</div>
+            <el-card v-for="(item, index) in listOne" :key="index" shadow="hover">{{ item.name }}</el-card>
           </Draggable>
         </div>
       </el-col>
@@ -13,7 +13,7 @@
         <div class="list-title">列表2事项</div>
         <div class="list-cont">
           <Draggable v-model="listTwo" :move="onMove" group="list" @end="handleChange($event)">
-            <div class="list-item" v-for="(item, index) in listTwo" :key="index">{{ item.name }}¬</div>
+            <el-card v-for="(item, index) in listTwo" :key="index" shadow="hover">{{ item.name }}</el-card>
           </Draggable>
         </div>
       </el-col>
