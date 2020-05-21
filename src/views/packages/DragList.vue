@@ -3,19 +3,21 @@
     <el-row :gutter="20">
       <el-col :span="5">
         <div class="list-title">列表1事项</div>
-        <Draggable v-model="listOne" :move="onMove" group="list" @end="handleChange($event, '列表1')" class="list-cont">
+        <Draggable v-model="listOne" group="list" @end="handleChange($event, '列表1')" class="list-cont list1">
           <el-card v-for="(item, index) in listOne" :key="index" shadow="hover">{{ item.name }}</el-card>
         </Draggable>
       </el-col>
       <el-col :span="5">
         <div class="list-title">列表2事项</div>
-        <Draggable v-model="listTwo" :move="onMove" group="list" @end="handleChange($event, '列表2')" class="list-cont">
+        <Draggable v-model="listTwo" group="list" @end="handleChange($event, '列表2')" class="list-cont list2">
           <el-card v-for="(item, index) in listTwo" :key="index" shadow="hover">{{ item.name }}</el-card>
         </Draggable>
       </el-col>
       <el-col :span="4">
         <div class="list-title">操作记录</div>
-        <div class="list-cont"></div>
+        <div class="list-cont">
+          <p v-for="(item, index) in handleList" :key="index">{{ item }}</p>
+        </div>
       </el-col>
       <el-col :span="5">
         <div class="list-title">列表1数据</div>
@@ -55,34 +57,29 @@ export default {
   },
   components: { Draggable, Hints },
   methods: {
-    onMove (obj) {
-      console.log(obj)
-    },
     handleChange (event, type) {
-      console.log(event)
-      const srcClassName = (event.srcElement || event.target).classList[0]
-      const targetClassName = event.to.classList[0]
-      let src = ''
-      let target = ''
+      const srcClassName = event.from.classList[1]
+      const targetClassName = event.to.classList[1]
+      let from = ''
+      let to = ''
       if (srcClassName === targetClassName) {
         if (type === '列表1') {
-          src = '列表1'
-          target = '列表1'
+          from = '列表1'
+          to = '列表1'
         } else {
-          src = '列表2'
-          target = '列表2'
+          from = '列表2'
+          to = '列表2'
         }
       } else {
         if (type === '列表1') {
-          src = '列表1'
-          target = '列表2'
+          from = '列表1'
+          to = '列表2'
         } else {
-          src = '列表2'
-          target = '列表1'
+          from = '列表2'
+          to = '列表1'
         }
       }
-      console.log(src, target)
-      // this.handleList.push(`${src} => ${target}, ${oldIndex} => ${newIndex}`)
+      this.handleList.push(`${from} => ${to}, ${event.oldIndex} => ${event.newIndex}`)
     }
   }
 }
