@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="zoom-controller"></div>
 </template>
 
 <script>

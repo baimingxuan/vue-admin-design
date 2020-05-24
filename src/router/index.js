@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/packages/DragList'),
+        component: () => import('@/components/OrgTree/components/OrgView'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
@@ -60,14 +60,6 @@ export default new Router({
         icon: 'el-icon-ali-home'
       },
       children: [{
-        path: 'rich-text',
-        name: 'packages-rich-text',
-        component: () => import('../views/packages/rich-text'),
-        meta: {
-          title: '富文本编辑器'
-        }
-      },
-      {
         path: 'avatar-upload',
         name: 'packages-avatar-upload',
         component: () => import('../views/packages/avatar-upload'),
