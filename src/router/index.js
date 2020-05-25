@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/packages/DragList'),
+        component: () => import('../views/form-table/Form'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
@@ -70,7 +70,7 @@ export default new Router({
       {
         path: 'drag-list',
         name: 'packages-drag-list',
-        component: () => import('../views/packages/DragList'),
+        component: () => import('../views/drag/DragList'),
         meta: {
           title: '拖拽列表'
         }

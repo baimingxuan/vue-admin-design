@@ -6,7 +6,7 @@
           <div class="date-block">
             <i :class="[ item.icon ]" :style="{ background: item.color }" class="icon-box"></i>
             <div class="date-cont">
-              <p class="count">{{ item.count }}</p>
+              <CountTo class="count" :startVal="0" :endVal="item.count" :duration="3000"/>
               <p class="title">{{ item.title }}</p>
             </div>
           </div>
@@ -52,12 +52,13 @@
 </template>
 
 <script>
+import CountTo from 'vue-count-to'
 import ChartsPie from '../components/Charts/ChartsPie'
 import ChartsBar from '../components/Charts/ChartsBar'
 import ChartsLine from '../components/Charts/ChartsLine'
 export default {
   name: 'Home',
-  components: { ChartsPie, ChartsBar, ChartsLine },
+  components: { CountTo, ChartsPie, ChartsBar, ChartsLine },
   data () {
     return {
       text: '用户访问来源',
