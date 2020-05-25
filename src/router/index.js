@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('@/components/OrgTree/components/OrgView'),
+        component: () => import('../views/packages/DragList'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',

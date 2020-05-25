@@ -1,10 +1,10 @@
 <template>
-  <div class="org-tree-view-wrapper">
+  <div class="org-tree-view-wrapper" :style="orgTreeStyle">
     <OrgTree :data="data"
              collapsable
              :node-render="nodeRender"
              :expand-all="expandAll"
-             :horizontal="false"
+             :horizontal="horizontal"
              :props="props"
              @on-expand="onExpand"
              @on-node-click="onNodeClick"/>
@@ -14,13 +14,12 @@
 <script>
 import OrgTree from 'v-org-tree'
 import 'v-org-tree/dist/v-org-tree.css'
-import { data } from '../data/tree-data'
+import { data } from './tree-data'
 export default {
   name: 'OrgView',
   data () {
     return {
       data,
-      expandAll: false,
       props: {
         id: 'id',
         label: 'label',
@@ -29,7 +28,28 @@ export default {
       }
     }
   },
+  props: {
+    expandAll: {
+      type: Boolean,
+      default: true
+    },
+    horizontal: {
+      type: Boolean,
+      default: false
+    },
+    zoomVal: {
+      type: Number,
+      default: 1
+    }
+  },
   components: { OrgTree },
+  computed: {
+    orgTreeStyle () {
+      return {
+        transform: `scale(${this.zoomVal}, ${this.zoomVal})`
+      }
+    }
+  },
   methods: {
     nodeRender (h, data) {
       return data.label
@@ -45,5 +65,8 @@ export default {
 </script>
 
 <style lang="less">
-
+.org-tree-view-wrapper{
+  margin-top: 30px;
+  text-align: center;
+}
 </style>
