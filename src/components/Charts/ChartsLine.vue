@@ -39,8 +39,8 @@ export default {
         // 标题
         title: {
           text: this.title,
-          x: 'center',
-          y: 15,
+          left: 'center',
+          top: 15,
           textStyle: {
             fontSize: 16,
             fontWeight: 'normal'

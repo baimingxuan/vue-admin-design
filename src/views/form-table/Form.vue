@@ -90,7 +90,7 @@ export default {
           { required: true, message: '请填写活动形式', trigger: 'blur' }
         ]
       }
-    };
+    }
   },
   methods: {
     submitForm (formName) {
