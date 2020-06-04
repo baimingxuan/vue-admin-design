@@ -1,8 +1,8 @@
 <template>
   <div class="count-to-page">
     <Hints>
-      <template v-slot:hintName>数字滚动组件</template>
-      <template v-slot:hintInfo>
+      <template slot="hintName">数字滚动组件</template>
+      <template slot="hintInfo">
         <p>vue-countTo:一个无依赖、轻量级的vue数字滚动插件，可以通过你自己的方式轻松编写</p>
         <p>github地址：访问 <a href="https://github.com/PanJiaChen/vue-countTo" target="_blank">vue-countTo</a></p>
       </template>

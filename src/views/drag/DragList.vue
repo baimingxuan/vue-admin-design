@@ -1,8 +1,8 @@
 <template>
   <div class="drag-list-wrapper">
     <Hints>
-      <template v-slot:hintName>拖拽列表</template>
-      <template v-slot:hintInfo>
+      <template slot="hintName">拖拽列表</template>
+      <template slot="hintInfo">
         <p>Vue.Draggable：基于Sortable.js的vue组件，用以实现拖拽功能</p>
         <p>github地址：访问 <a href="https://github.com/SortableJS/Vue.Draggable" target="_blank">Vue.Draggable</a></p>
       </template>
