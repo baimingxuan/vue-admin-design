@@ -151,9 +151,10 @@
     <el-dialog
       title="导出数据"
       :visible.sync="exportVisible"
-      width="20%">
+      width="30%">
       <div class="export-data">
         <el-button type="primary" @click="exportExcle">EXCEL格式</el-button>
+        <el-button type="primary" @click="exportCsv">CSV格式</el-button>
         <el-button type="primary" @click="exportTxt">TXT格式</el-button>
       </div>
       <div class="hints">TIP：请选择要导出数据的格式。</div>
@@ -210,7 +211,7 @@ export default {
       // 导入数据 弹出框显示/隐藏
       importVisible: false,
       // 导出文件格式
-      filesFormat: '.txt, .xls, .xlsx',
+      filesFormat: '.txt, .csv, .xls, .xlsx',
       // 导出数据 弹出框显示/隐藏
       exportVisible: false
     }
@@ -335,6 +336,11 @@ export default {
       // 此处添加 导出excle格式数据接口
       this.exportVisible = false
     },
+    // 导出数据--csv格式
+    exportCsv () {
+      // 此处添加 导出csv格式数据接口
+      this.exportVisible = false
+    },
     // 导出数据--txt格式
     exportTxt () {
       // 此处添加 导出txt格式数据接口
@@ -379,7 +385,7 @@ export default {
   }
   .upload-box,
   .export-data{
-    width: 190px;
+    width: 300px;
     margin: 0 auto 30px;
   }
   .upload-box{

@@ -20,7 +20,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/packages/CountToPage'),
+        component: () => import('../views/tools/ImageUpload'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
@@ -52,8 +52,8 @@ export default new Router({
       }]
     },
     {
-      path: '/packages',
-      name: 'packages',
+      path: '/tools',
+      name: 'tools',
       component: Layout,
       meta: {
         title: '组件',
@@ -61,34 +61,10 @@ export default new Router({
       },
       children: [{
         path: 'avatar-upload',
-        name: 'packages-avatar-upload',
-        component: () => import('../views/packages/avatar-upload'),
+        name: 'tools-avatar-upload',
+        component: () => import('../views/tools/ImageUpload'),
         meta: {
           title: '头像上传'
-        }
-      },
-      {
-        path: 'drag-list',
-        name: 'packages-drag-list',
-        component: () => import('../views/drag/DragList'),
-        meta: {
-          title: '拖拽列表'
-        }
-      },
-      {
-        path: 'image-crop',
-        name: 'packages-image-crop',
-        component: () => import('../views/packages/image-crop'),
-        meta: {
-          title: '图片裁剪'
-        }
-      },
-      {
-        path: 'tree',
-        name: 'packages-tree',
-        component: () => import('../views/packages/tree'),
-        meta: {
-          title: '树形结构'
         }
       }]
     },
