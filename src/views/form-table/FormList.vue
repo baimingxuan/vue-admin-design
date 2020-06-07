@@ -1,7 +1,7 @@
 <template>
   <div class="form-list-wrapper">
     <Hints>
-      <template slot="hintName">表单组件</template>
+      <template slot="hintName">Form表单组件</template>
       <template slot="hintInfo">
         <p>element-Form：使用elementUI的Form组件，可用以收集、校验和提交数据等操作</p>
         <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/#/zh-CN/component/form" target="_blank">element-Form</el-link></p>
