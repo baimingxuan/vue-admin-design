@@ -4,7 +4,7 @@
       <template slot="hintName">图片上传组件</template>
       <template slot="hintInfo">
         <p>elementUI-upload：使用elementUI的upload组件，并具有多种列表展示方式</p>
-        <p>地址：访问 <a href="https://element.eleme.cn/2.13/#/zh-CN/component/upload" target="_blank">elementUI-upload</a></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/#/zh-CN/component/upload" target="_blank">elementUI-upload</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">

@@ -4,7 +4,7 @@
       <template slot="hintName">拖拽列表</template>
       <template slot="hintInfo">
         <p>Vue.Draggable：基于Sortable.js的vue组件，用以实现拖拽功能</p>
-        <p>github地址：访问 <a href="https://github.com/SortableJS/Vue.Draggable" target="_blank">Vue.Draggable</a></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/SortableJS/Vue.Draggable" target="_blank">Vue.Draggable</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">

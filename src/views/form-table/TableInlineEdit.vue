@@ -4,7 +4,7 @@
       <template slot="hintName">表格组件(行内编辑)</template>
       <template slot="hintInfo">
         <p>element-Table：使用elementUI的Table组件，可用于展示多条结构类似的数据，并对其进行行内编辑操作</p>
-        <p>地址：访问 <a href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table" target="_blank">element-Table</a></p>
+        <p>地址：访问 <el-link type="success" href="https://element.eleme.cn/2.13/TableClassic.vue#/zh-CN/component/table" target="_blank">element-Table</el-link></p>
       </template>
     </Hints>
     <el-card shadow="always">
