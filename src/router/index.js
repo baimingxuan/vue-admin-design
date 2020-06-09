@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Layout from '../components/Layout/index'
+import Layout from '../layout'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
   routes: [
     {
       path: '/404',
@@ -20,7 +19,7 @@ export default new Router({
       children: [{
         path: 'Home',
         name: 'Home',
-        component: () => import('../views/Home'),
+        component: () => import('../views/MenuTest'),
         meta: {
           title: '首页',
           icon: 'el-icon-ali-home',
@@ -120,6 +119,33 @@ export default new Router({
           }
         },
         {
+          path: 'drag',
+          name: 'Drag',
+          component: () => import('../views/tools/Drag'),
+          redirect: '/tools/drag/drag-list',
+          meta: {
+            title: '拖拽'
+          },
+          children: [
+            {
+              path: 'drag-list',
+              name: 'DragList',
+              component: () => import('../views/tools/Drag/DragList'),
+              meta: {
+                title: '列表拖拽'
+              }
+            },
+            {
+              path: 'vue-drr',
+              name: 'VueDrr',
+              component: () => import('../views/tools/Drag/VueDrr'),
+              meta: {
+                title: '组件拖拽'
+              }
+            }
+          ]
+        },
+        {
           path: 'transfer',
           name: 'Transfer',
           component: () => import('../views/tools/TransferPage'),
@@ -138,10 +164,38 @@ export default new Router({
       ]
     },
     {
+      path: '/image',
+      name: 'Image',
+      component: Layout,
+      redirect: '',
+      meta: {
+        title: '图片处理',
+        icon: 'el-icon-ali-home'
+      },
+      children: [
+        {
+          path: 'image-cropper',
+          name: 'ImageCropper',
+          component: () => import('../views/image/ImageCropper'),
+          meta: {
+            title: '图片裁剪'
+          }
+        },
+        {
+          path: 'image-synthesizer',
+          name: 'ImageSynthesizer',
+          component: () => import('../views/image/ImageSynthesizer'),
+          meta: {
+            title: '图片合成'
+          }
+        }
+      ]
+    },
+    {
       path: '/tree',
       name: 'Tree',
       component: Layout,
-      redirect: '/tree',
+      redirect: '/tree/org-tree',
       meta: {
         title: '树形结构',
         icon: 'el-icon-ali-home'

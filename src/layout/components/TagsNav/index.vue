@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import SvgIcon from '../../../../components/SvgIcon'
+import SvgIcon from '../../../components/SvgIcon'
 import TagItem from './TagItem'
 import path from 'path'
 export default {

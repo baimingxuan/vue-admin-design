@@ -56,7 +56,7 @@ const cascaderData = [{
     label: 'Basic',
     children: [{
       value: 'layout',
-      label: 'Layout 布局'
+      label: 'layout 布局'
     }, {
       value: 'color',
       label: 'Color 色彩'

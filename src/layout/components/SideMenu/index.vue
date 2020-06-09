@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import SvgIcon from '../../../../components/SvgIcon'
+import SvgIcon from '../../../components/SvgIcon'
 import SideMenuItem from './SideMenuItem'
 export default {
   data () {

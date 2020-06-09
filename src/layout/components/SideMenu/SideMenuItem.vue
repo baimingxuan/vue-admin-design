@@ -1,6 +1,6 @@
 <template>
   <div v-if="!item.hidden" class="side-menu-item">
-    <template v-if="hasOneShowChild(item, item.children) && (onlyOneChild.noShowChildren || !onlyOneChild.children)">
+    <template v-if="hasOnlyOneChild(item, item.children) && (onlyOneChild.noChildren || !onlyOneChild.children)">
       <ItemLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title"/>
@@ -24,16 +24,17 @@
 
 <script>
 import path from 'path'
-import { isExternal } from '../../../../utils/validate'
-import SvgIcon from '../../../../components/SvgIcon'
+import { isExternal } from '../../../utils/validate'
+import SvgIcon from '../../../components/SvgIcon'
 import ItemLink from './ItemLink'
 import Item from './Item'
 export default {
   name: 'SideMenuItem',
   props: {
     item: {
+      required: true,
       type: Object,
-      required: true
+      default: () => {}
     },
     basePath: {
       type: String,
@@ -45,30 +46,18 @@ export default {
       onlyOneChild: null
     }
   },
-  components: {
-    SvgIcon,
-    ItemLink,
-    Item
-  },
+  components: { SvgIcon, ItemLink, Item },
   methods: {
-    hasOneShowChild (parent, children = []) {
-      const showChildren = children.filter(item => {
-        if (item.hidden) {
-          return false
-        } else {
-          this.onlyOneChild = item
-          return true
-        }
-      })
-      if (showChildren.length === 1) {
+    hasOnlyOneChild (parent, children = []) {
+      if (children.length === 0) {
+        this.onlyOneChild = { ...parent, path: '', noChildren: true }
         return true
-      }
-      if (showChildren.length === 0) {
-        this.onlyOneChild = { ...parent, noShowChildren: true }
+      } else if (children.length === 1) {
+        this.onlyOneChild = children[0]
         return true
+      } else {
+        return false
       }
-
-      return false
     },
     resolvePath (routePath) {
       if (isExternal(routePath)) {
@@ -83,6 +72,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less">
 
 </style>

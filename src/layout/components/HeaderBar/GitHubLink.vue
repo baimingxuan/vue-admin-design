@@ -1,13 +1,15 @@
 <template>
-  <div class="lang-switch">
-    <SvgIcon class="icon" icon-class="vue-sys-icon-yuyanqiehuan"></SvgIcon>
+  <div class="github-link">
+    <a href="https://github.com/LoveHins/vue-admin-system" target="_blank" rel="noopener">
+      <SvgIcon class="icon" icon-class="vue-sys-icon-git"></SvgIcon>
+    </a>
   </div>
 </template>
 
 <script>
-import SvgIcon from '../../../../components/SvgIcon'
+import SvgIcon from '../../../components/SvgIcon'
 export default {
-  name: 'LangSwitch',
+  name: 'GitHubLink',
   components: {
     SvgIcon
   }
@@ -15,7 +17,7 @@ export default {
 </script>
 
 <style lang="less">
-  .lang-switch {
+  .github-link {
     float: left;
     width: 26px;
     height: 26px;

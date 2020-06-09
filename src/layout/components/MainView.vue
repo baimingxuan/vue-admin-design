@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../../assets/less/scroll-bar";
+@import "../../assets/less/scroll-bar";
 .main-view {
   position: absolute;
   top: 120px;
