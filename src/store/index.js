@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import tagsNav from './modules/tagsNav'
+import tagsView from './modules/tagsView'
 
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    tagsNav
+    tagsView
   }
 })
 

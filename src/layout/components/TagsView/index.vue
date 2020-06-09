@@ -6,7 +6,7 @@
     <div class="tags-views" ref="tagsViews" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <div class="tags-cont" ref="tagsCont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
-          <router-link v-for="(tag, index) in displayTags"
+          <router-link v-for="(tag, index) in visitedViews"
                        :to="{ path: tag.path }"
                        :key="tag.name">
             <TagItem
@@ -36,10 +36,13 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+import path from 'path'
 import SvgIcon from '../../../components/SvgIcon'
 import TagItem from './TagItem'
-import path from 'path'
+
 export default {
+  name: 'TagsView',
   data () {
     return {
       tagsContLeft: 0,
@@ -54,8 +57,8 @@ export default {
     routes () {
       return this.$router.options.routes
     },
-    displayTags () {
-      return this.$store.state.tagsNav.displayTags
+    visitedViews () {
+      return this.$store.state.tagsView.visitedViews
     }
   },
   watch: {
@@ -68,6 +71,7 @@ export default {
     this.addTags()
   },
   methods: {
+    ...mapMutations(['addVisitedView', 'addCachedViews']),
     isActive (tag) {
       return tag.path === this.$route.path
     },
@@ -102,9 +106,11 @@ export default {
       }
     },
     addTags () {
+      console.log('route:', this.$route)
       const { name } = this.$route
       if (name) {
-        this.$store.dispatch('addTags', this.$route)
+        this.addVisitedView(this.$route)
+        this.addCachedViews(this.$route)
       }
       return false
     },
@@ -134,7 +140,7 @@ export default {
       }
     },
     handleClose (index) {
-      this.displayTags.splice(index, 1)
+      this.visitedViews.splice(index, 1)
     },
     handleCtrl (command) {
       if (command === 'all') {

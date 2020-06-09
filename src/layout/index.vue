@@ -12,7 +12,7 @@
 <script>
 import HeaderBar from './components/HeaderBar/index'
 import SideMenu from './components/SideMenu/index'
-import TagsNav from './components/TagsNav/index'
+import TagsNav from './components/TagsView/index'
 import MainView from './components/MainView'
 export default {
   name: 'Layout',

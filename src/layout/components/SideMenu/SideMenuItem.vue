@@ -1,11 +1,11 @@
 <template>
   <div v-if="!item.hidden" class="side-menu-item">
     <template v-if="hasOnlyOneChild(item, item.children) && (onlyOneChild.noChildren || !onlyOneChild.children)">
-      <ItemLink v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
+      <LinkItem v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
           <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title"/>
         </el-menu-item>
-      </ItemLink>
+      </LinkItem>
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
@@ -16,8 +16,7 @@
         v-for="child in item.children"
         :key="child.path"
         :item="child"
-        :basePath="resolvePath(child.path)"
-      />
+        :basePath="resolvePath(child.path)"/>
     </el-submenu>
   </div>
 </template>
@@ -26,7 +25,7 @@
 import path from 'path'
 import { isExternal } from '../../../utils/validate'
 import SvgIcon from '../../../components/SvgIcon'
-import ItemLink from './ItemLink'
+import LinkItem from './LinkItem'
 import Item from './Item'
 export default {
   name: 'SideMenuItem',
@@ -46,7 +45,7 @@ export default {
       onlyOneChild: null
     }
   },
-  components: { SvgIcon, ItemLink, Item },
+  components: { SvgIcon, LinkItem, Item },
   methods: {
     hasOnlyOneChild (parent, children = []) {
       if (children.length === 0) {

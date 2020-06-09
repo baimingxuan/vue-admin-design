@@ -18,6 +18,7 @@
 import SvgIcon from '../../../components/SvgIcon'
 import SideMenuItem from './SideMenuItem'
 export default {
+  name: 'SideMenu',
   data () {
     return {
       isCollapse: false
@@ -43,6 +44,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less">
 
 </style>
