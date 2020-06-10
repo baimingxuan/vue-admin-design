@@ -1,25 +1,30 @@
 <template>
   <div class="main-view">
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <keep-alive :include="cachedViews">
+        <router-view :key="key"/>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MainView'
+  name: 'MainView',
+  computed: {
+    cachedViews () {
+      return this.$store.state.tagsView.cachedViews
+    },
+    key () {
+      return this.$route.path
+    }
+  }
 }
 </script>
 
 <style lang="less">
-@import "../../assets/less/scroll-bar";
 .main-view {
-  position: absolute;
-  top: 120px;
-  right: 0;
-  left: 0;
-  bottom: 0;
   padding: 15px 25px;
-  overflow-y: auto;
-  .scroll-bar
+  box-sizing: border-box;
 }
 </style>

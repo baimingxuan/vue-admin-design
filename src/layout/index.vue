@@ -1,10 +1,18 @@
 <template>
   <div class="app-wrapper">
-    <SideMenu class="main-menu"/>
-    <div class="main-content">
-      <HeaderBar/>
-      <TagsNav/>
-      <MainView/>
+    <div class="side-container">
+      <SideMenu/>
+    </div>
+    <div class="main-container">
+      <div class="main-header">
+        <HeaderBar/>
+        <TagsNav/>
+      </div>
+      <div class="main-content">
+        <el-scrollbar wrap-class="scrollbar">
+          <MainView/>
+        </el-scrollbar>
+      </div>
     </div>
   </div>
 </template>
@@ -16,31 +24,36 @@ import TagsNav from './components/TagsView/index'
 import MainView from './components/MainView'
 export default {
   name: 'Layout',
-  components: {
-    HeaderBar,
-    SideMenu,
-    TagsNav,
-    MainView
-  }
+  components: { HeaderBar, SideMenu, TagsNav, MainView }
 }
 </script>
 
 <style lang="less">
-.app-wrapper {
-  position: relative;
+@import "../assets/less/scroll-bar";
+.app-wrapper{
   width: 100%;
   height: 100%;
   overflow: hidden;
-  .main-menu {
-    width: 259px;
+  .side-container{
+    float: left;
+    width: 260px;
     height: 100vh;
+    background-color: #304156;
   }
-  .main-content {
-    position: absolute;
-    top: 0;
-    left: 260px;
-    right: 0;
-    bottom: 0;
+  .main-container{
+    float: left;
+    width: calc(100% - 260px);
+    height: 100vh;
+    .main-content{
+      .el-scrollbar{
+        height: calc(100vh - 64px - 40px);
+        .scroll-bar;
+        .scrollbar{
+          height: 100%;
+          overflow-x: hidden;
+        }
+      }
+    }
   }
 }
 </style>

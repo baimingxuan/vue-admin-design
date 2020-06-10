@@ -49,10 +49,7 @@ export default {
       affixTags: []
     }
   },
-  components: {
-    SvgIcon,
-    TagItem
-  },
+  components: { SvgIcon, TagItem },
   computed: {
     routes () {
       return this.$router.options.routes
@@ -106,7 +103,6 @@ export default {
       }
     },
     addTags () {
-      console.log('route:', this.$route)
       const { name } = this.$route
       if (name) {
         this.addVisitedView(this.$route)
