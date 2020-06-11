@@ -1,18 +1,15 @@
 <template>
-  <div class="tag-item">
+  <el-tag class="tag-item" closable @close="closeItem">
     <span class="tag-item-dot"></span>
     <slot></slot>
-    <SvgIcon @click.native="closeItem()" class="icon" icon-class="vue-sys-icon-quxiao1"/>
-  </div>
+<!--    <SvgIcon @click.native="closeItem()" class="icon" icon-class="vue-sys-icon-quxiao1"/>-->
+  </el-tag>
 </template>
 
 <script>
-import SvgIcon from '../../../components/SvgIcon'
+
 export default {
   name: 'TagItem',
-  components: {
-    SvgIcon
-  },
   methods: {
     closeItem () {
       this.$emit('on-close')
@@ -25,12 +22,11 @@ export default {
   .tag-item {
     display: inline-block;
     vertical-align: middle;
-    height: 30px;
+    height: 32px;
     margin: 4px 2px;
-    padding-left: 10px;
-    padding-right: 6px;
+    padding: 0 10px;
     border-radius: 3px;
-    line-height: 30px;
+    line-height: 32px;
     border: 1px solid #e8eaec;
     color: #555;
     background: #fff;
@@ -49,8 +45,6 @@ export default {
       }
     }
     .tag-item-dot {
-      position: relative;
-      top: 1px;
       display: inline-block;
       width: 10px;
       height: 10px;
