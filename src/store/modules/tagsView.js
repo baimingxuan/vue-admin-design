@@ -1,19 +1,12 @@
-import * as types from './tagsView-types'
-
 const state = {
-  visitedViews: [],
-  cachedViews: []
+  visitedViews: []
+}
+
+const getters = {
+  visitedViews: (state, getters) => state.visitedViews
 }
 
 const mutations = {
-  [types.ADD_DISPLAY_TAGS] (state, payload) {
-    if (state.visitedViews.some(item => item.path === payload.path)) return
-    state.visitedViews.push(
-      Object.assign({}, payload, {
-        title: payload.meta.title || 'no-name'
-      })
-    )
-  },
   addVisitedView (state, payload) {
     if (state.visitedViews.some(item => item.path === payload.path)) return
     state.visitedViews.push(
@@ -22,28 +15,30 @@ const mutations = {
       })
     )
   },
-  addCachedViews (state, payload) {
-    if (state.cachedViews.includes(payload.name)) return
-    if (!payload.meta.noCache) {
-      state.cachedViews.push(payload.name)
-    }
+  delVisitedView (state, payload) {
+    const index = state.visitedViews.findIndex(item => {
+      return item.path === payload.path
+    })
+    state.visitedViews.splice(index, 1)
   },
-  delVisitedView (state, payload) {},
-  delCachedViews (state, payload) {}
+  delAllVisitedView (state, payload) {
+    const fixedTags = state.visitedViews.filter(item => item.meta.fixed)
+    state.visitedViews = fixedTags
+  },
+  delOthersVisitedView (state, payload) {
+    state.visitedViews = state.visitedViews.filter(item => {
+      return item.meta.fixed || item.path === payload.path
+    })
+  }
 }
 
 const actions = {
-  addTags ({ dispatch }, payload) {
-    dispatch('addDisplayTags', payload)
-  },
-  addDisplayTags ({ commit }, payload) {
-    commit('ADD_DISPLAY_TAGS', payload)
-  }
 }
 
 export default {
   namespace: true,
   state,
+  getters,
   mutations,
   actions
 }

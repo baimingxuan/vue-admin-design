@@ -1,8 +1,7 @@
 <template>
-  <el-tag class="tag-item" closable @close="closeItem">
+  <el-tag class="tag-item-wrapper" :closable="!fixed" @close.prevent.stop="closeItem">
     <span class="tag-item-dot"></span>
     <slot></slot>
-<!--    <SvgIcon @click.native="closeItem()" class="icon" icon-class="vue-sys-icon-quxiao1"/>-->
   </el-tag>
 </template>
 
@@ -10,6 +9,12 @@
 
 export default {
   name: 'TagItem',
+  props: {
+    fixed: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     closeItem () {
       this.$emit('on-close')
@@ -19,7 +24,7 @@ export default {
 </script>
 
 <style lang="less">
-  .tag-item {
+  .tag-item-wrapper {
     display: inline-block;
     vertical-align: middle;
     height: 32px;
@@ -32,30 +37,18 @@ export default {
     background: #fff;
     overflow: hidden;
     cursor: pointer;
-    .icon {
-      width: 20px;
-      height: 20px;
-      margin-left: 5px;
-      font-size: 50px;
-      color: #aeafb1;
-      vertical-align: middle;
-      cursor: pointer;
-      &:hover {
-        color: #409eff;
-      }
-    }
     .tag-item-dot {
       display: inline-block;
       width: 10px;
       height: 10px;
-      margin-right: 8px;
+      margin-right: 6px;
       border-radius: 50%;
       background: #e8eaec;
     }
-  }
-  .tag-item.active {
-    .tag-item-dot{
-      background: #409eff;
+    &.active{
+      .tag-item-dot{
+        background: #409eff;
+      }
     }
   }
 </style>

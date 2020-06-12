@@ -1,30 +1,26 @@
 <template>
   <div class="tags-nav clear-fix">
-    <div class="btn-con" @click="handleMove(300)">
-      <SvgIcon class="icon" icon-class="vue-sys-icon-zuoyoujiantou1"/>
-    </div>
+    <el-button type="text" class="btn-con" @click="handleMove(240)">
+      <i class="icon el-icon-arrow-left"></i>
+    </el-button>
     <div class="tags-views" ref="tagsViews" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <div class="tags-cont" ref="tagsCont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
-          <router-link v-for="(tag, index) in visitedViews"
-                       :to="{ path: tag.path }"
-                       :key="tag.name">
-            <TagItem
-              @on-close="handleClose(index)"
-              :class="{active: isActive(tag)}">
-              {{ tag.title }}
-            </TagItem>
+          <router-link v-for="item in visitedViews"
+                       :to="{ path: item.path }"
+                       :key="item.name">
+            <TagItem :class="{active: isActive(item)}" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{ item.title }}</TagItem>
           </router-link>
         </transition-group>
       </div>
     </div>
-    <div class="btn-con" @click="handleMove(-300)">
-      <SvgIcon class="icon" icon-class="vue-sys-icon-zuoyoujiantou"/>
-    </div>
+    <el-button type="text" class="btn-con" @click="handleMove(-240)">
+      <i class="icon el-icon-arrow-right"></i>
+    </el-button>
     <div class="btn-con btn-close">
-      <el-dropdown @command="handleCtrl">
+      <el-dropdown @command="handleCloseCtrl">
         <span class="el-dropdown-link">
-          <SvgIcon class="icon" icon-class="vue-sys-icon-quxiao"/>
+          <i class="icon el-icon-circle-close"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="all">关闭所有</el-dropdown-item>
@@ -36,9 +32,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 import path from 'path'
-import SvgIcon from '../../../components/SvgIcon'
+import { mapGetters, mapMutations } from 'vuex'
 import TagItem from './TagItem'
 
 export default {
@@ -46,21 +41,21 @@ export default {
   data () {
     return {
       tagsContLeft: 0,
-      affixTags: []
+      fixedTags: [],
+      selectedTag: {}
     }
   },
-  components: { SvgIcon, TagItem },
+  components: { TagItem },
   computed: {
+    ...mapGetters(['visitedViews']),
     routes () {
       return this.$router.options.routes
-    },
-    visitedViews () {
-      return this.$store.state.tagsView.visitedViews
     }
   },
   watch: {
-    $route () {
+    $route (val) {
       this.addTags()
+      this.selectedTag = val
     }
   },
   mounted () {
@@ -68,14 +63,14 @@ export default {
     this.addTags()
   },
   methods: {
-    ...mapMutations(['addVisitedView', 'addCachedViews']),
+    ...mapMutations(['addVisitedView', 'delVisitedView', 'delAllVisitedView', 'delOthersVisitedView']),
     isActive (tag) {
       return tag.path === this.$route.path
     },
-    filterAffixTags (routes, basePath = '/') {
+    filterFixedTags (routes, basePath = '/') {
       let tags = []
       routes.forEach(route => {
-        if (route.meta && route.meta.affix) {
+        if (route.meta && route.meta.fixed) {
           const tagPath = path.resolve(basePath, route.path)
           tags.push({
             fullPath: tagPath,
@@ -85,7 +80,7 @@ export default {
           })
         }
         if (route.children) {
-          const tempTags = this.filterAffixTags(route.children, route.path)
+          const tempTags = this.filterFixedTags(route.children, route.path)
           if (tempTags.length >= 1) {
             tags = [...tags, ...tempTags]
           }
@@ -94,11 +89,11 @@ export default {
       return tags
     },
     initTags () {
-      const affixTags = this.affixTags = this.filterAffixTags(this.routes)
-      for (const tag of affixTags) {
+      const fixedTags = this.fixedTags = this.filterFixedTags(this.routes)
+      for (const tag of fixedTags) {
         // Must have tag name
         if (tag.name) {
-          this.$store.dispatch('addDisplayTags', tag)
+          this.addVisitedView(tag)
         }
       }
     },
@@ -106,7 +101,6 @@ export default {
       const { name } = this.$route
       if (name) {
         this.addVisitedView(this.$route)
-        this.addCachedViews(this.$route)
       }
       return false
     },
@@ -135,13 +129,27 @@ export default {
         }
       }
     },
-    handleClose (index) {
-      this.visitedViews.splice(index, 1)
+    handleSelectedClose (view) {
+      this.delVisitedView(view)
+      if (this.isActive(view)) {
+        this.showLastView()
+      }
     },
-    handleCtrl (command) {
-      if (command === 'all') {
-        let len = this.tags.length
-        this.tags.splice(1, len)
+    showLastView () {
+      const lastView = this.visitedViews.slice(-1)[0]
+      if (lastView) {
+        this.$router.push(lastView.fullPath)
+      }
+    },
+    handleCloseCtrl (type) {
+      if (type === 'all') {
+        this.delAllVisitedView()
+        this.showLastView()
+      }
+      if (type === 'other') {
+        if (this.selectedTag) {
+          this.delOthersVisitedView(this.selectedTag)
+        }
       }
     }
   }
@@ -153,11 +161,7 @@ export default {
     width: 100%;
     height: 40px;
     .icon {
-      width: 18px;
-      height: 18px;
-      font-size: 100px;
-      vertical-align: middle;
-      cursor: pointer;
+      font-size: 18px;
     }
     .btn-con {
       float: left;
@@ -167,15 +171,18 @@ export default {
       border-top: solid 1px #f0f0f0;
       border-bottom: solid 1px #f0f0f0;
       box-sizing: border-box;
-      cursor: pointer;
     }
     .btn-close {
-      width: 32px;
+      width: 40px;
+      padding-top: 10px;
+      padding-left: 11px;
+      border-left: solid 1px #f0f0f0;
+      cursor: pointer;
     }
     .tags-views {
       position: relative;
       float: left;
-      width: calc(100% - 88px);
+      width: calc(100% - 96px);
       height: 40px;
       background: #f0f0f0;
       box-shadow: inset 0 0 3px 2px #6464641a;
