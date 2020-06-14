@@ -41,7 +41,6 @@ export default {
   data () {
     return {
       tagsContLeft: 0,
-      fixedTags: [],
       selectedTag: {}
     }
   },
@@ -55,6 +54,7 @@ export default {
   watch: {
     $route (val) {
       this.addTags()
+      this.moveToCurrentTag()
       this.selectedTag = val
     }
   },
@@ -69,18 +69,18 @@ export default {
     },
     filterFixedTags (routes, basePath = '/') {
       let tags = []
-      routes.forEach(route => {
-        if (route.meta && route.meta.fixed) {
-          const tagPath = path.resolve(basePath, route.path)
+      routes.forEach(item => {
+        if (item.meta && item.meta.fixed) {
+          const tagPath = path.resolve(basePath, item.path)
           tags.push({
             fullPath: tagPath,
             path: tagPath,
-            name: route.name,
-            meta: { ...route.meta }
+            name: item.name,
+            meta: { ...item.meta }
           })
         }
-        if (route.children) {
-          const tempTags = this.filterFixedTags(route.children, route.path)
+        if (item.children) {
+          const tempTags = this.filterFixedTags(item.children, item.path)
           if (tempTags.length >= 1) {
             tags = [...tags, ...tempTags]
           }
@@ -89,9 +89,8 @@ export default {
       return tags
     },
     initTags () {
-      const fixedTags = this.fixedTags = this.filterFixedTags(this.routes)
+      const fixedTags = this.filterFixedTags(this.routes)
       for (const tag of fixedTags) {
-        // Must have tag name
         if (tag.name) {
           this.addVisitedView(tag)
         }
@@ -151,6 +150,22 @@ export default {
           this.delOthersVisitedView(this.selectedTag)
         }
       }
+    },
+    moveToCurrentTag (tag) {
+      const outerWidth = this.$refs.tagsViews.offsetWidth
+      const bodyWidth = this.$refs.tagsCont.offsetWidth
+      if (bodyWidth < outerWidth) {
+        this.tagsContLeft = 0
+      } else if (tag.offsetLeft < -this.tagsContLeft) {
+        // 标签在可视区域左侧
+        this.tagsContLeft = -tag.offsetLeft + this.outerPadding
+      } else if (tag.offsetLeft > -this.tagsContLeft && tag.offsetLeft + tag.offsetWidth < -this.tagsContLeft + outerWidth) {
+        // 标签在可视区域
+        this.tagsContLeft = Math.min(0, outerWidth - tag.offsetWidth - tag.offsetLeft - this.outerPadding)
+      } else {
+        // 标签在可视区域右侧
+        this.tagsContLeft = -(tag.offsetLeft - (outerWidth - this.outerPadding - tag.offsetWidth))
+      }
     }
   }
 }
@@ -187,7 +202,7 @@ export default {
       background: #f0f0f0;
       box-shadow: inset 0 0 3px 2px #6464641a;
       overflow: hidden;
-      .tags-cont{
+      .tags-cont {
         position: absolute;
         padding: 0 4px;
         overflow: visible;

@@ -45,8 +45,8 @@ export default {
       border-radius: 50%;
       background: #e8eaec;
     }
-    &.active{
-      .tag-item-dot{
+    &.active {
+      .tag-item-dot {
         background: #409eff;
       }
     }
