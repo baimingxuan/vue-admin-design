@@ -59,6 +59,13 @@ export default {
           .el-submenu__title * {
             vertical-align: top;
           }
+          i {
+            font-size: 13px;
+            color: #fff;
+          }
+          .icon {
+            margin-right: 5px;
+          }
         }
       }
     }

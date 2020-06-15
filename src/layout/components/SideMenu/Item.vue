@@ -16,7 +16,8 @@ export default {
     const { icon, title } = context.props
     const vnodes = []
     if (icon) {
-      vnodes.push(<i class={icon}></i>)
+      const iconName = 'icon ' + icon
+      vnodes.push(<i class={iconName}></i>)
     }
     if (title) {
       vnodes.push(<span slot="title">{title}</span>)

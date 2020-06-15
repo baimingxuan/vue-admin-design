@@ -179,7 +179,7 @@ export default new Router({
       redirect: '',
       meta: {
         title: '图片处理',
-        icon: 'vue-sys-icon-tupian'
+        icon: 'vue-sys-icon-picture'
       },
       children: [
         {
@@ -224,6 +224,34 @@ export default new Router({
           component: () => import('../views/tree/EleTree'),
           meta: {
             title: '控件树'
+          }
+        }
+      ]
+    },
+    {
+      path: '/excel',
+      name: 'Excel',
+      component: Layout,
+      redirect: '/excel/export-excel',
+      meta: {
+        title: 'excel',
+        icon: 'vue-sys-icon-excel'
+      },
+      children: [
+        {
+          path: 'export-excel',
+          name: 'ExportExcel',
+          component: () => import('../views/excel/ExportExcel'),
+          meta: {
+            title: 'excel导出'
+          }
+        },
+        {
+          path: 'import-excel',
+          name: 'ImportExcel',
+          component: () => import('../views/excel/ImportExcel'),
+          meta: {
+            title: 'excel导入'
           }
         }
       ]

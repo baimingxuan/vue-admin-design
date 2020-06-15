@@ -68,7 +68,7 @@
         </el-table-column>
         <el-table-column prop="phone" label="手机" align="center"/>
         <el-table-column prop="education" label="学历" align="center"/>
-        <el-table-column label="婚姻状况" align="center">
+        <el-table-column label="婚姻状况" align="center" width="100">
           <template slot-scope="scope">
             <el-select v-model="scope.row.married" @change="selectChange(scope.row)" style="width: 80px">
               <el-option :value="0" label="单身"/>
