@@ -28,10 +28,10 @@ export default {
 </script>
 
 <style lang="less">
-  .header-bar{
+  .header-bar {
     height: 32px;
     padding: 16px 20px;
-    .header-right{
+    .header-right {
       float: right;
       width: 130px;
     }

@@ -1,8 +1,9 @@
 <template>
   <div class="side-menu-wrapper">
     <el-scrollbar wrap-class="scrollbar">
-      <el-menu default-active="1-4-1"
+      <el-menu :default-active="activeMenu"
         :collapse="isCollapse"
+        :unique-opened="true"
         background-color="#304156"
         text-color="#fff"
         active-text-color="#409eff">
@@ -30,6 +31,14 @@ export default {
   computed: {
     routes () {
       return this.$router.options.routes
+    },
+    activeMenu () {
+      const route = this.$route
+      const { meta, path } = route
+      if (meta.activeMenu) {
+        return meta.activeMenu
+      }
+      return path
     }
   }
 }
@@ -37,15 +46,20 @@ export default {
 
 <style lang="less">
 @import "../../../assets/less/scroll-bar";
-.side-menu-wrapper{
-  .el-scrollbar{
+.side-menu-wrapper {
+  .el-scrollbar {
     height: 100vh;
     .scroll-bar;
-    .scrollbar{
+    .scrollbar {
       height: 100%;
       overflow-x: hidden;
-      .el-menu{
+      .el-menu {
         border-right: none;
+        .side-menu-item {
+          .el-submenu__title * {
+            vertical-align: top;
+          }
+        }
       }
     }
   }

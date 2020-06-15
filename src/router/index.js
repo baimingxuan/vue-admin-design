@@ -31,7 +31,7 @@ export default new Router({
         component: () => import('../views/Home'),
         meta: {
           title: '首页',
-          icon: 'el-icon-ali-home',
+          icon: 'vue-sys-icon-index',
           fixed: true
         }
       }]
@@ -42,7 +42,7 @@ export default new Router({
       component: Layout,
       meta: {
         title: '文档',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-wendang'
       }
     },
     {
@@ -52,7 +52,7 @@ export default new Router({
       redirect: '/form-table/table-classic',
       meta: {
         title: '表格&表单',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-biaoge'
       },
       children: [
         {
@@ -88,7 +88,7 @@ export default new Router({
       redirect: '/editors/markdown',
       meta: {
         title: '编辑器',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-bianjiqi'
       },
       children: [
         {
@@ -116,7 +116,7 @@ export default new Router({
       redirect: '/tools/image-upload',
       meta: {
         title: '组件',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-zujian'
       },
       children: [
         {
@@ -179,7 +179,7 @@ export default new Router({
       redirect: '',
       meta: {
         title: '图片处理',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-tupian'
       },
       children: [
         {
@@ -207,7 +207,7 @@ export default new Router({
       redirect: '/tree/org-tree',
       meta: {
         title: '树形结构',
-        icon: 'el-icon-ali-home'
+        icon: 'vue-sys-icon-shuxing'
       },
       children: [
         {

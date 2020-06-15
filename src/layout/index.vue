@@ -21,7 +21,7 @@
 import HeaderBar from './components/HeaderBar/index'
 import SideMenu from './components/SideMenu/index'
 import TagsNav from './components/TagsView/index'
-import MainView from './components/MainView'
+import MainView from './components/MainView/index'
 export default {
   name: 'Layout',
   components: { HeaderBar, SideMenu, TagsNav, MainView }

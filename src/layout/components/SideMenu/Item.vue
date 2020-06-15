@@ -1,5 +1,4 @@
 <script>
-import SvgIcon from '../../../components/SvgIcon'
 export default {
   name: 'Item',
   functional: true,
@@ -17,7 +16,7 @@ export default {
     const { icon, title } = context.props
     const vnodes = []
     if (icon) {
-      vnodes.push(<SvgIcon class="icon" icon-class={icon}></SvgIcon>)
+      vnodes.push(<i class={icon}></i>)
     }
     if (title) {
       vnodes.push(<span slot="title">{title}</span>)
@@ -26,11 +25,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-  .icon{
-    width: 18px;
-    height: 18px;
-    font-size: 50px;
-  }
-</style>
