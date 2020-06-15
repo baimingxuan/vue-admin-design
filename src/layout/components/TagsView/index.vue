@@ -6,9 +6,7 @@
     <div class="tags-views" ref="tagsViews" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
       <div class="tags-cont" ref="tagsCont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
-          <router-link v-for="item in visitedViews"
-                       :to="{ path: item.path }"
-                       :key="item.name">
+          <router-link ref="tagsItem" v-for="item in visitedViews" :to="{ path: item.path }" :key="item.name">
             <TagItem :class="{active: isActive(item)}" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{ item.title }}</TagItem>
           </router-link>
         </transition-group>
@@ -41,6 +39,7 @@ export default {
   data () {
     return {
       tagsContLeft: 0,
+      contPadding: 4,
       selectedTag: {}
     }
   },
@@ -54,7 +53,7 @@ export default {
   watch: {
     $route (val) {
       this.addTags()
-      this.moveToCurrentTag()
+      this.getTagElement(val)
       this.selectedTag = val
     }
   },
@@ -106,7 +105,10 @@ export default {
     handlescroll (e) {
       let type = e.type
       let distance = 0
-      if (type === 'DOMMouseScroll' || type === 'mousewheel') {
+      // mousewheel非火狐浏览器鼠标滚动事件; DOMMouseScroll火狐浏览器鼠标滚动事件
+      if (type === 'mousewheel' || type === 'DOMMouseScroll') {
+        // mousewheel 事件中的 event.wheelDelta 属性值：若滚轮是向上滚动，返回值为正，反之为负；且返回的值，均为 120 的倍数，即：幅度大小 = 返回的值 / 120
+        // DOMMouseScroll 事件中的 event.detail 属性值：返回的值，与 event.wheelDelta 正好相反，即滚轮是向上滚动，返回值为负，反之为正；返回的值，均为 3 的倍数，即：幅度大小 = 返回的值 / 3
         distance = (e.wheelDelta) ? e.wheelDelta : -(e.detail || 0) * 40
       }
       this.handleMove(distance)
@@ -126,6 +128,32 @@ export default {
         } else {
           this.tagsContLeft = 0
         }
+      }
+    },
+    getTagElement (route) {
+      this.$nextTick(() => {
+        const tagsItemArr = this.$refs.tagsItem
+        const index = tagsItemArr.findIndex(item => {
+          return item.to.path === route.fullPath
+        })
+        const tag = tagsItemArr[index].$el
+        this.moveToCurrentTag(tag)
+      })
+    },
+    moveToCurrentTag (tag) {
+      const viewWidth = this.$refs.tagsViews.offsetWidth
+      const contWidth = this.$refs.tagsCont.offsetWidth
+      if (contWidth < viewWidth) {
+        this.tagsContLeft = 0
+      } else if (tag.offsetLeft < -this.tagsContLeft) {
+        // 标签在可视区域左侧
+        this.tagsContLeft = -tag.offsetLeft + this.contPadding
+      } else if (tag.offsetLeft > -this.tagsContLeft && tag.offsetLeft + tag.offsetWidth < -this.tagsContLeft + viewWidth) {
+        // 标签在可视区域
+        this.tagsContLeft = Math.min(0, viewWidth - tag.offsetWidth - tag.offsetLeft - this.contPadding)
+      } else {
+        // 标签在可视区域右侧
+        this.tagsContLeft = -(tag.offsetLeft - (viewWidth - this.contPadding - tag.offsetWidth))
       }
     },
     handleSelectedClose (view) {
@@ -150,22 +178,7 @@ export default {
           this.delOthersVisitedView(this.selectedTag)
         }
       }
-    },
-    moveToCurrentTag (tag) {
-      const outerWidth = this.$refs.tagsViews.offsetWidth
-      const bodyWidth = this.$refs.tagsCont.offsetWidth
-      if (bodyWidth < outerWidth) {
-        this.tagsContLeft = 0
-      } else if (tag.offsetLeft < -this.tagsContLeft) {
-        // 标签在可视区域左侧
-        this.tagsContLeft = -tag.offsetLeft + this.outerPadding
-      } else if (tag.offsetLeft > -this.tagsContLeft && tag.offsetLeft + tag.offsetWidth < -this.tagsContLeft + outerWidth) {
-        // 标签在可视区域
-        this.tagsContLeft = Math.min(0, outerWidth - tag.offsetWidth - tag.offsetLeft - this.outerPadding)
-      } else {
-        // 标签在可视区域右侧
-        this.tagsContLeft = -(tag.offsetLeft - (outerWidth - this.outerPadding - tag.offsetWidth))
-      }
+      this.tagsContLeft = 0
     }
   }
 }
