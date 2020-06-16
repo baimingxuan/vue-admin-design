@@ -11,11 +11,12 @@
 </template>
 
 <script>
+import FullScreen from '../../../components/FullScreen'
 import SideViewCtrl from './SideViewCtrl'
 import BreadCrumbs from './BreadCrumbs'
-import FullScreen from './FullScreen'
 import LangSwitch from './LangSwitch'
 import GitHubLink from './GitHubLink'
+
 export default {
   components: {
     SideViewCtrl,

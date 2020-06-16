@@ -2,7 +2,7 @@
   <div class="bread-crumbs">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/home' }">
-        <SvgIcon class="icon" icon-class="vue-sys-icon-home"></SvgIcon>
+        <i class="vue-sys-icon-index"></i>
         首页
       </el-breadcrumb-item>
       <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -13,12 +13,8 @@
 </template>
 
 <script>
-import SvgIcon from '../../../components/SvgIcon'
 export default {
-  name: 'BreadCrumbs',
-  components: {
-    SvgIcon
-  }
+  name: 'BreadCrumbs'
 }
 </script>
 
@@ -30,12 +26,6 @@ export default {
     padding: 0 35px;
     .el-breadcrumb{
       line-height: 32px;
-    }
-    .icon {
-      width: 14px;
-      height: 14px;
-      font-size: 100px;
-      vertical-align: middle;
     }
   }
 </style>

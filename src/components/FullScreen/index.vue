@@ -1,7 +1,7 @@
 <template>
   <div class="full-screen-wrapper">
     <el-tooltip effect="dark" :content="isFullscreen ? '退出全屏' : '全屏'" placement="bottom">
-      <i :class="isFullscreen ? 'vue-sys-icon-un-full-screen' : 'vue-sys-icon-quanping1'" @click="handleFullscreen"></i>
+      <i :class="['icon', isFullscreen ? 'vue-sys-icon-fullscreen' : 'vue-sys-icon-tuichuquanping']" @click="handleFullscreen"></i>
     </el-tooltip>
   </div>
 </template>
@@ -51,5 +51,16 @@ export default {
 </script>
 
 <style lang="less">
-
+.full-screen-wrapper {
+  float: left;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  .icon {
+    font-size: 22px;
+  }
+  &:hover {
+    color: #409eff;
+  }
+}
 </style>
