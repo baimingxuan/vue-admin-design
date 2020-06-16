@@ -4,7 +4,7 @@
       <el-menu :default-active="activeMenu"
         :collapse="isCollapse"
         :unique-opened="true"
-        background-color="#304156"
+        background-color="#263238"
         text-color="#fff"
         active-text-color="#409eff">
         <SideMenuItem
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import SvgIcon from '../../../components/SvgIcon'
 import SideMenuItem from './SideMenuItem'
+
 export default {
   name: 'SideMenu',
   data () {
@@ -27,7 +27,7 @@ export default {
       isCollapse: false
     }
   },
-  components: { SvgIcon, SideMenuItem },
+  components: { SideMenuItem },
   computed: {
     routes () {
       return this.$router.options.routes
@@ -46,29 +46,5 @@ export default {
 
 <style lang="less">
 @import "../../../assets/less/scroll-bar";
-.side-menu-wrapper {
-  .el-scrollbar {
-    height: 100vh;
-    .scroll-bar;
-    .scrollbar {
-      height: 100%;
-      overflow-x: hidden;
-      .el-menu {
-        border-right: none;
-        .side-menu-item {
-          .el-submenu__title * {
-            vertical-align: top;
-          }
-          i {
-            font-size: 13px;
-            color: #fff;
-          }
-          .icon {
-            margin-right: 5px;
-          }
-        }
-      }
-    }
-  }
-}
+@import "../../../assets/less/side-menu";
 </style>

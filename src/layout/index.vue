@@ -38,7 +38,7 @@ export default {
     float: left;
     width: 260px;
     height: 100vh;
-    background-color: #304156;
+    background-color: #263238;
   }
   .main-container{
     float: left;
