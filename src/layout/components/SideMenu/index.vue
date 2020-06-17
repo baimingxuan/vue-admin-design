@@ -2,7 +2,7 @@
   <div class="side-menu-wrapper">
     <el-scrollbar wrap-class="scrollbar">
       <el-menu :default-active="activeMenu"
-        :collapse="isCollapse"
+        :collapse="collapsed"
         :unique-opened="true"
         background-color="#263238"
         text-color="#fff"
@@ -18,17 +18,14 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import SideMenuItem from './SideMenuItem'
 
 export default {
   name: 'SideMenu',
-  data () {
-    return {
-      isCollapse: false
-    }
-  },
   components: { SideMenuItem },
   computed: {
+    ...mapGetters('app', ['collapsed']),
     routes () {
       return this.$router.options.routes
     },

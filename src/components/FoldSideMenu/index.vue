@@ -1,24 +1,21 @@
 <template>
-  <div class="fold-side-menu" :class="{'vertical': collapsed}" @click="toggle">
+  <div class="fold-side-menu" :class="{'vertical': collapsed}" @click="taggleSideMenu">
     <SvgIcon class="icon" icon-class="vue-sys-icon-menu"></SvgIcon>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex'
 import SvgIcon from '../SvgIcon'
 
 export default {
   name: 'FoldSideMenu',
-  data () {
-    return {
-      collapsed: false
-    }
+  computed: {
+    ...mapGetters('app', ['collapsed'])
   },
   components: { SvgIcon },
   methods: {
-    toggle () {
-      this.collapsed = !this.collapsed
-    }
+    ...mapMutations('app', ['taggleSideMenu'])
   }
 }
 </script>
