@@ -1,3 +1,5 @@
+@import "./scroll-bar";
+
 .side-menu-wrapper {
   .el-scrollbar {
     height: 100vh;
@@ -46,6 +48,19 @@
             > .el-submenu__title{
               color: #409eff!important;
             }
+          }
+        }
+      }
+      .el-menu--collapse {
+        .side-menu-item {
+          i {
+            font-size: 20px;
+          }
+          .icon {
+            margin-right: 26px;
+          }
+          .el-submenu__icon-arrow {
+            display: none;
           }
         }
       }

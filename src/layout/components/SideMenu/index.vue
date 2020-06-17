@@ -42,6 +42,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../../assets/less/scroll-bar";
 @import "../../../assets/less/side-menu";
 </style>

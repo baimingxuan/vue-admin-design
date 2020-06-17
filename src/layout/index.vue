@@ -1,9 +1,9 @@
 <template>
   <div class="app-wrapper">
-    <div class="side-container">
+    <div class="side-container" :class="collapsed ? 'folded' : 'unfolded'">
       <SideMenu/>
     </div>
-    <div class="main-container">
+    <div class="main-container" :class="collapsed ? 'wider' : 'normal'">
       <div class="main-header">
         <HeaderBar/>
         <TagsNav/>
@@ -18,13 +18,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import HeaderBar from './components/HeaderBar/index'
 import SideMenu from './components/SideMenu/index'
 import TagsNav from './components/TagsView/index'
 import MainView from './components/MainView/index'
+
 export default {
   name: 'Layout',
-  components: { HeaderBar, SideMenu, TagsNav, MainView }
+  components: { HeaderBar, SideMenu, TagsNav, MainView },
+  computed: {
+    ...mapGetters('app', ['collapsed'])
+  }
 }
 </script>
 
@@ -36,14 +41,24 @@ export default {
   overflow: hidden;
   .side-container{
     float: left;
-    width: 260px;
     height: 100vh;
     background-color: #263238;
+    &.unfolded {
+      width: 260px;
+    }
+    &.folded {
+      width: 64px;
+    }
   }
   .main-container{
     float: left;
-    width: calc(100% - 260px);
     height: 100vh;
+    &.normal {
+      width: calc(100% - 260px);
+    }
+    &.wider {
+      width: calc(100% - 64px);
+    }
     .main-content{
       .el-scrollbar{
         height: calc(100vh - 64px - 40px);
