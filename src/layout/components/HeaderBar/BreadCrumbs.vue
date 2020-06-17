@@ -1,8 +1,8 @@
 <template>
-  <div class="bread-crumbs">
+  <div class="bread-crumbs-wrapper">
     <el-breadcrumb separator="/">
       <el-breadcrumb-item :to="{ path: '/home' }">
-        <i class="vue-sys-icon-index"></i>
+        <i class="icon vue-sys-icon-index"></i>
         首页
       </el-breadcrumb-item>
       <el-breadcrumb-item>活动管理</el-breadcrumb-item>
@@ -19,13 +19,16 @@ export default {
 </script>
 
 <style lang="less">
-  .bread-crumbs {
+  .bread-crumbs-wrapper {
     float: left;
-    width: 30%;
+    width: 35%;
     height: 32px;
-    padding: 0 35px;
-    .el-breadcrumb{
+    padding: 0 30px;
+    .el-breadcrumb {
       line-height: 32px;
+    }
+    .icon {
+      font-size: 14px;
     }
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="header-bar clear-fix">
-    <SideViewCtrl></SideViewCtrl>
+    <FoldSideMenu/>
     <BreadCrumbs></BreadCrumbs>
     <div class="header-right clear-fix">
       <FullScreen></FullScreen>
@@ -11,15 +11,15 @@
 </template>
 
 <script>
+import FoldSideMenu from '../../../components/FoldSideMenu'
 import FullScreen from '../../../components/FullScreen'
-import SideViewCtrl from './SideViewCtrl'
 import BreadCrumbs from './BreadCrumbs'
 import LangSwitch from './LangSwitch'
 import GitHubLink from './GitHubLink'
 
 export default {
   components: {
-    SideViewCtrl,
+    FoldSideMenu,
     BreadCrumbs,
     FullScreen,
     LangSwitch,
