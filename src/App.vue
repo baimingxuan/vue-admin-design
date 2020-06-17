@@ -11,5 +11,6 @@ export default {
 </script>
 
 <style lang="less">
-  @import "assets/less/index.less";
+@import "assets/less/index.less";
+@import "assets/less/reset";
 </style>
