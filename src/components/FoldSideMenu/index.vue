@@ -1,10 +1,12 @@
 <template>
   <div class="fold-side-menu" :class="{'vertical': collapsed}" @click="toggle">
-    <i class="icon vue-sys-icon-menu"></i>
+    <SvgIcon class="icon" icon-class="vue-sys-icon-menu"></SvgIcon>
   </div>
 </template>
 
 <script>
+import SvgIcon from '../SvgIcon'
+
 export default {
   name: 'FoldSideMenu',
   data () {
@@ -12,6 +14,7 @@ export default {
       collapsed: false
     }
   },
+  components: { SvgIcon },
   methods: {
     toggle () {
       this.collapsed = !this.collapsed
@@ -31,7 +34,10 @@ export default {
     color: #409eff;
   }
   .icon {
-    font-size: 22px;
+    width: 22px;
+    height: 22px;
+    font-size: 100px;
+    vertical-align: middle;
     transition: transform .2s ease;
   }
   &.vertical {

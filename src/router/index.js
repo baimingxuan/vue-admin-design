@@ -24,9 +24,9 @@ export default new Router({
       path: '/',
       name: 'Layout',
       component: Layout,
-      redirect: '/Home',
+      redirect: '/home',
       children: [{
-        path: 'Home',
+        path: 'home',
         name: 'Home',
         component: () => import('../views/Home'),
         meta: {

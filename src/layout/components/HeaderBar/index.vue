@@ -1,7 +1,7 @@
 <template>
   <div class="header-bar clear-fix">
     <FoldSideMenu/>
-    <BreadCrumbs></BreadCrumbs>
+    <BreadCrumbs/>
     <div class="header-right clear-fix">
       <FullScreen></FullScreen>
       <LangSwitch></LangSwitch>
@@ -12,8 +12,8 @@
 
 <script>
 import FoldSideMenu from '../../../components/FoldSideMenu'
+import BreadCrumbs from '../../../components/BreadCrumbs'
 import FullScreen from '../../../components/FullScreen'
-import BreadCrumbs from './BreadCrumbs'
 import LangSwitch from './LangSwitch'
 import GitHubLink from './GitHubLink'
 
