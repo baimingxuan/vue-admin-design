@@ -1,7 +1,7 @@
 <template>
-  <div class="full-screen-wrapper">
+  <div class="full-screen-wrapper" @click="handleFullscreen">
     <el-tooltip effect="dark" :content="isFullscreen ? '退出全屏' : '全屏'" placement="bottom">
-      <i :class="['icon', isFullscreen ? 'vue-sys-icon-fullscreen' : 'vue-sys-icon-tuichuquanping']" @click="handleFullscreen"></i>
+      <i :class="['icon', !isFullscreen ? 'vue-sys-icon-fullscreen' : 'vue-sys-icon-tuichuquanping']"></i>
     </el-tooltip>
   </div>
 </template>
@@ -24,9 +24,9 @@ export default {
   },
   methods: {
     handleFullscreen () {
-      if (!screenfull.enabled) {
+      if (screenfull.enabled) {
         this.$message({
-          message: 'you browser can not work',
+          message: '不支持全屏!',
           type: 'warning'
         })
         return false
@@ -55,9 +55,10 @@ export default {
   float: left;
   width: 22px;
   height: 22px;
+  padding: 3px;
   cursor: pointer;
   .icon {
-    font-size: 22px;
+    font-size: 26px;
   }
   &:hover {
     color: #409eff;

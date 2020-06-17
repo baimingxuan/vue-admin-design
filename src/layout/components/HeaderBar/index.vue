@@ -3,7 +3,7 @@
     <FoldSideMenu/>
     <BreadCrumbs/>
     <div class="header-right clear-fix">
-      <FullScreen></FullScreen>
+      <FullScreen/>
       <LangSwitch></LangSwitch>
       <GitHubLink></GitHubLink>
     </div>
