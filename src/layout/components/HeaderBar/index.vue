@@ -4,7 +4,7 @@
     <BreadCrumbs/>
     <div class="header-right clear-fix">
       <FullScreen/>
-      <LangSwitch></LangSwitch>
+      <LangSelect/>
       <GitHubLink/>
     </div>
   </div>
@@ -14,7 +14,7 @@
 import FoldSideMenu from '../../../components/FoldSideMenu'
 import BreadCrumbs from '../../../components/BreadCrumbs'
 import FullScreen from '../../../components/FullScreen'
-import LangSwitch from './LangSwitch'
+import LangSelect from '../../../components/LangSelect'
 import GitHubLink from '../../../components/GitHubLink'
 
 export default {
@@ -22,7 +22,7 @@ export default {
     FoldSideMenu,
     BreadCrumbs,
     FullScreen,
-    LangSwitch,
+    LangSelect,
     GitHubLink
   }
 }
