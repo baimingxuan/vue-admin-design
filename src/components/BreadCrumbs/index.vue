@@ -22,19 +22,23 @@ export default {
     }
   },
   watch: {
-    $route (val) {
+    $route (route) {
       this.getBreadCrumb()
-      if (val.path === '/home') {
-        this.hasClick = false
-      } else {
-        this.hasClick = true
-      }
+      this.isHome(route.path)
     }
   },
   created () {
     this.getBreadCrumb()
+    this.isHome(this.$route.path)
   },
   methods: {
+    isHome (path) {
+      if (path === '/home') {
+        this.hasClick = false
+      } else {
+        this.hasClick = true
+      }
+    },
     goHome () {
       this.$router.push('/')
     },
