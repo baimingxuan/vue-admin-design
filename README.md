@@ -1,21 +1,45 @@
 # vue-admin-system
 
-> A Vue.js project
+> 一个基于vue + elementUI的后台管理系统解决方案
 
-## Build Setup
+![home](./static/img/home.png)
+
+## Features
+
+- 表格&表单
+  - 综合表格
+  - 表单
+  - 行内编辑表格
+
+-   编辑器
+  - Markdown编辑器
+  - 富文本编辑器
+
+- 组件
+  - 图片上传
+  - 列表拖拽
+  - 穿梭框
+  - 数字滚动
+- 树形结构
+  - 组织树
+  - 控件树
+
+## Getting started
 
 ``` bash
-# install dependencies
+# clone the project
+git clone https://github.com/LoveHins/vue-admin-system.git
+
+// install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+// develop
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Build
+
+```bash
+npm run build
+```
+
