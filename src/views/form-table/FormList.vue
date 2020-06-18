@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
+import Hints from '../../components/Hints/index'
 import { selectData, cascaderData } from './data'
 
 export default {

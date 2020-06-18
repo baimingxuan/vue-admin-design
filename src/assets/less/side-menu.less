@@ -1,18 +1,24 @@
+/* 引入自定义滑动条样式 */
 @import "./scroll-bar";
 
 .side-menu-wrapper {
+  /* el-scrollbar引用自定义滑动 父类必设高度 */
   .el-scrollbar {
     height: 100vh;
+    /* 自定义滑条 类位置 */
     .scroll-bar;
+    /* el-scrollbar的wrap-class类 */
     .scrollbar {
       height: 100%;
       overflow-x: hidden;
+      /* 一级菜单样式 */
       .el-menu {
         border-right: none;
         .side-menu-item {
           .el-submenu__title * {
             vertical-align: top;
           }
+          /* 图标样式 */
           i {
             font-size: 14px;
             color: #fff;
@@ -20,17 +26,27 @@
           .icon {
             margin-right: 8px;
           }
+          /* 二级菜单颜色 */
           .el-submenu {
             .side-menu-item .el-submenu__title,
             .el-menu-item {
               background: #202b30!important;
             }
+            /* 三级菜单颜色 */
             .el-submenu {
               .el-menu-item {
                 background: #1d272b!important;
               }
             }
+            /* 三级菜单hover样式-较特殊 */
+            .el-menu-item,
+            .el-submenu__title {
+              &:hover {
+                background: #2f3e45!important;
+              }
+            }
           }
+          /* 菜单项hover样式 */
           .el-menu-item,
           .el-submenu__title {
             &:hover,
@@ -43,22 +59,24 @@
               background: #2f3e45!important;
             }
           }
-          .is-active{
+          /* 菜单项active样式 */
+          .is-active {
             .icon,
-            > .el-submenu__title{
+            > .el-submenu__title {
               color: #409eff!important;
             }
           }
         }
       }
+      /* 折叠菜单样式 */
       .el-menu--collapse {
         .side-menu-item {
+          transition: font-size 0.5s;
           i {
             font-size: 20px;
           }
-          .icon {
-            margin-right: 26px;
-          }
+          span,
+          .el-menu--inline,
           .el-submenu__icon-arrow {
             display: none;
           }

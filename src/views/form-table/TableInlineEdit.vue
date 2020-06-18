@@ -37,7 +37,7 @@
 
 <script>
 import { getTableList } from '../../api'
-import Hints from '../../components/Hints'
+import Hints from '../../components/Hints/index'
 
 export default {
   name: 'TableInlineEdit',

@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
+import Hints from '../../components/Hints/index'
 import { treeData } from './data'
 
 export default {

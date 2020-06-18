@@ -24,7 +24,7 @@
 <script>
 import path from 'path'
 import { isExternal } from '../../../utils/validate'
-import SvgIcon from '../../../components/SvgIcon'
+import SvgIcon from '../../../components/SvgIcon/index'
 import LinkItem from './LinkItem'
 import Item from './Item'
 export default {

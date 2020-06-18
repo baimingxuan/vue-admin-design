@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
+import Hints from '../../components/Hints/index'
 import CountTo from 'vue-count-to'
 export default {
   name: 'CountToPage',

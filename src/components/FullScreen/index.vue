@@ -55,10 +55,10 @@ export default {
   float: left;
   width: 22px;
   height: 22px;
-  padding: 3px;
+  padding: 4px;
   cursor: pointer;
   .icon {
-    font-size: 26px;
+    font-size: 24px;
   }
   &:hover {
     color: #409eff;

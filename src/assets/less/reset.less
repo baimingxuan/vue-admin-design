@@ -1,3 +1,4 @@
+/* el-button禁用相关样式 */
 .el-button {
   &.is-disabled {
     cursor: default;
@@ -6,6 +7,16 @@
     &:focus,
     &:hover {
       cursor: default;
+    }
+  }
+}
+
+/* 子菜单箭头图标样式 */
+.el-submenu {
+  >.el-submenu__title {
+    i {
+      font-size: 14px;
+      color: #fff;
     }
   }
 }

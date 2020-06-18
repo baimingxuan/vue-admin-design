@@ -36,11 +36,11 @@ export default {
   float: left;
   width: 22px;
   height: 22px;
-  padding: 3px;
+  padding: 4px;
   margin: 0 10px;
   cursor: pointer;
   .icon {
-    font-size: 26px;
+    font-size: 24px;
     color: #333;
   }
   &:hover {

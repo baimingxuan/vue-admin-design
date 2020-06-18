@@ -42,6 +42,7 @@ export default {
   .side-container{
     float: left;
     height: 100vh;
+    transition: width 0.5s;
     background-color: #263238;
     &.unfolded {
       width: 260px;
@@ -53,6 +54,7 @@ export default {
   .main-container{
     float: left;
     height: 100vh;
+    transition: width 0.5s;
     &.normal {
       width: calc(100% - 260px);
     }

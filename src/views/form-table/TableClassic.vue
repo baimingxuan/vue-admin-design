@@ -175,7 +175,7 @@
 import { getTableList } from '../../api'
 import Pagination from '../../components/Pagination'
 import Upload from '../../components/Upload'
-import Hints from '../../components/Hints'
+import Hints from '../../components/Hints/index'
 
 export default {
   name: 'Table',

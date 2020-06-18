@@ -6,7 +6,7 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex'
-import SvgIcon from '../SvgIcon'
+import SvgIcon from '../SvgIcon/index'
 
 export default {
   name: 'FoldSideMenu',
