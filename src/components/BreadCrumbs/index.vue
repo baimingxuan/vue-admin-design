@@ -64,7 +64,7 @@ export default {
     .icon {
       font-weight: bold;
       font-size: 14px;
-      color: #333;
+      color: #333!important;
     }
     &:hover {
       color: #409eff;

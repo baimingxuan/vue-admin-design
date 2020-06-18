@@ -1,5 +1,5 @@
 <template>
-  <div class="tags-nav clear-fix">
+  <div class="tags-nav-wrapper clear-fix">
     <el-button type="text" class="btn-con" @click="handleMove(240)">
       <i class="icon el-icon-arrow-left"></i>
     </el-button>
@@ -185,43 +185,43 @@ export default {
 </script>
 
 <style lang="less">
-  .tags-nav {
-    width: 100%;
+.tags-nav-wrapper {
+  width: 100%;
+  height: 40px;
+  .icon {
+    font-size: 18px;
+  }
+  .btn-con {
+    float: left;
+    width: 28px;
     height: 40px;
-    .icon {
-      font-size: 18px;
-    }
-    .btn-con {
-      float: left;
-      width: 28px;
-      height: 40px;
-      padding: 8px 7px 8px 3px;
-      border-top: solid 1px #f0f0f0;
-      border-bottom: solid 1px #f0f0f0;
-      box-sizing: border-box;
-    }
-    .btn-close {
-      width: 40px;
-      padding-top: 10px;
-      padding-left: 11px;
-      border-left: solid 1px #f0f0f0;
-      cursor: pointer;
-    }
-    .tags-views {
-      position: relative;
-      float: left;
-      width: calc(100% - 96px);
-      height: 40px;
-      background: #f0f0f0;
-      box-shadow: inset 0 0 3px 2px #6464641a;
-      overflow: hidden;
-      .tags-cont {
-        position: absolute;
-        padding: 0 4px;
-        overflow: visible;
-        white-space: nowrap;
-        transition: left .5s ease;
-      }
+    padding: 8px 7px 8px 3px;
+    border-top: solid 1px #f0f0f0;
+    border-bottom: solid 1px #f0f0f0;
+    box-sizing: border-box;
+  }
+  .btn-close {
+    width: 40px;
+    padding-top: 10px;
+    padding-left: 11px;
+    border-left: solid 1px #f0f0f0;
+    cursor: pointer;
+  }
+  .tags-views {
+    position: relative;
+    float: left;
+    width: calc(100% - 96px);
+    height: 40px;
+    background: #f0f0f0;
+    box-shadow: inset 0 0 3px 2px #6464641a;
+    overflow: hidden;
+    .tags-cont {
+      position: absolute;
+      padding: 0 4px;
+      overflow: visible;
+      white-space: nowrap;
+      transition: left .5s ease;
     }
   }
+}
 </style>

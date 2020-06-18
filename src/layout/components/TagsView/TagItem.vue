@@ -24,31 +24,31 @@ export default {
 </script>
 
 <style lang="less">
-  .tag-item-wrapper {
+.tag-item-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  height: 32px!important;
+  margin: 4px 2px!important;
+  padding: 0 10px!important;
+  border-radius: 3px!important;
+  line-height: 32px!important;
+  border: 1px solid #e8eaec!important;
+  color: #555!important;
+  background: #fff!important;
+  overflow: hidden;
+  cursor: pointer;
+  .tag-item-dot {
     display: inline-block;
-    vertical-align: middle;
-    height: 32px;
-    margin: 4px 2px;
-    padding: 0 10px;
-    border-radius: 3px;
-    line-height: 32px;
-    border: 1px solid #e8eaec;
-    color: #555;
-    background: #fff;
-    overflow: hidden;
-    cursor: pointer;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #e8eaec;
+  }
+  &.active {
     .tag-item-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      margin-right: 6px;
-      border-radius: 50%;
-      background: #e8eaec;
-    }
-    &.active {
-      .tag-item-dot {
-        background: #409eff;
-      }
+      background: #409eff;
     }
   }
+}
 </style>
