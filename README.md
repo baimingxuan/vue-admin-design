@@ -1,6 +1,8 @@
 # vue-admin-system
 
 > 一个基于vue + elementUI的后台管理系统解决方案
+>
+> 预览地址： [https://admin-page.github.io/](https://admin-page.github.io)
 
 ![home](./static/img/home.png)
 
