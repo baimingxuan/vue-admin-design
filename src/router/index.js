@@ -16,6 +16,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: () => import('../views/Login'),
+      hidden: true
+    },
+    {
       path: '/404',
       component: () => import('../views/404'),
       hidden: true
