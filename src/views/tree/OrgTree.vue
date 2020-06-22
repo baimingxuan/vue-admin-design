@@ -1,5 +1,5 @@
 <template>
-  <div class="org-tree-wrapper">
+  <div class="org-tree-wrapper" :style="{ height: displayMode === 'vertical' ? '650px' : '1050px' }">
     <Hints>
       <template slot="hintName">树状组织图</template>
       <template slot="hintInfo">
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="zoom-box">
-      <ZoomController v-model="zoom" :min="50" :max="150" :diff="10"/>
+      <ZoomController v-model="zoom" :min="80" :max="120" :diff="10"/>
     </div>
     <OrgView :zoomVal="zoomVal" :expandAll="expandAll" :horizontal="horizontal"/>
   </div>
@@ -60,7 +60,7 @@ export default {
 <style lang="less">
 .org-tree-wrapper{
   position: relative;
-  height: 100%;
+  min-height: 580px;
   .ctrl-box{
     .btn-item{
       margin-bottom: 10px;

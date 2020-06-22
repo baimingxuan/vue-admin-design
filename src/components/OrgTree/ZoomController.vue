@@ -1,11 +1,11 @@
 <template>
   <div class="zoom-controller">
     <el-button type="text" @click="scale('cut')">
-      <i class="icon vue-sys-icon-jianhao-fill"></i>
+      <i class="icon el-icon-remove"></i>
     </el-button>
     <span>{{ value }}%</span>
     <el-button type="text" @click="scale('add')">
-      <i class="icon vue-sys-icon-jia-tianchong"></i>
+      <i class="icon el-icon-circle-plus"></i>
     </el-button>
   </div>
 </template>
