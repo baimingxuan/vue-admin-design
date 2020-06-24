@@ -1,8 +1,8 @@
 {
   "name": "vue-admin-system",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "LoveHins <354372738@qq.com>",
+  "description": "基于vue + elementUI的管理系统模板",
+  "author": "baimingxuan <354372738@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
