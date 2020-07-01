@@ -2,7 +2,7 @@
 
 > 一个基于vue + elementUI的后台管理系统解决方案
 >
-> 预览地址： [https://admin-page.github.io/](https://admin-page.github.io)
+> 预览地址： [http://baimingxuan.net/vue-admin-system-page/](http://baimingxuan.net/vue-admin-system-page/)
 
 ![home](./static/img/home.png)
 
