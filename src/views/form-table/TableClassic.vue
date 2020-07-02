@@ -161,9 +161,9 @@
         :visible.sync="exportVisible"
         width="30%">
         <div class="export-data">
-          <el-button type="primary" @click="exportExcle">EXCEL格式</el-button>
-          <el-button type="primary" @click="exportCsv">CSV格式</el-button>
-          <el-button type="primary" @click="exportTxt">TXT格式</el-button>
+          <el-button type="primary" @click="exportTable('xlsx')">EXCEL格式</el-button>
+          <el-button type="primary" @click="exportTable('csv')">CSV格式</el-button>
+          <el-button type="primary" @click="exportTable('txt')">TXT格式</el-button>
         </div>
         <div class="hints">TIP：请选择要导出数据的格式。</div>
       </el-dialog>
@@ -173,6 +173,7 @@
 
 <script>
 import { getTableList } from '../../api'
+import excel from '../../utils/excel'
 import Pagination from '../../components/Pagination'
 import Upload from '../../components/Upload'
 import Hints from '../../components/Hints/index'
@@ -342,19 +343,19 @@ export default {
       this.importVisible = false
     },
     // 导出数据--excle格式
-    exportExcle () {
-      // 此处添加 导出excle格式数据接口
-      this.exportVisible = false
-    },
-    // 导出数据--csv格式
-    exportCsv () {
-      // 此处添加 导出csv格式数据接口
-      this.exportVisible = false
-    },
-    // 导出数据--txt格式
-    exportTxt () {
-      // 此处添加 导出txt格式数据接口
-      this.exportVisible = false
+    exportTable (type) {
+      if (this.tableData.length) {
+        const params = {
+          header: ['编号', '姓名', '性别', '手机', '学历', '婚姻状况', '禁止编辑', '爱好'],
+          key: ['id', 'name', 'sex', 'phone', 'education', 'married', 'forbid', 'hobby'],
+          data: this.tableData,
+          autoWidth: true,
+          fileName: '综合表格',
+          bookType: type
+        }
+        excel.exportDataFromExcel(params)
+        this.exportVisible = false
+      }
     },
     // 列表中婚姻状况栏，状态值改变时，调用
     selectChange (row) {
