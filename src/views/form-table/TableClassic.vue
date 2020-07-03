@@ -353,7 +353,7 @@ export default {
           fileName: '综合表格',
           bookType: type
         }
-        excel.exportDataFromExcel(params)
+        excel.exportDataToExcel(params)
         this.exportVisible = false
       }
     },

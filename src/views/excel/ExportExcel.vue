@@ -106,7 +106,7 @@ export default {
           fileName: this.exportParam.fileName,
           bookType: this.exportParam.type
         }
-        excel.exportDataFromExcel(params)
+        excel.exportDataToExcel(params)
         this.$refs.multipleTable.clearSelection()
       } else {
         this.$message.warning('请勾选要导出的数据项！')
