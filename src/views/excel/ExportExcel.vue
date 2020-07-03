@@ -121,7 +121,7 @@ export default {
   .el-card{
     min-height: 500px;
   }
-  .search-form{
+  .search-form {
     padding-top: 18px;
     margin-bottom: 15px;
     background-color: #f7f8fb;

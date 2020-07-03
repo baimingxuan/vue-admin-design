@@ -1,6 +1,7 @@
 import XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 
+// 自动宽度计算
 function AutoWidth (ws, arr) {
   // 设置worksheet每列的最大宽度
   const colWidth = arr.map(row => row.map(val => {
@@ -25,7 +26,8 @@ function AutoWidth (ws, arr) {
   ws['!cols'] = result
 }
 
-function formatJson (key, data) {
+// 数组转换成JSON
+function formatJSON (key, data) {
   return data.map(v => key.map(i => { return v[i] }))
 }
 
@@ -37,40 +39,35 @@ function s2ab (s) {
   return buf
 }
 
+// 导出EXCEL表格
 export function exportDataFromExcel (
   {
-    multiHeader = [],
-    header,
-    key,
-    data,
-    fileName,
-    merges = [],
-    autoWidth = true,
-    bookType = 'xlsx'
+    header, // 表头名数组
+    key, // 列对应字段数组
+    data, // 需要导出数据的数组
+    fileName, // 导出文件名
+    autoWidth = true, // 是否自动宽度
+    bookType = 'xlsx' // 导出文件格式
   } = {}) {
+  // 创建Workbook对象
   const wb = XLSX.utils.book_new()
-  const arr = formatJson(key, data)
+  const arr = formatJSON(key, data)
   fileName = fileName || 'excel-list'
   arr.unshift(header)
-  for (let i = multiHeader.length - 1; i > -1; i--) {
-    arr.unshift(multiHeader[i])
-  }
+  // 将数组数据转换为worksheet
   const ws = XLSX.utils.aoa_to_sheet(arr)
-  if (merges.length > 0) {
-    if (!ws['!merges']) ws['!merges'] = []
-    merges.forEach(item => {
-      ws['!merges'].push(XLSX.utils.decode_range(item))
-    })
-  }
   if (autoWidth) {
     AutoWidth(ws, arr)
   }
+  // 向Workbook对象中追加worksheet和fileName
   XLSX.utils.book_append_sheet(wb, ws, fileName)
+  // 生成EXCEL的配置项
   let wbout = XLSX.write(wb, {
     bookType: bookType,
     bookSST: false,
     type: 'binary'
   })
+  // 浏览器下载
   saveAs(new Blob([s2ab(wbout)], {
     type: 'application/octet-stream'
   }), `${fileName}.${bookType}`)

@@ -239,7 +239,7 @@ export default new Router({
       component: Layout,
       redirect: '/excel/export-excel',
       meta: {
-        title: 'excel',
+        title: 'Excel',
         icon: 'vue-sys-icon-excel'
       },
       children: [
@@ -248,7 +248,7 @@ export default new Router({
           name: 'ExportExcel',
           component: () => import('../views/excel/ExportExcel'),
           meta: {
-            title: 'excel导出'
+            title: '导出Excel'
           }
         },
         {
@@ -256,7 +256,7 @@ export default new Router({
           name: 'ImportExcel',
           component: () => import('../views/excel/ImportExcel'),
           meta: {
-            title: 'excel导入'
+            title: '导入Excel'
           }
         }
       ]
