@@ -25,6 +25,7 @@
     "v-org-tree": "^1.0.12",
     "vue": "^2.6.9",
     "vue-count-to": "^1.0.13",
+    "vue-cropper": "^0.5.4",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.1",
