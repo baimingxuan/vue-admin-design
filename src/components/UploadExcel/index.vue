@@ -1,6 +1,7 @@
 <template>
   <div class="upload-excel-wrapper">
     <el-upload
+      ref="uploadExcel"
       drag
       action=""
       accept=".xlsx, .xls, .csv"
@@ -60,6 +61,7 @@ export default {
       reader.onerror = e => {
         this.$message.error('Excel文件读取出错!')
       }
+      this.$refs.uploadExcel.clearFiles()
     }
   }
 }
