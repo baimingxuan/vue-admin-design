@@ -26,6 +26,7 @@
     "vue": "^2.6.9",
     "vue-count-to": "^1.0.13",
     "vue-cropper": "^0.5.4",
+    "vue-drr": "^1.0.9",
     "vue-router": "^3.0.1",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.1",

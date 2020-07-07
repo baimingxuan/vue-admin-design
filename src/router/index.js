@@ -152,7 +152,7 @@ export default new Router({
             {
               path: 'vue-drr',
               name: 'VueDrr',
-              component: () => import('../views/tools/Drag/VueDrr'),
+              component: () => import('../views/tools/Drag/VueDrrTool'),
               meta: {
                 title: '组件拖拽'
               }
