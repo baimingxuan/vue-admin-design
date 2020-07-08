@@ -176,7 +176,7 @@ import { getTableList } from '../../api'
 import excel from '../../utils/excel'
 import Pagination from '../../components/Pagination'
 import Upload from '../../components/Upload'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'Table',
@@ -370,45 +370,45 @@ export default {
 </script>
 
 <style lang="less">
-.table-classic-wrapper{
-  .el-card{
+.table-classic-wrapper {
+  .el-card {
     min-height: 656px;
   }
-  .control-btns{
+  .control-btns {
     margin-bottom: 20px;
   }
-  .search-form{
+  .search-form {
     padding-top: 18px;
     margin-bottom: 15px;
     background-color: #f7f8fb;
   }
   .el-table thead {
     font-weight: 600;
-    th{
+    th {
       background-color: #f2f3f7;
     }
   }
-  .dialog-form{
-    .el-input{
+  .dialog-form {
+    .el-input {
       width: 380px;
     }
-    .footer-item{
+    .footer-item {
       margin-top: 50px;
       text-align: right;
     }
   }
   .upload-box,
-  .export-data{
+  .export-data {
     width: 300px;
     margin: 0 auto 30px;
   }
-  .upload-box{
+  .upload-box {
     width: 156px;
-    .files-upload{
+    .files-upload {
       color: #20a0ff;
     }
   }
-  .hints{
+  .hints {
     font-size: 12px;
     color: #aaa;
     text-align: center;

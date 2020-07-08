@@ -9,7 +9,3 @@ export default {
   name: 'DragWrapper'
 }
 </script>
-
-<style lang="less">
-
-</style>

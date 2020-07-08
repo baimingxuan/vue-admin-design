@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 import CountTo from 'vue-count-to'
 export default {
   name: 'CountToPage',
@@ -94,17 +94,17 @@ export default {
 </script>
 
 <style lang="less">
-.count-to-page{
-  .title{
+.count-to-page {
+  .title {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
   }
-  .box-cont{
+  .box-cont {
     display: flex;
     height: 300px;
     box-sizing: border-box;
-    span{
+    span {
       display: block;
       width: 110px;
       height: 50px;
@@ -113,32 +113,32 @@ export default {
       text-align: center;
       color: #30B08F;
     }
-    &.add{
-      span{
+    &.add {
+      span {
         color: #E65D6E;
       }
     }
   }
-  .cont-wrapper{
+  .cont-wrapper {
     height: 300px;
     padding: 30px 50px 30px 50px;
     box-sizing: border-box;
-    .cont-set-item{
+    .cont-set-item {
       display: inline-block;
       width: 32%;
       margin-bottom: 10px;
-      label{
+      label {
         display: inline-block;
         vertical-align: middle;
         width: 40%;
       }
-      .el-input{
+      .el-input {
         width: 50%;
       }
     }
-    .cont-set-data{
+    .cont-set-data {
       height: 100px;
-      span{
+      span {
         display: block;
         width: 270px;
         margin: 10px auto 0;

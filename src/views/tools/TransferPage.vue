@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'TransferPage',
@@ -62,21 +62,21 @@ export default {
 </script>
 
 <style lang="less">
-.transfer-wrapper{
-  .title{
+.transfer-wrapper {
+  .title {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
   }
-  .content-box{
+  .content-box {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 360px;
-    .el-transfer-panel__body{
+    .el-transfer-panel__body {
       height: 280px;
-      .el-transfer-panel__list{
-        &.is-filterable{
+      .el-transfer-panel__list {
+        &.is-filterable {
           height: 230px;
         }
       }

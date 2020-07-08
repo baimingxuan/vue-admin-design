@@ -20,7 +20,7 @@
 import { axios } from 'axios'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'MarkdownEditor',
@@ -55,7 +55,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-
-</style>

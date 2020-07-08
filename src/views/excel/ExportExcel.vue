@@ -57,7 +57,7 @@
 <script>
 import { getTableList } from '../../api'
 import excel from '../../utils/excel'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'ExportExcel',
@@ -118,7 +118,7 @@ export default {
 
 <style lang="less">
 .export-excel-wrapper {
-  .el-card{
+  .el-card {
     min-height: 500px;
   }
   .search-form {

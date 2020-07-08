@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'AvatarUpload',
@@ -74,23 +74,23 @@ export default {
 </script>
 
 <style lang="less">
-.avatar-upload{
-  .title{
+.avatar-upload {
+  .title {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
   }
-  .content-box{
+  .content-box {
     display: flex;
     height: 320px;
     align-items: center;
     justify-content: center;
-    .el-upload{
+    .el-upload {
       display: block;
     }
-    .icon-small{
+    .icon-small {
       padding: 8px 24px;
-      .el-icon-upload{
+      .el-icon-upload {
         font-size: 14px;
         margin-right: 3px;
       }

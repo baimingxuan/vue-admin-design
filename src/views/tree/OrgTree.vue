@@ -30,7 +30,7 @@
 <script>
 import OrgView from '../../components/OrgTree/OrgView'
 import ZoomController from '../../components/OrgTree/ZoomController'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'OrgTree',
@@ -58,20 +58,20 @@ export default {
 </script>
 
 <style lang="less">
-.org-tree-wrapper{
+.org-tree-wrapper {
   position: relative;
   min-height: 580px;
-  .ctrl-box{
-    .btn-item{
+  .ctrl-box {
+    .btn-item {
       margin-bottom: 10px;
-      .el-radio-button--small{
-        .el-radio-button__inner{
+      .el-radio-button--small {
+        .el-radio-button__inner {
           padding: 5px 10px;
         }
       }
     }
   }
-  .zoom-box{
+  .zoom-box {
     position: absolute;
     bottom: 0;
     right: 25px;

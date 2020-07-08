@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 import { treeData } from './data'
 
 export default {
@@ -107,13 +107,13 @@ export default {
 </script>
 
 <style lang="less">
-.ele-tree-wrapper{
-  .title{
+.ele-tree-wrapper {
+  .title {
     text-align: center;
     font-size: 14px;
     font-weight: bold;
   }
-  .content-box{
+  .content-box {
     height: 360px;
   }
 }

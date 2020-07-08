@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 import Editor from '../../components/Editor'
 
 export default {
@@ -27,7 +27,3 @@ export default {
   components: { Editor, Hints }
 }
 </script>
-
-<style lang="less">
-
-</style>

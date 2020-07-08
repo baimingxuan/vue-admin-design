@@ -9,30 +9,40 @@
     </Hints>
     <el-row :gutter="20">
       <el-col :span="5">
-        <div class="list-title">列表1事项</div>
-        <Draggable v-model="listOne" group="list" @end="handleChange($event, '列表1')" class="list-cont list1">
-          <el-card v-for="(item, index) in listOne" :key="index" shadow="hover">{{ item.name }}</el-card>
-        </Draggable>
+        <el-card shadow="always">
+          <div slot="header" class="title">列表1事项</div>
+          <Draggable v-model="listOne" group="list" @end="handleChange($event, '列表1')" class="list-cont list1">
+            <el-card v-for="(item, index) in listOne" :key="index" shadow="hover">{{ item.name }}</el-card>
+          </Draggable>
+        </el-card>
       </el-col>
       <el-col :span="5">
-        <div class="list-title">列表2事项</div>
-        <Draggable v-model="listTwo" group="list" @end="handleChange($event, '列表2')" class="list-cont list2">
-          <el-card v-for="(item, index) in listTwo" :key="index" shadow="hover">{{ item.name }}</el-card>
-        </Draggable>
+        <el-card shadow="always">
+          <div slot="header" class="title">列表2事项</div>
+          <Draggable v-model="listTwo" group="list" @end="handleChange($event, '列表2')" class="list-cont list2">
+            <el-card v-for="(item, index) in listTwo" :key="index" shadow="hover">{{ item.name }}</el-card>
+          </Draggable>
+        </el-card>
       </el-col>
       <el-col :span="4">
-        <div class="list-title">操作记录</div>
-        <div class="list-cont">
-          <p v-for="(item, index) in handleList" :key="index">{{ item }}</p>
-        </div>
+        <el-card shadow="always">
+          <div slot="header" class="title">操作记录</div>
+          <div class="list-cont">
+            <p v-for="(item, index) in handleList" :key="index">{{ item }}</p>
+          </div>
+        </el-card>
       </el-col>
       <el-col :span="5">
-        <div class="list-title">列表1数据</div>
-        <pre class="list-cont">{{ listOne }}</pre>
+        <el-card shadow="always">
+          <div slot="header" class="title">列表1数据</div>
+          <pre class="list-cont">{{ listOne }}</pre>
+        </el-card>
       </el-col>
       <el-col :span="5">
-        <div class="list-title">列表2数据</div>
-        <pre class="list-cont">{{ listTwo }}</pre>
+        <el-card shadow="always">
+          <div slot="header" class="title">列表2数据</div>
+          <pre class="list-cont">{{ listTwo }}</pre>
+        </el-card>
       </el-col>
     </el-row>
   </div>
@@ -40,7 +50,7 @@
 
 <script>
 import Draggable from 'vuedraggable'
-import Hints from '../../../components/Hints/index'
+import Hints from '../../../components/Hints'
 const message = [
   'ECMAScript6',
   'VueJS',
@@ -93,28 +103,22 @@ export default {
 </script>
 
 <style lang="less">
-.drag-list-wrapper{
-  .list-title{
-    height: 40px;
-    margin-bottom: 8px;
-    line-height: 40px;
-    font-size: 15px;
-    font-weight: 600;
+.drag-list-wrapper {
+  .title {
     text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0;
+    font-size: 14px;
+    font-weight: bold;
   }
-  .list-cont{
+  .list-cont {
     height: 510px;
-    padding: 10px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0;
-    .el-card{
+    .el-card {
       margin-bottom: 10px;
-      .el-card__body{
+      .el-card__body {
         padding: 14px 20px;
       }
     }
   }
-  pre{
+  pre {
     font-family: Consolas,Menlo,Courier,monospace;
   }
 }

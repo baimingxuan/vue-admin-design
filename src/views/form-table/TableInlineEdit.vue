@@ -37,7 +37,7 @@
 
 <script>
 import { getTableList } from '../../api'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'TableInlineEdit',
@@ -89,10 +89,10 @@ export default {
 </script>
 
 <style lang="less">
-.table-inline-edit{
+.table-inline-edit {
   .el-table thead {
     font-weight: 600;
-    th{
+    th {
       padding: 16px 0 15px!important;
       background-color: #f2f3f7;
     }

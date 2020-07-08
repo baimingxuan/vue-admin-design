@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 import { selectData, cascaderData } from './data'
 
 export default {
@@ -201,27 +201,27 @@ export default {
 </script>
 
 <style lang="less">
-.form-list-wrapper{
-  .el-card{
+.form-list-wrapper {
+  .el-card {
     padding-top: 20px;
   }
-  .form-list{
+  .form-list {
     width: 45%;
     margin: 0 auto;
-    .el-rate{
+    .el-rate {
       line-height: 2;
     }
-    > .el-form-item{
+    > .el-form-item {
       margin-bottom: 22px;
-      .line{
+      .line {
         text-align: center;
       }
-      .tip-title{
+      .tip-title {
         text-align: right;
         color: #606266;
       }
     }
-    .submit-box{
+    .submit-box {
       margin-top: 35px;
       margin-left: 0;
       text-align: center;

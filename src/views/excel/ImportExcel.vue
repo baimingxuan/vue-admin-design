@@ -22,7 +22,7 @@
 
 <script>
 import UploadExcel from '../../components/UploadExcel'
-import Hints from '../../components/Hints/index'
+import Hints from '../../components/Hints'
 
 export default {
   name: 'ImportExcel',
@@ -44,7 +44,7 @@ export default {
 
 <style lang="less">
 .import-excel-wrapper {
-  .el-card{
+  .el-card {
     min-height: 400px;
   }
   .search-form {

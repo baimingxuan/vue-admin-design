@@ -1,72 +1,38 @@
 <template>
   <div class="vue-drr-wrapper">
     <Hints>
-      <template slot="hintName">VueDRR</template>
+      <template slot="hintName">组件拖拽</template>
       <template slot="hintInfo">
         <p>VueDRR：基于vue-draggable-resizable的vue组件，可以实现拖动、拉伸和旋转功能</p>
         <p>github地址：访问 <el-link type="success" href="https://github.com/Alvin-Liu/vue-drr" target="_blank">VueDRR</el-link></p>
       </template>
     </Hints>
-    <el-row :gutter="20">
-      <el-col :span="16">
-        <el-card shadow="always">
-          <div slot="header" class="title">拖拽区域</div>
-          <div class="drag-area">
-            <VueDrr
-              :x="configObj.x"
-              :y="configObj.y"
-              :w="configObj.width"
-              :h="configObj.height"
-              :minw="configObj.minW"
-              :minh="configObj.minH"
-              :active="configObj.active"
-              :angle="configObj.angle"
-              :parent="configObj.parent"
-              @dragging="handleDragging"
-              @resizing="handleResizing"
-              @rotating="handleRotating">
-              <div class="drag-box">
-                <p>x: {{ configObj.x }}</p>
-                <p>y: {{ configObj.y }}</p>
-                <p>angle: {{ configObj.angle }}</p>
-                <p>width: {{ configObj.width }}</p>
-                <p>height: {{ configObj.height }}</p>
-              </div>
-            </VueDrr>
+    <el-card shadow="always">
+      <div slot="header" class="title">组件拖拽</div>
+      <div class="drag-area">
+        <VueDrr
+          :x="configObj.x"
+          :y="configObj.y"
+          :w="configObj.width"
+          :h="configObj.height"
+          :minw="configObj.minW"
+          :minh="configObj.minH"
+          :active="configObj.active"
+          :angle="configObj.angle"
+          :parent="configObj.parent"
+          @dragging="handleDragging"
+          @resizing="handleResizing"
+          @rotating="handleRotating">
+          <div class="drag-box">
+            <p>x: {{ configObj.x }}</p>
+            <p>y: {{ configObj.y }}</p>
+            <p>angle: {{ configObj.angle }}</p>
+            <p>width: {{ configObj.width }}</p>
+            <p>height: {{ configObj.height }}</p>
           </div>
-        </el-card>
-      </el-col>
-      <el-col :span="8">
-        <el-card shadow="always">
-          <div slot="header" class="title">设置区域</div>
-          <div class="content-box">
-            <el-form label-width="80px">
-              <el-form-item label="x">
-                <el-input v-model="configObj.x"></el-input>
-              </el-form-item>
-              <el-form-item label="y">
-                <el-input v-model="configObj.y"></el-input>
-              </el-form-item>
-              <el-form-item label="width">
-                <el-input v-model="configObj.width"></el-input>
-              </el-form-item>
-              <el-form-item label="height">
-                <el-input v-model="configObj.height"></el-input>
-              </el-form-item>
-              <el-form-item label="minw">
-                <el-input v-model="configObj.minW"></el-input>
-              </el-form-item>
-              <el-form-item label="minh">
-                <el-input v-model="configObj.minH"></el-input>
-              </el-form-item>
-              <el-form-item label="angle">
-                <el-input v-model="configObj.angle"></el-input>
-              </el-form-item>
-            </el-form>
-          </div>
-        </el-card>
-      </el-col>
-    </el-row>
+        </VueDrr>
+      </div>
+    </el-card>
   </div>
 </template>
 
@@ -79,10 +45,10 @@ export default {
   data () {
     return {
       configObj: {
-        x: 430,
+        x: 650,
         y: 130,
-        width: 160,
-        height: 160,
+        width: 180,
+        height: 180,
         minW: 100,
         minH: 100,
         active: true,
