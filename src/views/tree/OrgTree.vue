@@ -4,7 +4,7 @@
       <template slot="hintName">树状组织图</template>
       <template slot="hintInfo">
         <p>v-org-tree：基于vue的树结构组织图，可用于公司组织架构展示</p>
-        <p>github地址：访问 <a href="https://github.com/lison16/v-org-tree" target="_blank">v-org-tree</a></p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/lison16/v-org-tree" target="_blank">v-org-tree</el-link></p>
       </template>
     </Hints>
     <div class="ctrl-box">

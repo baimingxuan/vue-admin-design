@@ -106,7 +106,7 @@ export default new Router({
         },
         {
           path: 'rich-text',
-          name: 'RichText',
+          name: 'ImageRichText',
           component: () => import('../views/editors/RichTextEditor'),
           meta: {
             title: '富文本编辑器'

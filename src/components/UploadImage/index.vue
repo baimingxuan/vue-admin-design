@@ -7,8 +7,6 @@
     :multiple="false"
     :show-file-list="false"
     :auto-upload="false"
-    :limit="1"
-    :on-exceed="handleLimit"
     :on-change="handleChange">
     <el-button size="small" type="primary">选择图片</el-button>
   </el-upload>
@@ -18,10 +16,6 @@
 export default {
   name: 'UploadImage',
   methods: {
-    handleLimit () {
-      this.$message.warning('图片只支持单个上传!')
-      return false
-    },
     handleChange (image) {
       const rawImage = image.raw
       if (!rawImage) return false
