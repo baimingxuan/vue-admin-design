@@ -32,7 +32,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '请输入文本'
     },
     editable: {
       type: Boolean,

@@ -22,7 +22,7 @@
                   :handles="dragHandles(item.type)"
                   :style="elementZIndex(item.type)">
                   <!-- 图片 -->
-                  <img v-if="item.type==='image'" :src="item.src" draggable="false" style="width: 100%; height: 100%">
+                  <img v-if="item.type==='image'" :src="item.src" draggable="false">
                   <!-- 文字 -->
                   <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item"/>
                 </ElementDrr>
@@ -34,7 +34,9 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
-          <div class="content-box"></div>
+          <div class="content-box">
+            <TextSetting :activeEleText="activeEleText"/>
+          </div>
         </el-card>
       </el-col>
     </el-row>
@@ -45,14 +47,18 @@
 import Hints from '../../components/Hints'
 import ElementDrr from '../../components/ElementDrr'
 import ImageRichText from '../../components/ImageRichText'
+import TextSetting from '../../components/TextSetting'
 
 export default {
   name: 'ImageSynthesizer',
-  components: { Hints, ElementDrr, ImageRichText },
+  components: { Hints, ElementDrr, ImageRichText, TextSetting },
   data () {
     return {
       elements: [],
-      activeEle: {}
+      activeEle: {},
+      activeEleText: {
+        text: ''
+      }
     }
   },
   computed: {
@@ -108,7 +114,11 @@ export default {
     font-weight: bold;
   }
   .content-box {
-    height: 500px;
+    height: 520px;
+  }
+  img {
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
