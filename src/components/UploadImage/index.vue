@@ -8,13 +8,19 @@
     :show-file-list="false"
     :auto-upload="false"
     :on-change="handleChange">
-    <el-button size="small" type="primary">选择图片</el-button>
+    <el-button size="small" type="primary">{{ btnName }}</el-button>
   </el-upload>
 </template>
 
 <script>
 export default {
   name: 'UploadImage',
+  props: {
+    btnName: {
+      type: String,
+      default: '选择图片'
+    }
+  },
   methods: {
     handleChange (image) {
       const rawImage = image.raw
@@ -52,9 +58,9 @@ export default {
         this.$emit('on-success', data)
       }
       // 转化为base64
-      // reader.readAsDataURL(image)
+      reader.readAsDataURL(image)
       // 转化为blob
-      reader.readAsArrayBuffer(image)
+      // reader.readAsArrayBuffer(image)
       reader.onerror = e => {
         this.$message.error('图片读取出错!')
       }
@@ -63,7 +69,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-
-</style>

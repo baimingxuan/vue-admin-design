@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'editable': editable}"
+  <div :class="{'editabled': editable}"
     class="image-rich-text"
     spellcheck="false"
     :style="element.style"
@@ -90,7 +90,7 @@ export default {
 .image-rich-text {
   min-height: 18px;
   &.editabled {
-    padding: 3px 8px;
+    padding: 6px 8px;
     box-sizing: border-box;
     line-height: 14px;
     outline: none;

@@ -49,7 +49,7 @@ export default {
         const node = this.$el
         this.$nextTick(() => {
           const viewHeight = Math.ceil(node.parentNode.getBoundingClientRect().height)
-          const h = Math.ceil(node.lastChild.getBoundingClientRect().height)
+          const h = Math.ceil(node.querySelector('.image-rich-text').getBoundingClientRect().height)
           if (this.element.y + h >= viewHeight) {
             this.element.y = viewHeight - h
           }
@@ -87,12 +87,10 @@ export default {
     // 处理失焦
     handleDeactivate () {
       this.element.active = false
-      // this.$emit('deactivated')
     },
     // 处理聚焦
     handleActivated () {
-      this.element.active = true
-      // this.$emit('activated')
+      this.$emit('updateActiveEle', this.element)
     }
   }
 }

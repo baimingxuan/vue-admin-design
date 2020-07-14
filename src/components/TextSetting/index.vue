@@ -3,11 +3,11 @@
     <el-form>
       <!--文本-->
       <el-form-item label="文本">
-        <ImageRichText class="text-editable" v-model="activeEleText.text" :editable="true" />
+        <ImageRichText class="text-editable" v-model="activeEleText.text" :editable="true"/>
       </el-form-item>
       <!--字体-->
       <el-form-item label="字体">
-        <el-select v-model="activeEleText.fontFamily" size="small">
+        <el-select v-model="activeEleText.style.fontFamily" size="small">
           <el-option
             v-for="item in fontFamilyData"
             :key="item.value"
@@ -20,7 +20,7 @@
       <!--字号-->
       <el-form-item label="字号">
         <el-select
-          v-model="activeEleText.fontSize"
+          v-model="activeEleText.style.fontSize"
           size="small">
           <el-option
             v-for="item in fontSizeData"
@@ -35,12 +35,12 @@
         <!-- 字体颜色 -->
         <div class="color-box">
           <i class="vue-sys-icon-wenzise color-icon" :style="{'color': activeEleText.color}"></i>
-          <el-color-picker v-model="activeEleText.color"/>
+          <el-color-picker v-model="activeEleText.style.color"/>
         </div>
         <!-- 背景颜色 -->
         <div class="color-box">
           <i class="vue-sys-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.backgroundColor}"></i>
-          <el-color-picker v-model="activeEleText.backgroundColor"/>
+          <el-color-picker v-model="activeEleText.style.backgroundColor"/>
         </div>
         <div class="style-box">
           <!-- 加粗 -->
@@ -103,31 +103,40 @@ export default {
   computed: {
     // 字体是否加粗
     fontWeight () {
-      if (+this.activeEleText.fontWeight === 400) {
+      if (+this.activeEleText.style.fontWeight === 400) {
         return false
       } else {
         return true
       }
     }
   },
+  watch: {
+    // 文字大小变化时行高一起变化
+    activeEleText: {
+      handler (val) {
+        this.activeEleText.style.lineHeight = val.style.fontSize
+      },
+      deep: true
+    }
+  },
   components: { ImageRichText },
   methods: {
     // 设置粗体
     setFontWeight () {
-      if (+this.activeEleText.fontWeight === 400) {
-        this.activeEleText.fontWeight = 600
+      if (+this.activeEleText.style.fontWeight === 400) {
+        this.activeEleText.style.fontWeight = 600
       } else {
-        this.activeEleText.fontWeight = 400
+        this.activeEleText.style.fontWeight = 400
       }
     },
     // 设置对齐
     handleCommand (command) {
-      this.activeEleText.textAlign = command
-      console.log(this.activeEleText.textAlign)
+      this.activeEleText.style.textAlign = command
+      console.log(this.activeEleText.style.textAlign)
     },
     // 当前对齐方式
     setAlignActive (type) {
-      if (this.activeEleText.textAlign === type) {
+      if (this.activeEleText.style.textAlign === type) {
         return {
           backgroundColor: '#409eff',
           color: '#fff'
