@@ -34,7 +34,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
           <div class="content-box">
-            <el-form class="form-wrapper">
+            <el-form class="form-wrapper" label-width="70px">
               <el-form-item label="选择底图">
                 <UploadImage btnName="选择底图" @on-success="handleSuccess"/>
               </el-form-item>
@@ -46,9 +46,6 @@
               </el-form-item>
               <el-form-item label="删除元素">
                 <el-button type="danger" @click="submit">删除元素</el-button>
-              </el-form-item>
-              <el-form-item label="文本生成图片">
-                <el-button type="primary" @click="submit">文本生成图片</el-button>
               </el-form-item>
             </el-form>
             <TextSetting v-if="activeEle.type === 'text'" :activeEleText="activeEleText"/>
@@ -311,7 +308,10 @@ export default {
     overflow: hidden;
     .form-wrapper {
       width: 300px;
-      margin: 0 auto;
+      margin: 15px auto 0;
+    }
+    .el-button {
+      width: 210px;
     }
   }
   img {

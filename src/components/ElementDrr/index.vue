@@ -39,6 +39,7 @@ export default {
     element: {
       handler (val) {
         this.$nextTick(() => {
+          console.log(val)
           this.updateHeight()
         })
       },

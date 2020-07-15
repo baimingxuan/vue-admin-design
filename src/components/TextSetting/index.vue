@@ -1,6 +1,6 @@
 <template>
   <div class="text-setting-wrapper">
-    <el-form>
+    <el-form label-width="70px">
       <!--文本-->
       <el-form-item label="文本">
         <ImageRichText class="text-editable" v-model="activeEleText.text" :activeEleText="activeEleText"/>
@@ -59,6 +59,9 @@
             </el-dropdown>
           </div>
         </div>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="createImage">文本生成图片</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -146,7 +149,9 @@ export default {
           color: '#333'
         }
       }
-    }
+    },
+    // 文本生成图片
+    createImage () {}
   }
 }
 </script>
