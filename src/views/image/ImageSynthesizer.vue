@@ -5,7 +5,6 @@
       <template slot="hintInfo">
         <p>基于VueDRR拖拽功能，在其上通过叠加图片、文字等，实现图片的叠加伪合成功能</p>
         <p>VueDRR：基于vue-draggable-resizable的vue组件，可以实现拖动、拉伸和旋转功能</p>
-        <p>github地址：访问 <el-link type="success" href="https://github.com/Alvin-Liu/vue-drr" target="_blank">VueDRR</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">
@@ -73,7 +72,7 @@ export default {
         height: 0,
         bgImageSrc: '../../../static/img/crop-image.jpg' // 底图路径
       },
-      elements: [],
+      elements: [], // 叠加组件数组
       activeEle: {}, // 当前图片上聚焦的叠加组件
       eleNum: 0
     }
@@ -127,6 +126,7 @@ export default {
         zIndex: zIndex
       }
     },
+    // 底图上传成功
     handleSuccess (data) {
       this.container.bgImageSrc = data
       const image = new Image()
@@ -135,39 +135,46 @@ export default {
         this.getDragContainerSize(image.width, image.height)
       }
     },
-    // 计算图片展示区宽高
-    getDragContainerSize (width, height) {
-      let [imageTrueW, imageTrueH, imageShowW, imageShowH] = [+width, +height, 0, 0]
-      let [imageMaxW, imageMaxH] = [850, 550]
-
+    // 计算图片宽高
+    getImageSize (imageTrueW, imageTrueH, showAreaW, showAreaH) {
+      let [width, height] = [0, 0]
       // 图片真实宽大于真实高
       if (imageTrueW > imageTrueH) {
-        if (imageTrueW >= imageMaxW) { // 真实宽大于或等于最大宽
-          const imageRatioH = imageTrueH * (imageMaxW / imageTrueW)
-          // 按最大宽与实际宽比率换算后，高度大于显示高度时
-          if (imageRatioH >= imageMaxH) {
-            imageShowW = imageTrueW * (imageMaxH / imageTrueH)
-            imageShowH = imageMaxH
+        if (imageTrueW >= showAreaW) { // 真实宽大于或等于展示区最大宽
+          const imageRatioH = imageTrueH * (showAreaW / imageTrueW)
+          // 按展示区最大宽与实际宽比率换算后，高度大于显示高度时
+          if (imageRatioH >= showAreaW) {
+            width = imageTrueW * (showAreaH / imageTrueH)
+            height = showAreaH
           } else {
-            imageShowW = imageMaxW
-            imageShowH = imageRatioH
+            width = showAreaW
+            height = imageRatioH
           }
         } else {
-          imageShowW = imageTrueW
-          imageShowH = imageTrueH
+          width = imageTrueW
+          height = imageTrueH
         }
-      } else if (imageTrueW <= imageTrueH) { // 图片真实宽小于或等于真实高
-        if (imageTrueH >= imageMaxH) { // 真实高大于或等于最大高
-          imageShowW = imageTrueW * (imageMaxH / imageTrueH)
-          imageShowH = imageMaxH
+      } else { // 图片真实宽小于或等于真实高
+        if (imageTrueH >= showAreaH) { // 真实高大于或等于展示区最大高
+          width = imageTrueW * (showAreaH / imageTrueH)
+          height = showAreaH
         } else {
-          imageShowW = imageTrueW
-          imageShowH = imageTrueH
+          width = imageTrueW
+          height = imageTrueH
         }
       }
+      return {
+        width,
+        height
+      }
+    },
+    // 计算底图展示宽高
+    getDragContainerSize (imageW, imageH) {
+      const [showAreaW, showAreaH] = [850, 550]
+      const sizeObj = this.getImageSize(imageW, imageH, showAreaW, showAreaH)
       // 更新图片展示区宽高
-      this.container.width = imageShowW
-      this.container.height = imageShowH
+      this.container.width = sizeObj.width
+      this.container.height = sizeObj.height
     },
     // 添加文本
     addText () {
@@ -229,50 +236,14 @@ export default {
       const img = new Image()
       img.src = data
       img.onload = () => {
-        let imageSize = this.getImageSize(img.width, img.height, this.container.width, this.container.height)
+        let imageSize = this.getImageSize(img.width, img.height, parseInt(this.container.width / 4), parseInt(this.container.height / 4))
         this.addImage({
           active: true,
           src: data,
           size: dataSize,
-          width: imageSize.w,
-          height: imageSize.h
+          width: imageSize.width,
+          height: imageSize.height
         })
-      }
-    },
-    // 计算叠加图片的宽和高
-    getImageSize (width, height, showAreaW, showAreaH) {
-      let [w, h] = [0, 0]
-      // 添加的叠加图默认最大为底图的1/4
-      let showW = parseInt(showAreaW / 4)
-      let showH = parseInt(showAreaH / 4)
-      // 图片真实宽大于真实高
-      if (width > height) {
-        if (width >= showW) { // 真实宽大于或等于最大宽
-          const imageRatioH = height * (showW / width)
-          // 按最大宽与实际宽比率换算后，高度大于显示高度时
-          if (imageRatioH >= showH) {
-            w = width * (showH / height)
-            h = showH
-          } else {
-            w = showW
-            h = imageRatioH
-          }
-        } else {
-          w = width
-          h = height
-        }
-      } else if (width <= height) { // 图片真实宽小于或等于真实高
-        if (height >= showH) { // 真实高大于或等于最大高
-          w = width * (showH / height)
-          h = showH
-        } else {
-          w = width
-          h = height
-        }
-      }
-      return {
-        w,
-        h
       }
     },
     // 更新当前选中的元素
