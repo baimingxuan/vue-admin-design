@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import VueDrr from 'vue-drr'
+import VueDrr from '../../components/VueDrr'
 
 export default {
   name: 'ElementDrr',
@@ -39,7 +39,6 @@ export default {
     element: {
       handler (val) {
         this.$nextTick(() => {
-          console.log(val)
           this.updateHeight()
         })
       },

@@ -61,13 +61,14 @@
         </div>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="createImage">文本生成图片</el-button>
+        <el-button type="primary" @click="downloadImage">文本生成图片</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import { base64toBlob } from '../../utils'
 import ImageRichText from '../ImageRichText'
 
 const fontFamilyData = [
@@ -151,7 +152,67 @@ export default {
       }
     },
     // 文本生成图片
-    createImage () {}
+    textBecomeImg (obj) {
+      let canvas = document.createElement('canvas')
+      canvas.width = obj.w
+      canvas.height = obj.h
+      let context = canvas.getContext('2d')
+      // 绘制字体距离canvas顶部初始的高度
+      let initTop = 4
+      let initLeft = 8
+      // 设置背景色
+      context.fillStyle = obj.style.backgroundColor || 'transparent'
+      context.fillRect(0, 0, canvas.width, canvas.height)
+      // 设置文本样式
+      context.fillStyle = obj.style.color
+      context.font = obj.style.fontWeight + ' ' + obj.style.fontSize + ' ' + obj.style.fontFamily
+      context.textBaseline = 'top'
+      // 设置文本对齐方式
+      context.textAlign = obj.style.textAlign
+
+      let textArr = obj.text.split('')
+      let tempStr = ''
+      let rowArr = []
+      let maxTextWidth = canvas.width - 2 * initLeft
+
+      for (let i = 0; i < textArr.length; i++) {
+        if (context.measureText(tempStr).width < maxTextWidth && context.measureText(tempStr + (textArr[i])).width <= maxTextWidth) {
+          tempStr += textArr[i]
+        } else {
+          rowArr.push(tempStr)
+          tempStr = textArr[i]
+        }
+      }
+      rowArr.push(tempStr)
+
+      let drawLeft
+      if (context.textAlign === 'left') {
+        drawLeft = initLeft
+      } else if (context.textAlign === 'center') {
+        drawLeft = maxTextWidth / 2
+      } else if (context.textAlign === 'right') {
+        drawLeft = maxTextWidth
+      }
+
+      for (let i = 0; i < rowArr.length; i++) {
+        context.fillText(rowArr[i], drawLeft, (parseInt(obj.style.fontSize) * i + initTop), maxTextWidth)
+      }
+
+      return canvas.toDataURL('image/png')
+    },
+    // 下载生成的图片
+    downloadImage () {
+      const imageBase64 = this.textBecomeImg(this.activeEleText)
+      const imageBlob = base64toBlob(imageBase64)
+      const link = document.createElement('a')
+      const event = document.createEvent('HTMLEvents')
+      // initEvent 不加后两个参数会在火狐下报错 事件类型，是否冒泡，是否阻止浏览器的默认行为
+      event.initEvent('click', true, true)
+      link.download = 'image.png'
+      link.href = URL.createObjectURL(imageBlob)
+      // 兼容火狐
+      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}))
+    }
   }
 }
 </script>

@@ -64,9 +64,7 @@ export default {
     },
     // 光标聚焦
     handleFocus () {
-      this.$nextTick(() => {
-        this.activeEleText.active = true
-      })
+      this.activeEleText.active = true
     }
   }
 }
@@ -75,7 +73,8 @@ export default {
 <style lang="less">
 .image-rich-text {
   min-height: 18px;
-  padding: 6px 8px;
+  padding: 6px 8px!important;
+  outline: none;
   word-break: break-all;
 }
 </style>

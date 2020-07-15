@@ -35,7 +35,7 @@
             <div class="setting-box">
               <UploadImage @on-success="handleSuccess"/>
               <el-button size="small" type="primary" style="margin-top: 20px">
-                <a @click="downloadImage()">生成图片</a>
+                <a @click="downloadImage">生成图片</a>
               </el-button>
               <a :href="downImg" download="demo.png" ref="downloadDom"></a>
             </div>

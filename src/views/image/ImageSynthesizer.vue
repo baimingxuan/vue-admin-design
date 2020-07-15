@@ -24,7 +24,7 @@
                 <!-- 图片 -->
                 <img v-if="item.type==='image'" :src="item.src" draggable="false">
                 <!-- 文字 -->
-                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item"/>
+                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item" :activeEleText="activeEleText"/>
               </ElementDrr>
             </div>
           </div>
@@ -45,7 +45,7 @@
                 <UploadImage @on-success="handleAddImage"/>
               </el-form-item>
               <el-form-item label="删除元素">
-                <el-button type="danger" @click="submit">删除元素</el-button>
+                <el-button type="danger" @click="deleteActiveEle">删除元素</el-button>
               </el-form-item>
             </el-form>
             <TextSetting v-if="activeEle.type === 'text'" :activeEleText="activeEleText"/>
@@ -180,20 +180,24 @@ export default {
         x: 160,
         y: 100,
         w: 180,
-        h: 26,
+        h: 36,
         style: {
           textAlign: 'left',
-          lineHeight: '14px',
-          fontSize: '14px',
+          lineHeight: '24px',
+          fontSize: '24px',
           fontFamily: '微软黑体',
           fontWeight: 400,
-          color: '#333',
+          color: '#f70707',
           backgroundColor: '',
-          overflowY: 'hidden'
+          overflow: 'hidden'
         }
       }
-      this.elements.push(text)
-      this.updateActiveEle(text)
+      if (this.elements.length > 4) {
+        this.$message.warning('图片上最多叠加5个元素！')
+      } else {
+        this.elements.push(text)
+        this.updateActiveEle(text)
+      }
     },
     // 添加图片
     addImage (imgObj) {
@@ -209,9 +213,13 @@ export default {
         src: imgObj.src,
         size: imgObj.size
       }
-      this.elements.push(image)
-      if (imgObj.active) {
-        this.updateActiveEle(image)
+      if (this.elements.length > 4) {
+        this.$message.warning('图片上最多叠加5个元素！')
+      } else {
+        this.elements.push(image)
+        if (imgObj.active) {
+          this.updateActiveEle(image)
+        }
       }
     },
     // 上传图片成功
@@ -267,11 +275,19 @@ export default {
         h
       }
     },
+    // 更新当前选中的元素
     updateActiveEle (element) {
       this.activeEle = element
     },
-    submit () {
-      console.log(this.elements)
+    // 删除图片上当前选择的元素
+    deleteActiveEle () {
+      const newElements = this.elements.filter(item => {
+        return item.tag !== this.activeEle.tag
+      })
+      this.$nextTick(() => {
+        this.elements = newElements
+      })
+      this.updateActiveEle({})
     }
   }
 }
