@@ -3,7 +3,7 @@
     <el-form>
       <!--文本-->
       <el-form-item label="文本">
-        <ImageRichText class="text-editable" v-model="activeEleText.text" :editable="true"/>
+        <ImageRichText class="text-editable" v-model="activeEleText.text" :activeEleText="activeEleText"/>
       </el-form-item>
       <!--字体-->
       <el-form-item label="字体">
@@ -132,7 +132,6 @@ export default {
     // 设置对齐
     handleCommand (command) {
       this.activeEleText.style.textAlign = command
-      console.log(this.activeEleText.style.textAlign)
     },
     // 当前对齐方式
     setAlignActive (type) {

@@ -19,11 +19,12 @@
                 :key="index"
                 :element="item"
                 :handles="dragHandles(item.type)"
-                :style="elementZIndex(item.type)" @updateActiveEle="updateActiveEle">
+                :style="elementZIndex(item.type)"
+                @updateActiveEle="updateActiveEle">
                 <!-- 图片 -->
                 <img v-if="item.type==='image'" :src="item.src" draggable="false">
                 <!-- 文字 -->
-                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item" :editable="true"/>
+                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item"/>
               </ElementDrr>
             </div>
           </div>
@@ -33,7 +34,6 @@
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
           <div class="content-box">
-            <TextSetting v-if="activeEle.type === 'text'" :activeEleText="activeEleText"/>
             <el-form class="form-wrapper">
               <el-form-item label="选择底图">
                 <UploadImage btnName="选择底图" @on-success="handleSuccess"/>
@@ -47,7 +47,11 @@
               <el-form-item label="删除元素">
                 <el-button type="danger" @click="submit">删除元素</el-button>
               </el-form-item>
+              <el-form-item label="文本生成图片">
+                <el-button type="primary" @click="submit">文本生成图片</el-button>
+              </el-form-item>
             </el-form>
+            <TextSetting v-if="activeEle.type === 'text'" :activeEleText="activeEleText"/>
           </div>
         </el-card>
       </el-col>

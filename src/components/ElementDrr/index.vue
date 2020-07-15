@@ -1,5 +1,6 @@
 <template>
   <VueDrr
+    class="element-drr-wrapper"
     :x="element.x"
     :y="element.y"
     :w="element.w"
@@ -35,10 +36,13 @@ export default {
     }
   },
   watch: {
-    'element.style.fontSize' () {
-      this.$nextTick(() => {
-        this.updateHeight()
-      })
+    element: {
+      handler (val) {
+        this.$nextTick(() => {
+          this.updateHeight()
+        })
+      },
+      deep: true
     }
   },
   components: { VueDrr },
@@ -90,8 +94,25 @@ export default {
     },
     // 处理聚焦
     handleActivated () {
+      this.element.active = true
       this.$emit('updateActiveEle', this.element)
     }
   }
 }
 </script>
+
+<style lang="less">
+.element-drr-wrapper {
+  .z-handle-nw,
+  .z-handle-ne,
+  .z-handle-sw,
+  .z-handle-se,
+  .z-handle-n:after,
+  .z-handle-w:after,
+  .z-handle-e:after,
+  .z-handle-s:after {
+    width: 9px;
+    height: 9px;
+  }
+}
+</style>

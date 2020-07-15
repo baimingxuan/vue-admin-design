@@ -1,42 +1,31 @@
 <template>
-  <div :class="{'editabled': editable}"
-    class="image-rich-text"
+  <div class="image-rich-text"
     spellcheck="false"
+    contenteditable="true"
     :style="element.style"
     v-html="innerText"
-    :contenteditable="editable"
     @focus="handleFocus"
-    @blur="handleBlur"
     @keydown="$event.stopPropagation()"
-    @keyup.stop="emitInput($event.target.innerHTML)"
-    @paste="handlePaste"
+    @keyup.stop="emitInput($event)"
+    @paste="handlePaste($event)"
     @click.stop>
   </div>
 </template>
 
 <script>
-import { getPlainText } from '../../utils'
+import { getPlainText, keepCursorEnd } from '../../utils'
 
 export default {
   name: 'ImageRichText',
   data () {
     return {
-      innerText: this.value.replace(/\n/g, '<br>') || this.placeholder,
-      isLocked: false
+      innerText: this.value.replace(/\n/g, '<br>')
     }
   },
   props: {
     value: {
       type: String,
-      default: ''
-    },
-    placeholder: {
-      type: String,
       default: '请输入文本'
-    },
-    editable: {
-      type: Boolean,
-      default: false
     },
     element: {
       type: Object,
@@ -45,42 +34,39 @@ export default {
           style: {}
         }
       }
+    },
+    activeEleText: {
+      type: Object,
+      default: () => {}
     }
   },
   watch: {
-    value (newValue, oldValue) {
-      if (!this.isLocked || !newValue) {
-        this.innerText = newValue
-        // 强行删除参数文本时同步
-        this.$el.innerHTML = this.innerText
-        this.element.h = Math.ceil(this.$el.getBoundingClientRect().height)
-      }
+    value (val) {
+      this.innerText = val
     }
   },
   methods: {
-    emitInput (innerText) {
-      this.$emit('input', innerText)
+    // 输入文本
+    emitInput (event) {
+      this.$emit('input', event.target.innerHTML)
+      this.keepCursorLast(event)
     },
-    handleFocus (event) {
-      this.isLocked = true
-      if (event.target.innerHTML === this.placeholder) {
-        event.target.innerHTML = ''
-        this.emitInput(event.target.innerHTML)
-      }
-      this.$emit('focus')
-    },
-    handleBlur (event) {
-      this.isLocked = false
-      setTimeout(() => {
-        if (event.target.innerHTML === '') {
-          event.target.innerHTML = this.placeholder
-          this.emitInput(event.target.innerHTML)
-        }
-        this.$emit('blur')
-      }, 100)
-    },
+    // 粘贴文本
     handlePaste (event) {
-      this.emitInput(getPlainText(event))
+      this.$emit('input', getPlainText(event))
+      this.keepCursorLast(event)
+    },
+    // 光标定位到最后
+    keepCursorLast (event) {
+      this.$nextTick(() => {
+        keepCursorEnd(event.target)
+      })
+    },
+    // 光标聚焦
+    handleFocus () {
+      this.$nextTick(() => {
+        this.activeEleText.active = true
+      })
     }
   }
 }
@@ -89,13 +75,7 @@ export default {
 <style lang="less">
 .image-rich-text {
   min-height: 18px;
-  &.editabled {
-    padding: 6px 8px;
-    box-sizing: border-box;
-    line-height: 14px;
-    outline: none;
-    word-break: break-all;
-    user-select: auto;
-  }
+  padding: 6px 8px;
+  word-break: break-all;
 }
 </style>

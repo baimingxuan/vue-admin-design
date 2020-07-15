@@ -1,4 +1,5 @@
 /**
+ * 对象深拷贝
  * @param {Object} source
  * @returns {Object}
  */
@@ -61,4 +62,30 @@ export function getPlainText (e) {
  */
 export function supportIE (str) {
   return str.replace(/<(\/?)p>/g, '<$1div>')
+}
+
+/**
+ * contenteditable 光标定位到最后
+ * @param target
+ * */
+export function keepCursorEnd (target) {
+  // 非IE浏览器
+  if (window.getSelection) {
+    // 解决Firefox不获取焦点无法定位问题
+    target.focus()
+    // 创建range对象
+    const range = window.getSelection()
+    // 选择target下所有子内容
+    range.selectAllChildren(target)
+    // 光标移至最后
+    range.collapseToEnd()
+  } else if (document.selection) { // IE浏览器
+    // 创建range对象
+    const range = document.selection.createRange()
+    // 定位到target
+    range.moveToElementText(target)
+    // 光标移至最后
+    range.collapse(false)
+    range.select()
+  }
 }
