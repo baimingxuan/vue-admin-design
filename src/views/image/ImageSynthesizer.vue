@@ -70,7 +70,7 @@ export default {
       container: { // 展示区（可拖拽区）样式
         width: 0,
         height: 0,
-        bgImageSrc: '../../../static/img/crop-image.jpg' // 底图路径
+        bgImageSrc: './static/img/crop-image.jpg' // 底图路径
       },
       elements: [], // 叠加组件数组
       activeEle: {}, // 当前图片上聚焦的叠加组件
@@ -98,7 +98,7 @@ export default {
     this.addText()
     this.addImage({
       active: false,
-      src: '../../../static/img/add-image.jpeg',
+      src: './static/img/add-image.jpeg',
       size: 53248,
       width: 132,
       height: 132

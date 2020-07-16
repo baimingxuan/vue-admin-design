@@ -87,29 +87,29 @@ export default new Router({
       ]
     },
     {
-      path: '/editors',
-      name: 'Editors',
+      path: '/image',
+      name: 'Image',
       component: Layout,
-      redirect: '/editors/markdown',
+      redirect: '',
       meta: {
-        title: '编辑器',
-        icon: 'vue-sys-icon-bianjiqi'
+        title: '图片处理',
+        icon: 'vue-sys-icon-picture'
       },
       children: [
         {
-          path: 'markdown',
-          name: 'Markdown',
-          component: () => import('../views/editors/MarkdownEditor'),
+          path: 'image-cropper',
+          name: 'ImageCropper',
+          component: () => import('../views/image/ImageCropper'),
           meta: {
-            title: 'Markdown编辑器'
+            title: '图片裁剪'
           }
         },
         {
-          path: 'rich-text',
-          name: 'ImageRichText',
-          component: () => import('../views/editors/RichTextEditor'),
+          path: 'image-synthesizer',
+          name: 'ImageSynthesizer',
+          component: () => import('../views/image/ImageSynthesizer'),
           meta: {
-            title: '富文本编辑器'
+            title: '图片合成'
           }
         }
       ]
@@ -178,29 +178,29 @@ export default new Router({
       ]
     },
     {
-      path: '/image',
-      name: 'Image',
+      path: '/editors',
+      name: 'Editors',
       component: Layout,
-      redirect: '',
+      redirect: '/editors/markdown',
       meta: {
-        title: '图片处理',
-        icon: 'vue-sys-icon-picture'
+        title: '编辑器',
+        icon: 'vue-sys-icon-bianjiqi'
       },
       children: [
         {
-          path: 'image-cropper',
-          name: 'ImageCropper',
-          component: () => import('../views/image/ImageCropper'),
+          path: 'markdown',
+          name: 'Markdown',
+          component: () => import('../views/editors/MarkdownEditor'),
           meta: {
-            title: '图片裁剪'
+            title: 'Markdown编辑器'
           }
         },
         {
-          path: 'image-synthesizer',
-          name: 'ImageSynthesizer',
-          component: () => import('../views/image/ImageSynthesizer'),
+          path: 'rich-text',
+          name: 'ImageRichText',
+          component: () => import('../views/editors/RichTextEditor'),
           meta: {
-            title: '图片合成'
+            title: '富文本编辑器'
           }
         }
       ]

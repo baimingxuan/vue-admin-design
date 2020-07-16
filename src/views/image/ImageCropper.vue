@@ -68,7 +68,7 @@ export default {
   data () {
     return {
       configObj: {
-        imgSrc: '../../../static/img/crop-image.jpg',
+        imgSrc: './static/img/crop-image.jpg',
         canMove: false,
         autoCrop: true,
         centerBox: true,

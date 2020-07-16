@@ -58,7 +58,7 @@ export default {
     return {
       filesFormat: '.jpg, .jpeg, .gif, .png, .bmp',
       fileList: [
-        { name: 'beautiful-girl.jpg', url: '../../../static/img/crop-image.jpg' }
+        { name: 'beautiful-girl.jpg', url: './static/img/crop-image.jpg' }
       ],
       dialogImageUrl: '',
       dialogVisible: false
