@@ -21,8 +21,9 @@ export default new Router({
       hidden: true
     },
     {
-      path: '/404',
-      component: () => import('../views/404'),
+      path: 'page-404',
+      name: 'Page404',
+      component: () => import('../views/error-page/404'),
       hidden: true
     },
     {
@@ -257,6 +258,34 @@ export default new Router({
           component: () => import('../views/excel/ImportExcel'),
           meta: {
             title: '导入Excel'
+          }
+        }
+      ]
+    },
+    {
+      path: '/error-page',
+      name: 'ErrorPage',
+      component: Layout,
+      redirect: '/error-page/page-401',
+      meta: {
+        title: '错误页面',
+        icon: 'vue-sys-icon-excel'
+      },
+      children: [
+        {
+          path: 'page-401',
+          name: 'Page401',
+          component: () => import('../views/error-page/401'),
+          meta: {
+            title: '401页面'
+          }
+        },
+        {
+          path: 'page-404',
+          name: 'Page404',
+          component: () => import('../views/error-page/404'),
+          meta: {
+            title: '404页面'
           }
         }
       ]
