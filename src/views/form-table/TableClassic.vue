@@ -146,7 +146,7 @@
         <div class="upload-box">
           <span>选择文件：</span>
           <Upload :filesFormat="filesFormat">
-            <i class="vue-sys-icon-upload"></i>上传文件
+            <i class="vue-dsn-icon-upload"></i>上传文件
           </Upload>
         </div>
         <div class="hints">TIP：请选择要导出数据的格式。</div>

@@ -3,7 +3,7 @@
     <el-breadcrumb separator="/">
       <el-breadcrumb-item>
         <el-button type="text" class="home-link" :disabled="!hasClick" @click="goHome">
-          <i class="icon vue-sys-icon-index"></i>
+          <i class="icon vue-dsn-icon-index"></i>
           首页
         </el-button>
       </el-breadcrumb-item>

@@ -34,23 +34,23 @@
       <el-form-item label="颜色">
         <!-- 字体颜色 -->
         <div class="color-box">
-          <i class="vue-sys-icon-wenzise color-icon" :style="{'color': activeEleText.color}"></i>
+          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.color}"></i>
           <el-color-picker v-model="activeEleText.style.color"/>
         </div>
         <!-- 背景颜色 -->
         <div class="color-box">
-          <i class="vue-sys-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.backgroundColor}"></i>
+          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.backgroundColor}"></i>
           <el-color-picker v-model="activeEleText.style.backgroundColor"/>
         </div>
         <div class="style-box">
           <!-- 加粗 -->
           <span :class="['style-item', fontWeight ? 'active' : '']" @click="setFontWeight">
-            <i class="vue-sys-icon-jiacu style-icon"></i>
+            <i class="vue-dsn-icon-jiacu style-icon"></i>
           </span>
           <!-- 对齐 -->
           <div class="style-item">
             <el-dropdown trigger="click" @command="handleCommand">
-              <i class="vue-sys-icon-duiqi style-icon"></i>
+              <i class="vue-dsn-icon-duiqi style-icon"></i>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="left" :style="setAlignActive('left')">左对齐</el-dropdown-item>
                 <el-dropdown-item command="center" :style="setAlignActive('center')">居中</el-dropdown-item>

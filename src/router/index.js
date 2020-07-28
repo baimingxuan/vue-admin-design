@@ -37,18 +37,18 @@ export default new Router({
         component: () => import('../views/Home'),
         meta: {
           title: '首页',
-          icon: 'vue-sys-icon-index',
+          icon: 'vue-dsn-icon-index',
           fixed: true
         }
       }]
     },
     {
-      path: 'https://github.com/LoveHins/vue-admin-system',
+      path: 'https://github.com/baimingxuan/vue-admin-design.git',
       name: 'doc',
       component: Layout,
       meta: {
         title: '文档',
-        icon: 'vue-sys-icon-wendang'
+        icon: 'vue-dsn-icon-wendang'
       }
     },
     {
@@ -58,7 +58,7 @@ export default new Router({
       redirect: '/form-table/table-classic',
       meta: {
         title: '表格&表单',
-        icon: 'vue-sys-icon-biaoge'
+        icon: 'vue-dsn-icon-biaoge'
       },
       children: [
         {
@@ -94,7 +94,7 @@ export default new Router({
       redirect: '',
       meta: {
         title: '图片处理',
-        icon: 'vue-sys-icon-picture'
+        icon: 'vue-dsn-icon-picture'
       },
       children: [
         {
@@ -122,7 +122,7 @@ export default new Router({
       redirect: '/tools/image-upload',
       meta: {
         title: '组件',
-        icon: 'vue-sys-icon-zujian'
+        icon: 'vue-dsn-icon-zujian'
       },
       children: [
         {
@@ -185,7 +185,7 @@ export default new Router({
       redirect: '/editors/markdown',
       meta: {
         title: '编辑器',
-        icon: 'vue-sys-icon-bianjiqi'
+        icon: 'vue-dsn-icon-bianjiqi'
       },
       children: [
         {
@@ -213,7 +213,7 @@ export default new Router({
       redirect: '/tree/org-tree',
       meta: {
         title: '树形结构',
-        icon: 'vue-sys-icon-shuxing'
+        icon: 'vue-dsn-icon-shuxing'
       },
       children: [
         {
@@ -241,7 +241,7 @@ export default new Router({
       redirect: '/excel/export-excel',
       meta: {
         title: 'Excel',
-        icon: 'vue-sys-icon-excel'
+        icon: 'vue-dsn-icon-excel'
       },
       children: [
         {
@@ -269,7 +269,7 @@ export default new Router({
       redirect: '/error-page/page-401',
       meta: {
         title: '错误页面',
-        icon: 'vue-sys-icon-excel'
+        icon: 'vue-dsn-icon-excel'
       },
       children: [
         {

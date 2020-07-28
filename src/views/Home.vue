@@ -71,11 +71,11 @@ export default {
         { name: 'HTML', value: 6, color: '#9a66e4' }
       ],
       cardInfoData: [
-        { title: '今日点击', icon: 'vue-sys-icon-dianji', count: 682, color: '#2d8cf0' },
-        { title: '新增用户', icon: 'vue-sys-icon-xinzeng', count: 259, color: '#19be6b' },
-        { title: '信息发送', icon: 'vue-sys-icon-xinfeng', count: 1262, color: '#ff9900' },
-        { title: '点赞统计', icon: 'vue-sys-icon-dianzan', count: 508, color: '#e46cbb' },
-        { title: '累计收藏', icon: 'vue-sys-icon-heart', count: 379, color: '#9a66e4' }
+        { title: '今日点击', icon: 'vue-dsn-icon-dianji', count: 682, color: '#2d8cf0' },
+        { title: '新增用户', icon: 'vue-dsn-icon-xinzeng', count: 259, color: '#19be6b' },
+        { title: '信息发送', icon: 'vue-dsn-icon-xinfeng', count: 1262, color: '#ff9900' },
+        { title: '点赞统计', icon: 'vue-dsn-icon-dianzan', count: 508, color: '#e46cbb' },
+        { title: '累计收藏', icon: 'vue-dsn-icon-heart', count: 379, color: '#9a66e4' }
       ],
       chartsPieData: [
         { value: 1920, name: '直接访问' },

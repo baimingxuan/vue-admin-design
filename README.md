@@ -1,8 +1,8 @@
-# vue-admin-system
+# vue-admin-design
 
 > 一个基于vue + elementUI的后台管理系统解决方案
 >
-> 预览地址： [http://baimingxuan.net/vue-admin-system-page/](http://baimingxuan.net/vue-admin-system-page/)
+> 预览地址： [http://baimingxuan.net/vue-admin-design-page/](http://baimingxuan.net/vue-admin-design-page/)
 
 ![home](./static/img/home.png)
 
@@ -21,15 +21,15 @@
 
 - 组件
   - 图片上传
-  
+
   - 拖拽
-  
+
   - 列表拖拽
-  
+
     - 组件拖拽
-  
+
   - 穿梭框
-  
+
   - 数字滚动
 
 - 编辑器
@@ -57,7 +57,7 @@
 
 ``` bash
 # clone the project
-git clone https://github.com/LoveHins/vue-admin-system.git
+git clone https://github.com/baimingxuan/vue-admin-design.git
 
 // install dependencies
 npm install

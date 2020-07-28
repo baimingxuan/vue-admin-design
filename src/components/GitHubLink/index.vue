@@ -1,8 +1,8 @@
 <template>
   <div class="github-link-wrapper">
     <el-tooltip effect="dark" content="GitHub链接" placement="bottom">
-      <a href="https://github.com/LoveHins/vue-admin-system" target="_blank" rel="noopener">
-        <i class="icon vue-sys-icon-git"></i>
+      <a href="https://github.com/baimingxuan/vue-admin-design.git" target="_blank" rel="noopener">
+        <i class="icon vue-dsn-icon-git"></i>
       </a>
     </el-tooltip>
   </div>

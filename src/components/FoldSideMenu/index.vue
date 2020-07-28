@@ -1,6 +1,6 @@
 <template>
   <div class="fold-side-menu" :class="{'vertical': collapsed}" @click="taggleSideMenu">
-    <SvgIcon class="icon" icon-class="vue-sys-icon-menu"></SvgIcon>
+    <SvgIcon class="icon" icon-class="vue-dsn-icon-menu"></SvgIcon>
   </div>
 </template>
 

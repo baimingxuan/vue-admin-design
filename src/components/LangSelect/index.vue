@@ -2,7 +2,7 @@
   <div class="lang-select-wrapper">
     <el-tooltip effect="dark" content="语言切换" placement="bottom">
       <el-dropdown trigger="click" @command="handleSelect">
-        <i class="icon vue-sys-icon-yuyan"></i>
+        <i class="icon vue-dsn-icon-yuyan"></i>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-for="item in langOptions" :key="item.value" :command="item.value">
             {{ item.label }}

@@ -36,9 +36,9 @@ export default {
     ...mapGetters('app', ['collapsed']),
     imgSrc () {
       if (this.collapsed) {
-        return  './static/logo/logo-icon.png'
+        return './static/logo/logo-icon.png'
       }
-      return  './static/logo/logo.png'
+      return './static/logo/logo.png'
     }
   }
 }

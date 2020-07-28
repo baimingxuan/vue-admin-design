@@ -1,7 +1,7 @@
 <template>
   <div class="hints-wrapper">
     <div class="hint-title">
-      <i class="vue-sys-icon-tishi"></i>
+      <i class="vue-dsn-icon-tishi"></i>
       <span><slot name="hintName"></slot></span>
     </div>
     <div class="hint-info">
