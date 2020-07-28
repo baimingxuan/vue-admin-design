@@ -1,6 +1,11 @@
 <template>
   <div class="app-wrapper">
     <div class="side-container" :class="collapsed ? 'folded' : 'unfolded'">
+      <div class="logo">
+        <a href="/">
+          <img :src="imgSrc" alt="logo">
+        </a>
+      </div>
       <SideMenu/>
     </div>
     <div class="main-container" :class="collapsed ? 'wider' : 'normal'">
@@ -28,7 +33,13 @@ export default {
   name: 'Layout',
   components: { HeaderBar, SideMenu, TagsNav, MainView },
   computed: {
-    ...mapGetters('app', ['collapsed'])
+    ...mapGetters('app', ['collapsed']),
+    imgSrc () {
+      if (this.collapsed) {
+        return  './static/logo/logo-icon.png'
+      }
+      return  './static/logo/logo.png'
+    }
   }
 }
 </script>
@@ -46,9 +57,24 @@ export default {
     background-color: #263238;
     &.unfolded {
       width: 260px;
+      .logo {
+        width: 260px;
+        height: 84px;
+      }
     }
     &.folded {
       width: 64px;
+      .logo {
+        width: 64px;
+        height: 64px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
   .main-container{

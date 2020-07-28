@@ -15,8 +15,17 @@
       .el-menu {
         border-right: none;
         .side-menu-item {
-          .el-submenu__title * {
-            vertical-align: top;
+          .el-submenu__title {
+            height: 52px;
+            line-height: 52px;
+            * {
+              vertical-align: top;
+            }
+          }
+          /* 菜单项高度重置 */
+          .el-menu-item {
+            height: 52px;
+            line-height: 52px;
           }
           /* 图标样式 */
           i {
