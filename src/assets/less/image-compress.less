@@ -1,0 +1,75 @@
+.image-compress {
+  .title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .box-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 550px;
+    overflow: hidden;
+    .image-container {
+      position: relative;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+  .content-box {
+    width: 284px;
+    height: 550px;
+    margin: 0 auto;
+    padding-top: 80px;
+    box-sizing: border-box;
+    .select-image {
+      .el-upload {
+        margin-bottom: 12px;
+        .el-button {
+          width: 200px;
+        }
+      }
+    }
+    .ratio-size {
+      position: relative;
+      display: inline-block;
+      .el-input {
+        width: 82px;
+        .el-input__inner {
+          padding: 0 8px;
+        }
+      }
+      .icon-link {
+        margin: 0 5px;
+      }
+      .ratio-type {
+        position: absolute;
+        bottom: -22px;
+        left: 0;
+        width: 202px;
+        li {
+          float: left;
+          width: 85px;
+          height: 14px;
+          line-height: 14px;
+          color: #53586B;
+          text-align: center;
+          &:first-child {
+            margin-right: 32px;
+          }
+        }
+      }
+    }
+    .item-ratio {
+      margin: 35px 0 20px;
+      .el-input {
+        width: 200px;
+      }
+    }
+    .btn-compress {
+      width: 100%;
+      margin-top: 18px;
+    }
+  }
+}

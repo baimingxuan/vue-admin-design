@@ -106,6 +106,14 @@ export default new Router({
           }
         },
         {
+          path: 'image-compress',
+          name: 'ImageCompress',
+          component: () => import('../views/image/ImageCompress'),
+          meta: {
+            title: '图片压缩'
+          }
+        },
+        {
           path: 'image-synthesizer',
           name: 'ImageSynthesizer',
           component: () => import('../views/image/ImageSynthesizer'),
