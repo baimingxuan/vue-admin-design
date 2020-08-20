@@ -195,7 +195,7 @@ export default {
           fontFamily: '微软黑体',
           fontWeight: 400,
           color: '#f70707',
-          backgroundColor: '',
+          backgroundColor: '#05f8e8',
           overflow: 'hidden'
         }
       }

@@ -34,12 +34,12 @@
       <el-form-item label="颜色">
         <!-- 字体颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.color}"></i>
+          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.style.color}"></i>
           <el-color-picker v-model="activeEleText.style.color"/>
         </div>
         <!-- 背景颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.backgroundColor}"></i>
+          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.style.backgroundColor}"></i>
           <el-color-picker v-model="activeEleText.style.backgroundColor"/>
         </div>
         <div class="style-box">
