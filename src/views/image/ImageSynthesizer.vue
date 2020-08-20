@@ -61,6 +61,7 @@ import ElementDrr from '../../components/ElementDrr'
 import ImageRichText from '../../components/ImageRichText'
 import TextSetting from '../../components/TextSetting'
 import UploadImage from '../../components/UploadImage'
+import { calcImageSize } from '../../utils'
 
 export default {
   name: 'ImageSynthesizer',
@@ -135,43 +136,10 @@ export default {
         this.getDragContainerSize(image.width, image.height)
       }
     },
-    // 计算图片宽高
-    getImageSize (imageTrueW, imageTrueH, showAreaW, showAreaH) {
-      let [width, height] = [0, 0]
-      // 图片真实宽大于真实高
-      if (imageTrueW > imageTrueH) {
-        if (imageTrueW >= showAreaW) { // 真实宽大于或等于展示区最大宽
-          const imageRatioH = imageTrueH * (showAreaW / imageTrueW)
-          // 按展示区最大宽与实际宽比率换算后，高度大于显示高度时
-          if (imageRatioH >= showAreaW) {
-            width = imageTrueW * (showAreaH / imageTrueH)
-            height = showAreaH
-          } else {
-            width = showAreaW
-            height = imageRatioH
-          }
-        } else {
-          width = imageTrueW
-          height = imageTrueH
-        }
-      } else { // 图片真实宽小于或等于真实高
-        if (imageTrueH >= showAreaH) { // 真实高大于或等于展示区最大高
-          width = imageTrueW * (showAreaH / imageTrueH)
-          height = showAreaH
-        } else {
-          width = imageTrueW
-          height = imageTrueH
-        }
-      }
-      return {
-        width,
-        height
-      }
-    },
     // 计算底图展示宽高
     getDragContainerSize (imageW, imageH) {
       const [showAreaW, showAreaH] = [850, 550]
-      const sizeObj = this.getImageSize(imageW, imageH, showAreaW, showAreaH)
+      const sizeObj = calcImageSize(imageW, imageH, showAreaW, showAreaH)
       // 更新图片展示区宽高
       this.container.width = sizeObj.width
       this.container.height = sizeObj.height
@@ -236,7 +204,7 @@ export default {
       const img = new Image()
       img.src = data
       img.onload = () => {
-        let imageSize = this.getImageSize(img.width, img.height, parseInt(this.container.width / 4), parseInt(this.container.height / 4))
+        let imageSize = calcImageSize(img.width, img.height, parseInt(this.container.width / 4), parseInt(this.container.height / 4))
         this.addImage({
           active: true,
           src: data,

@@ -103,3 +103,49 @@ export function base64toBlob (image) {
   }
   return new Blob([new Uint8Array(array)], {type: 'image/png'})
 }
+
+/**
+ * 计算图片宽高及比率
+ * @param imageTrueW 图片实际宽
+ * @param imageTrueH 图片实际高
+ * @param showAreaW 展示区宽度
+ * @param showAreaH 展示区高度
+ * */
+export function calcImageSize (imageTrueW, imageTrueH, showAreaW, showAreaH) {
+  let [width, height, ratio] = [0, 0, 0]
+  // 图片真实宽大于真实高
+  if (imageTrueW > imageTrueH) {
+    if (imageTrueW >= showAreaW) { // 真实宽大于或等于展示区最大宽
+      const imageRatioH = imageTrueH * (showAreaW / imageTrueW)
+      // 按展示区最大宽与实际宽比率换算后，高度大于显示高度时
+      if (imageRatioH >= showAreaW) {
+        width = imageTrueW * (showAreaH / imageTrueH)
+        height = showAreaH
+        ratio = imageTrueH / showAreaH
+      } else {
+        width = showAreaW
+        height = imageRatioH
+        ratio = imageTrueW / showAreaW
+      }
+    } else {
+      width = imageTrueW
+      height = imageTrueH
+      ratio = 1
+    }
+  } else { // 图片真实宽小于或等于真实高
+    if (imageTrueH >= showAreaH) { // 真实高大于或等于展示区最大高
+      width = imageTrueW * (showAreaH / imageTrueH)
+      height = showAreaH
+      ratio = imageTrueH / showAreaH
+    } else {
+      width = imageTrueW
+      height = imageTrueH
+      ratio = 1
+    }
+  }
+  return {
+    width,
+    height,
+    ratio
+  }
+}

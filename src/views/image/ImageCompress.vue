@@ -61,7 +61,7 @@
 <script>
 import Hints from '../../components/Hints'
 import UploadImage from '../../components/UploadImage'
-import { base64toBlob } from '../../utils'
+import { base64toBlob, calcImageSize } from '../../utils'
 const qualityOptions = [
   { label: 100, value: 1 },
   { label: 90, value: 0.9 },
@@ -144,43 +144,10 @@ export default {
     // 计算图片显示宽高
     getDragContainerSize (imageW, imageH) {
       const [showAreaW, showAreaH] = [850, 550]
-      const sizeObj = this.getImageSize(imageW, imageH, showAreaW, showAreaH)
+      const sizeObj = calcImageSize(imageW, imageH, showAreaW, showAreaH)
       // 更新图片展示区宽高
       this.imageShow.width = sizeObj.width
       this.imageShow.height = sizeObj.height
-    },
-    // 计算图片宽高
-    getImageSize (imageTrueW, imageTrueH, showAreaW, showAreaH) {
-      let [width, height] = [0, 0]
-      // 图片真实宽大于真实高
-      if (imageTrueW > imageTrueH) {
-        if (imageTrueW >= showAreaW) { // 真实宽大于或等于展示区最大宽
-          const imageRatioH = imageTrueH * (showAreaW / imageTrueW)
-          // 按展示区最大宽与实际宽比率换算后，高度大于显示高度时
-          if (imageRatioH >= showAreaW) {
-            width = imageTrueW * (showAreaH / imageTrueH)
-            height = showAreaH
-          } else {
-            width = showAreaW
-            height = imageRatioH
-          }
-        } else {
-          width = imageTrueW
-          height = imageTrueH
-        }
-      } else { // 图片真实宽小于或等于真实高
-        if (imageTrueH >= showAreaH) { // 真实高大于或等于展示区最大高
-          width = imageTrueW * (showAreaH / imageTrueH)
-          height = showAreaH
-        } else {
-          width = imageTrueW
-          height = imageTrueH
-        }
-      }
-      return {
-        width,
-        height
-      }
     },
     handleSuccess (data) {
       this.image.src = data
