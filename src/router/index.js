@@ -277,7 +277,7 @@ export default new Router({
       redirect: '/error-page/page-401',
       meta: {
         title: '错误页面',
-        icon: 'vue-dsn-icon-excel'
+        icon: 'vue-dsn-icon-bug'
       },
       children: [
         {
