@@ -91,7 +91,7 @@ export default new Router({
       path: '/image',
       name: 'Image',
       component: Layout,
-      redirect: '',
+      redirect: '/image/image-cropper',
       meta: {
         title: '图片处理',
         icon: 'vue-dsn-icon-picture'
@@ -119,6 +119,34 @@ export default new Router({
           component: () => import('../views/image/ImageSynthesizer'),
           meta: {
             title: '图片合成'
+          }
+        }
+      ]
+    },
+    {
+      path: '/video',
+      name: 'Video',
+      component: Layout,
+      redirect: '/video/video-player',
+      meta: {
+        title: '视频处理',
+        icon: 'vue-dsn-icon-video'
+      },
+      children: [
+        {
+          path: 'video-player',
+          name: 'VideoPlayer',
+          component: () => import('../views/video/VideoPlayer'),
+          meta: {
+            title: '视频播放器'
+          }
+        },
+        {
+          path: 'video-mark',
+          name: 'VideoMark',
+          component: () => import('../views/video/VideoMark'),
+          meta: {
+            title: '视频水印'
           }
         }
       ]
