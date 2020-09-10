@@ -28,6 +28,7 @@
     "vue-cropper": "^0.5.4",
     "vue-drr": "^1.0.9",
     "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.1",
     "wangeditor": "^3.1.1",

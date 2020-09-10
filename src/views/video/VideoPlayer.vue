@@ -3,23 +3,24 @@
     <Hints>
       <template slot="hintName">视频播放器</template>
       <template slot="hintInfo">
-        <p>基于VueDRR拖拽功能，在其上通过叠加图片、文字等，实现图片的叠加伪合成功能</p>
-        <p>VueDRR：基于vue-draggable-resizable的vue组件，可以实现拖动、拉伸和旋转功能</p>
+        <p>Vue-Video-Player：一个使用Vue对video.js进行二次封装的视频播放插件，适用于目前主流视频的播放</p>
+        <p><p>github地址：访问 <el-link type="success" href="https://github.com/surmon-china/vue-video-player" target="_blank">Vue-Video-Player</el-link></p>
       </template>
     </Hints>
     <el-row :gutter="20">
       <el-col :span="12">
         <el-card shadow="always">
-          <div slot="header" class="title">传统MP4播放器</div>
+          <div slot="header" class="title">传统视频播放器</div>
           <div class="content-box">
-            <video src="https://media-1256714386.cos.ap-guangzhou.myqcloud.com/videos/houlang.mp4" controls></video>
+            <video src="https://media-1256714386.cos.ap-guangzhou.myqcloud.com/videos/houlang.mp4" controls width="100%" style="outline: none"></video>
           </div>
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="always">
-          <div slot="header" class="title">视频流M3U8播放器</div>
-          <div class="content-box">
+          <div slot="header" class="title">视频播放插件</div>
+          <div class="content-item">
+            <VueVideoPlayer/>
           </div>
         </el-card>
       </el-col>
@@ -29,10 +30,11 @@
 
 <script>
 import Hints from '../../components/Hints'
+import VueVideoPlayer from '../../components/VueVideoPlayer'
 
 export default {
   name: 'VideoPlayer',
-  components: { Hints }
+  components: { Hints, VueVideoPlayer }
 }
 </script>
 
@@ -48,6 +50,16 @@ export default {
     align-items: center;
     justify-content: center;
     height: 360px;
+  }
+  .content-item {
+    padding: 8px 0;
+    .video-js {
+      .vjs-big-play-button {
+        top: 45%;
+        left: 45%;
+        font-size: 2em;
+      }
+    }
   }
 }
 </style>
