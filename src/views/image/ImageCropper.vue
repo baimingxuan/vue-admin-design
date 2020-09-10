@@ -68,7 +68,7 @@ export default {
   data () {
     return {
       configObj: {
-        imgSrc: './static/img/crop-image.jpg',
+        imgSrc: 'https://media-1256714386.cos.ap-guangzhou.myqcloud.com/images/img02.jpg',
         canMove: false,
         autoCrop: true,
         centerBox: true,

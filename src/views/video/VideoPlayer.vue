@@ -12,6 +12,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">传统MP4播放器</div>
           <div class="content-box">
+            <video src="https://media-1256714386.cos.ap-guangzhou.myqcloud.com/videos/houlang.mp4" controls></video>
           </div>
         </el-card>
       </el-col>
