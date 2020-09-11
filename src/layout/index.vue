@@ -23,11 +23,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import HeaderBar from './components/HeaderBar/index'
 import SideMenu from './components/SideMenu/index'
 import TagsNav from './components/TagsView/index'
 import MainView from './components/MainView/index'
+
+const RESIZE_WIDTH = 1440
 
 export default {
   name: 'Layout',
@@ -39,6 +41,26 @@ export default {
         return './static/logo/logo-icon.png'
       }
       return './static/logo/logo.png'
+    }
+  },
+  created () {
+    this.handleResize()
+  },
+  beforeMount () {
+    window.addEventListener('resize', this.handleResize)
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize)
+  },
+  methods: {
+    ...mapMutations('app', ['openSideMenu', 'closeSideMenu']),
+    handleResize () {
+      const width = document.body.getBoundingClientRect().width
+      if (width <= RESIZE_WIDTH) {
+        this.closeSideMenu()
+      } else {
+        this.openSideMenu()
+      }
     }
   }
 }

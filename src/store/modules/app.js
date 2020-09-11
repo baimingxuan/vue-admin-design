@@ -5,7 +5,7 @@ const state = {
 }
 
 const getters = {
-  collapsed: (state, getters) => state.collapsed
+  collapsed: (state) => state.collapsed
 }
 
 const mutations = {
@@ -17,8 +17,13 @@ const mutations = {
       Cookies.set('sideMenuStatus', 0)
     }
   },
+  openSideMenu (state) {
+    state.collapsed = false
+    Cookies.set('sideMenuStatus', 0)
+  },
   closeSideMenu (state) {
-    Cookies.set('sidebarStatus', 1)
+    state.collapsed = true
+    Cookies.set('sideMenuStatus', 1)
   }
 }
 
