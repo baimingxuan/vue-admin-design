@@ -75,16 +75,8 @@ export default {
 
 <style lang="less">
 .avatar-upload {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .content-box {
-    display: flex;
     height: 320px;
-    align-items: center;
-    justify-content: center;
     .el-upload {
       display: block;
     }

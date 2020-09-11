@@ -95,11 +95,6 @@ export default {
 
 <style lang="less">
 .count-to-page {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .box-cont {
     display: flex;
     height: 300px;

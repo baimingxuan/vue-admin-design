@@ -11,7 +11,7 @@
       <el-col :span="12">
         <el-card shadow="always">
           <div slot="header" class="title">基础用法</div>
-          <div class="content-box">
+          <div class="content-box" style="height: 360px;">
             <el-transfer v-model="value1" :data="data"></el-transfer>
           </div>
         </el-card>
@@ -19,7 +19,7 @@
       <el-col :span="12">
         <el-card shadow="always">
           <div slot="header" class="title">可自定义</div>
-          <div class="content-box">
+          <div class="content-box" style="height: 360px;">
             <el-transfer filterable v-model="value2" :data="data" :titles="['Source', 'Target']" :button-texts="['到左边', '到右边']"
                          :format="{noChecked: '${total}',hasChecked: '${checked}/${total}'}" :left-default-checked="[2, 6]"
                          :right-default-checked="[1]" @change="handleChange"></el-transfer>
@@ -60,27 +60,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-.transfer-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .content-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 360px;
-    .el-transfer-panel__body {
-      height: 280px;
-      .el-transfer-panel__list {
-        &.is-filterable {
-          height: 230px;
-        }
-      }
-    }
-  }
-}
-</style>

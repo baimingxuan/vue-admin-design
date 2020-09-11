@@ -104,11 +104,6 @@ export default {
 
 <style lang="less">
 .drag-list-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .list-cont {
     height: 510px;
     .el-card {
@@ -117,9 +112,6 @@ export default {
         padding: 14px 20px;
       }
     }
-  }
-  pre {
-    font-family: Consolas,Menlo,Courier,monospace;
   }
 }
 </style>

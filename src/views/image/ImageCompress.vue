@@ -18,7 +18,7 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
-          <div class="content-box">
+          <div class="box-content">
             <el-form label-width="82px" label-position="left">
               <el-form-item label="选择图片：">
                 <UploadImage class="select-image" btnName="选择图片" @on-success="handleSuccess"/>

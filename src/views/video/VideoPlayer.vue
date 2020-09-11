@@ -40,15 +40,7 @@ export default {
 
 <style lang="less">
 .video-player-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .content-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 440px;
   }
   .content-item {

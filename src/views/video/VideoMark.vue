@@ -33,7 +33,7 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
-          <div class="content-box">
+          <div class="box-content">
             <el-form class="form-wrapper" label-width="70px">
               <el-form-item label="添加文本">
                 <el-button @click="addText">添加文本</el-button>
@@ -202,11 +202,6 @@ export default {
 
 <style lang="less">
 .video-mark-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .box-wrapper {
     display: flex;
     align-items: center;
@@ -232,7 +227,7 @@ export default {
       }
     }
   }
-  .content-box {
+  .box-content {
     height: 550px;
     overflow: hidden;
     .form-wrapper {
@@ -242,10 +237,6 @@ export default {
     .el-button {
       width: 210px;
     }
-  }
-  img {
-    width: 100%;
-    height: 100%;
   }
 }
 </style>

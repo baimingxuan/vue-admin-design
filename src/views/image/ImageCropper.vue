@@ -11,7 +11,7 @@
       <el-col :span="10">
         <el-card shadow="always">
           <div slot="header" class="title">裁剪区域</div>
-          <div class="content-box">
+          <div class="content-box" style=" height: 400px;">
             <VueCropper
               ref="cropper"
               :img="configObj.imgSrc"
@@ -31,8 +31,8 @@
       <el-col :span="4">
         <el-card shadow="always">
           <div slot="header" class="title">设置区域</div>
-          <div class="content-box">
-            <div class="setting-box">
+          <div class="content-box" style=" height: 400px;">
+            <div style="height: 100px;">
               <UploadImage @on-success="handleSuccess"/>
               <el-button size="small" type="primary" style="margin-top: 20px">
                 <a @click="downloadImage">生成图片</a>
@@ -45,7 +45,7 @@
       <el-col :span="10">
         <el-card shadow="always">
           <div slot="header" class="title">预览区域</div>
-          <div class="content-box">
+          <div class="content-box" style="height: 400px;">
             <div class="show-preview" :style="{'width': previews.w + 'px', 'height': previews.h + 'px', 'overflow': 'hidden', 'zoom': (400 / previews.h)}">
               <div :style="previews.div">
                 <img :src="previews.url" :style="previews.img" alt="预览">
@@ -106,22 +106,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-.image-cropper-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .content-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    .setting-box {
-      height: 100px;
-    }
-  }
-}
-</style>

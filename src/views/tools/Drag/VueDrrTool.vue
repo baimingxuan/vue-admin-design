@@ -78,11 +78,6 @@ export default {
 
 <style lang="less">
 .vue-drr-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
   .drag-area {
     position: relative;
     width: 100%;
@@ -101,11 +96,8 @@ export default {
     }
   }
   .content-box {
-    display: flex;
-    justify-content: center;
     padding-top: 30px;
     height: 500px;
-    box-sizing: border-box;
   }
 }
 </style>

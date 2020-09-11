@@ -11,7 +11,7 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">可选择节点</div>
-          <div class="content-box">
+          <div style="height: 360px;">
             <el-tree
               :data="treeData"
               node-key="id"
@@ -27,7 +27,7 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">懒加载节点</div>
-          <div class="content-box">
+          <div style="height: 360px;">
             <el-tree
               :props="props"
               :load="loadNode"
@@ -41,7 +41,7 @@
       <el-col :span="8">
         <el-card shadow="always">
           <div slot="header" class="title">可拖拽节点</div>
-          <div class="content-box">
+          <div style="height: 360px;">
             <el-tree
               :data="treeData"
               node-key="id"
@@ -105,16 +105,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-.ele-tree-wrapper {
-  .title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .content-box {
-    height: 360px;
-  }
-}
-</style>
