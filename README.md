@@ -4,7 +4,7 @@
 >
 > 预览地址： [http://baimingxuan.net/vue-admin-design-page/](http://baimingxuan.net/vue-admin-design-page/)
 
-![](https://media-1256714386.cos.ap-guangzhou.myqcloud.com/images/home.png)
+![](https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/home.png)
 
 ## Features
 

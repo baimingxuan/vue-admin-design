@@ -58,7 +58,7 @@ export default {
     return {
       filesFormat: '.jpg, .jpeg, .gif, .png, .bmp',
       fileList: [
-        { name: 'beautiful-girl.jpg', url: 'https://media-1256714386.cos.ap-guangzhou.myqcloud.com/images/img04.jpg' }
+        { name: 'beautiful-girl.jpg', url: 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/img04.jpg' }
       ],
       dialogImageUrl: '',
       dialogVisible: false

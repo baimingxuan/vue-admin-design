@@ -79,7 +79,7 @@ export default {
       image: {
         width: 1920,
         height: 1080,
-        src: 'https://media-1256714386.cos.ap-guangzhou.myqcloud.com/images/img03.jpg'
+        src: 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/img03.jpg'
       },
       // 图片显示对象
       imageShow: {

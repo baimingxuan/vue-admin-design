@@ -3,7 +3,7 @@
     <Hints>
       <template slot="hintName">视频播放器</template>
       <template slot="hintInfo">
-        <p>Vue-Video-Player：一个使用Vue对video.js进行二次封装的视频播放插件，适用于目前主流视频的播放</p>
+        <p>Vue-Video-Player：一个使用Vue对video.js进行二次封装的视频播放插件，适用于目前主流网络视频的播放</p>
         <p><p>github地址：访问 <el-link type="success" href="https://github.com/surmon-china/vue-video-player" target="_blank">Vue-Video-Player</el-link></p>
       </template>
     </Hints>
@@ -12,7 +12,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">传统视频播放器</div>
           <div class="content-box">
-            <video src="https://media-1256714386.cos.ap-guangzhou.myqcloud.com/videos/houlang.mp4" controls width="100%" style="outline: none"></video>
+            <video src="https://cdn.jsdelivr.net/gh/baimingxuan/media-store/videos/houlang.mp4" controls width="100%" style="outline: none"></video>
           </div>
         </el-card>
       </el-col>
@@ -49,7 +49,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 360px;
+    height: 440px;
   }
   .content-item {
     padding: 8px 0;
