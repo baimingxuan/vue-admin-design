@@ -38,9 +38,9 @@ export default {
     ...mapGetters('app', ['collapsed']),
     imgSrc () {
       if (this.collapsed) {
-        return './static/logo/logo-icon.png'
+        return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo-icon.png'
       }
-      return './static/logo/logo.png'
+      return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo.png'
     }
   },
   created () {

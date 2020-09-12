@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function getTableList (param) {
   return axios({
-    url: './static/mock-data/table-list.json',
+    url: 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/mock-data/table-list.json',
     method: 'get',
     param
   })
