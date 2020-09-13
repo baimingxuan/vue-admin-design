@@ -146,7 +146,7 @@ export default {
     },
     // 添加文本
     addText () {
-      let tagNum = ++this.eleNum
+      const tagNum = ++this.eleNum
       const text = {
         active: true,
         text: '请输入文本',
@@ -176,7 +176,7 @@ export default {
     },
     // 添加图片
     addImage (imgObj) {
-      let tagNum = ++this.eleNum
+      const tagNum = ++this.eleNum
       const image = {
         active: imgObj.active,
         type: 'image',
@@ -204,7 +204,7 @@ export default {
       const img = new Image()
       img.src = data
       img.onload = () => {
-        let imageSize = calcImageSize(img.width, img.height, parseInt(this.container.width / 4), parseInt(this.container.height / 4))
+        const imageSize = calcImageSize(img.width, img.height, parseInt(this.container.width / 4), parseInt(this.container.height / 4))
         this.addImage({
           active: true,
           src: data,

@@ -35,7 +35,7 @@ export default {
   methods: {
     uploadSuccess (res, file) {
       if ([200, 0].includes(res.code)) {
-        let data = res.data
+        const data = res.data
         this.$emit('on-success', data)
       } else {
         this.$emit('on-error')

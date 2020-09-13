@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     scale (type) {
-      let zoom = this.value + (type === 'cut' ? -this.diff : this.diff)
+      const zoom = this.value + (type === 'cut' ? -this.diff : this.diff)
       if ((zoom < this.min && type === 'cut') || (zoom > this.max && type === 'add')) {
         return false
       }

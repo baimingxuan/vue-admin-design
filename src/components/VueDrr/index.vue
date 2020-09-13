@@ -21,8 +21,8 @@
       @dblclick="fillParent"
     ></div>
     <div
-      class="z-resizeable-handle"
       v-if="resizable"
+      class="z-resizeable-handle"
       v-for="handle in handles"
       :key="handle"
       :class="'z-handle-' + handle"
@@ -68,7 +68,7 @@ export default {
       type: [Number, String],
       default: 28,
       validator: function (val) {
-        let valid = (typeof val === 'string') ? val === 'auto' : val >= 0
+        const valid = (typeof val === 'string') ? val === 'auto' : val >= 0
         return valid
       }
     },
@@ -118,7 +118,7 @@ export default {
       type: [String, Number],
       default: 'auto',
       validator: function (val) {
-        let valid = (typeof val === 'string') ? val === 'auto' : val >= 0
+        const valid = (typeof val === 'string') ? val === 'auto' : val >= 0
         return valid
       }
     },
@@ -128,7 +128,7 @@ export default {
         return ['n', 'e', 's', 'w', 'nw', 'ne', 'se', 'sw']
       },
       validator: function (val) {
-        let s = new Set(['n', 'e', 's', 'w', 'nw', 'ne', 'se', 'sw'])
+        const s = new Set(['n', 'e', 's', 'w', 'nw', 'ne', 'se', 'sw'])
 
         return new Set(val.filter(h => s.has(h))).size === val.length
       }
@@ -408,8 +408,8 @@ export default {
       this.lastMouseX = this.mouseX
       this.lastMouseY = this.mouseY
 
-      let dX = diffX
-      let dY = diffY
+      const dX = diffX
+      const dY = diffY
 
       if (this.resizing) {
         if (this.handle.indexOf('n') >= 0) {

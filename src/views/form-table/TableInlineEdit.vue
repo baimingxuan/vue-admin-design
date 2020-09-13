@@ -61,7 +61,7 @@ export default {
       this.listLoading = true
       // 获取数据列表接口
       getTableList(this.listQuery).then(res => {
-        let data = res.data
+        const data = res.data
         if (data.code === 0) {
           this.tableList = data.data.list.map(item => {
             this.$set(item, 'editable', false)

@@ -35,7 +35,7 @@ export default {
     // 绑定@imgAdd event
     imageAdd (pos, file) {
       // 将图片上传到服务器
-      let formData = new FormData()
+      const formData = new FormData()
       formData.append('image', file)
       this.imageFile[pos] = file
       axios({
@@ -44,7 +44,7 @@ export default {
         data: formData,
         headers: { 'Content-Type': 'multipart/form-data' }
       }).then(res => {
-        let data = res.data
+        const data = res.data
         this.$refs.markdownEle.$img2Url(pos, data.url)
       })
     },

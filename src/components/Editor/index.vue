@@ -74,7 +74,7 @@ export default {
 
         // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
         // result.data就是服务器返回的图片名字和链接
-        let url = Object.values(result.data)
+        const url = Object.values(result.data)
         // 在这里转成JSON格式
         JSON.stringify(url)
         insertImg(url)

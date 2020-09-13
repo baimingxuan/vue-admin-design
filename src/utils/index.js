@@ -96,12 +96,12 @@ export function keepCursorEnd (target) {
  * @returns {Blob}
  */
 export function base64toBlob (image) {
-  let bytes = window.atob(image.split(',')[1])
-  let array = []
+  const bytes = window.atob(image.split(',')[1])
+  const array = []
   for (let i = 0; i < bytes.length; i++) {
     array.push(bytes.charCodeAt(i))
   }
-  return new Blob([new Uint8Array(array)], {type: 'image/png'})
+  return new Blob([new Uint8Array(array)], { type: 'image/png' })
 }
 
 /**

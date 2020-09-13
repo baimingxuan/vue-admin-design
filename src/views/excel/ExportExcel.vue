@@ -81,7 +81,7 @@ export default {
     fetchData () {
       this.listLoading = true
       getTableList(this.exportParam).then(res => {
-        let data = res.data
+        const data = res.data
         if (data.code === 0) {
           data.data.list.forEach(item => {
             const { id, name, sex, phone, education, hobby } = item

@@ -66,7 +66,7 @@ export default {
   data () {
     return {
       listOne: message.map((name, index) => {
-        return {name, order: index + 1}
+        return { name, order: index + 1 }
       }),
       listTwo: [],
       handleList: []

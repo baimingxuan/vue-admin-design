@@ -103,7 +103,7 @@ export default {
       return false
     },
     handlescroll (e) {
-      let type = e.type
+      const type = e.type
       let distance = 0
       // mousewheel非火狐浏览器鼠标滚动事件; DOMMouseScroll火狐浏览器鼠标滚动事件
       if (type === 'mousewheel' || type === 'DOMMouseScroll') {
@@ -121,7 +121,7 @@ export default {
       } else {
         if (viewWidth < contWidth) {
           if (this.tagsContLeft < -(contWidth - viewWidth)) {
-            this.tagsContLeft = this.tagsContLeft
+            // this.tagsContLeft = this.tagsContLeft
           } else {
             this.tagsContLeft = Math.max(this.tagsContLeft + offset, viewWidth - contWidth)
           }

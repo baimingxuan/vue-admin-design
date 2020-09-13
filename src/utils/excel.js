@@ -7,19 +7,19 @@ function AutoWidth (ws, arr) {
   const colWidth = arr.map(row => row.map(val => {
     // 判断是否为null/undefined
     if (val == null) {
-      return {'wch': 10}
+      return { wch: 10 }
     } else if (val.toString().charCodeAt(0) > 255) { // 判断是否为中文
-      return {'wch': val.toString().length * 2}
+      return { wch: val.toString().length * 2 }
     } else {
-      return {'wch': val.toString().length}
+      return { wch: val.toString().length }
     }
   }))
   // 以第一行为初始值
-  let result = colWidth[0]
+  const result = colWidth[0]
   for (let i = 1; i < colWidth.length; i++) {
     for (let j = 0; j < colWidth[i].length; j++) {
-      if (result[j]['wch'] < colWidth[i][j]['wch']) {
-        result[j]['wch'] = colWidth[i][j]['wch']
+      if (result[j].wch < colWidth[i][j].wch) {
+        result[j].wch = colWidth[i][j].wch
       }
     }
   }
@@ -62,7 +62,7 @@ export function exportDataToExcel (
   // 向Workbook对象中追加worksheet和fileName
   XLSX.utils.book_append_sheet(wb, ws, fileName)
   // 生成EXCEL的配置项
-  let wbout = XLSX.write(wb, {
+  const wbout = XLSX.write(wb, {
     bookType: bookType,
     bookSST: false,
     type: 'binary'

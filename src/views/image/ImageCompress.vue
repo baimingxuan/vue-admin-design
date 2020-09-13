@@ -170,9 +170,9 @@ export default {
         const canvas = document.createElement('canvas')
         const ctx = canvas.getContext('2d')
         // 创建属性节点
-        let anw = document.createAttribute('width')
+        const anw = document.createAttribute('width')
         anw.nodeValue = width
-        let anh = document.createAttribute('height')
+        const anh = document.createAttribute('height')
         anh.nodeValue = height
         canvas.setAttributeNode(anw)
         canvas.setAttributeNode(anh)
@@ -194,7 +194,7 @@ export default {
       link.download = 'image.png'
       link.href = URL.createObjectURL(imageBlob)
       // 兼容火狐
-      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}))
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
     }
   }
 }

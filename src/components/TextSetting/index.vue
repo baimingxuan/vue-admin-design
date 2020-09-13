@@ -72,22 +72,22 @@ import { base64toBlob } from '../../utils'
 import ImageRichText from '../ImageRichText'
 
 const fontFamilyData = [
-  {value: '黑体'},
-  {value: '宋体'},
-  {value: '仿宋'},
-  {value: '楷体'},
-  {value: '隶书'},
-  {value: '微软雅黑'},
-  {value: '方正姚体'}
+  { value: '黑体' },
+  { value: '宋体' },
+  { value: '仿宋' },
+  { value: '楷体' },
+  { value: '隶书' },
+  { value: '微软雅黑' },
+  { value: '方正姚体' }
 ]
 const fontSizeData = [
-  {value: '12px'},
-  {value: '14px'},
-  {value: '16px'},
-  {value: '18px'},
-  {value: '24px'},
-  {value: '32px'},
-  {value: '48px'}
+  { value: '12px' },
+  { value: '14px' },
+  { value: '16px' },
+  { value: '18px' },
+  { value: '24px' },
+  { value: '32px' },
+  { value: '48px' }
 ]
 
 export default {
@@ -153,13 +153,13 @@ export default {
     },
     // 文本生成图片
     textBecomeImg (obj) {
-      let canvas = document.createElement('canvas')
+      const canvas = document.createElement('canvas')
       canvas.width = obj.w
       canvas.height = obj.h
-      let context = canvas.getContext('2d')
+      const context = canvas.getContext('2d')
       // 绘制字体距离canvas顶部初始的高度
-      let initTop = 4
-      let initLeft = 8
+      const initTop = 4
+      const initLeft = 8
       // 设置背景色
       context.fillStyle = obj.style.backgroundColor || 'transparent'
       context.fillRect(0, 0, canvas.width, canvas.height)
@@ -170,10 +170,10 @@ export default {
       // 设置文本对齐方式
       context.textAlign = obj.style.textAlign
 
-      let textArr = obj.text.split('')
+      const textArr = obj.text.split('')
       let tempStr = ''
-      let rowArr = []
-      let maxTextWidth = canvas.width - 2 * initLeft
+      const rowArr = []
+      const maxTextWidth = canvas.width - 2 * initLeft
 
       for (let i = 0; i < textArr.length; i++) {
         if (context.measureText(tempStr).width < maxTextWidth && context.measureText(tempStr + (textArr[i])).width <= maxTextWidth) {
@@ -211,7 +211,7 @@ export default {
       link.download = 'image.png'
       link.href = URL.createObjectURL(imageBlob)
       // 兼容火狐
-      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}))
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }))
     }
   }
 }

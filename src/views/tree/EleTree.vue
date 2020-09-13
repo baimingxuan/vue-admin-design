@@ -86,7 +86,7 @@ export default {
       if (node.level > 2) return resolve([])
 
       setTimeout(() => {
-        let data = [{
+        const data = [{
           name: 'zone' + this.count++,
           leaf: true
         }, {

@@ -140,9 +140,9 @@ export default {
         lazy: true,
         lazyLoad (node, resolve) {
           let id = 0
-          const {level} = node
+          const { level } = node
           setTimeout(() => {
-            const nodes = Array.from({length: level + 1})
+            const nodes = Array.from({ length: level + 1 })
               .map(item => ({
                 value: ++id,
                 label: `选项${id}`,

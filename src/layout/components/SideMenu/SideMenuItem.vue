@@ -24,7 +24,6 @@
 <script>
 import path from 'path'
 import { isExternal } from '../../../utils/validate'
-import SvgIcon from '../../../components/SvgIcon/index'
 import LinkItem from './LinkItem'
 import Item from './Item'
 export default {
@@ -45,7 +44,7 @@ export default {
       onlyOneChild: null
     }
   },
-  components: { SvgIcon, LinkItem, Item },
+  components: { LinkItem, Item },
   methods: {
     hasOnlyOneChild (parent, children = []) {
       if (children.length === 0) {

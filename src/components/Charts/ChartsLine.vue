@@ -33,9 +33,9 @@ export default {
       this.dom.resize()
     },
     drawing () {
-      let xAxisData = Object.keys(this.data)
-      let seriesData = Object.values(this.data)
-      let options = {
+      const xAxisData = Object.keys(this.data)
+      const seriesData = Object.values(this.data)
+      const options = {
         // 标题
         title: {
           text: this.title,
