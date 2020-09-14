@@ -19,11 +19,12 @@
                 :element="item"
                 :handles="dragHandles(item.type)"
                 :style="elementZIndex(item.type)"
-                @updateActiveEle="updateActiveEle">
+                @updateActiveEle="updateActiveEle"
+              >
                 <!-- 图片 -->
                 <img v-if="item.type==='image'" :src="item.src" draggable="false">
                 <!-- 文字 -->
-                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item" :activeEleText="activeEleText"/>
+                <ImageRichText v-if="item.type === 'text'" v-model="item.text" :element="item" :active-ele-text="activeEleText" />
               </ElementDrr>
             </div>
           </div>
@@ -35,19 +36,19 @@
           <div class="box-content">
             <el-form class="form-wrapper" label-width="70px">
               <el-form-item label="选择底图">
-                <UploadImage btnName="选择底图" @on-success="handleSuccess"/>
+                <UploadImage btn-name="选择底图" @on-success="handleSuccess" />
               </el-form-item>
               <el-form-item label="添加文本">
                 <el-button @click="addText">添加文本</el-button>
               </el-form-item>
               <el-form-item label="添加图片">
-                <UploadImage @on-success="handleAddImage"/>
+                <UploadImage @on-success="handleAddImage" />
               </el-form-item>
               <el-form-item label="删除元素">
                 <el-button type="danger" @click="deleteActiveEle">删除元素</el-button>
               </el-form-item>
             </el-form>
-            <TextSetting v-if="activeEle.type === 'text'" :activeEleText="activeEleText"/>
+            <TextSetting v-if="activeEle.type === 'text'" :active-ele-text="activeEleText" />
           </div>
         </el-card>
       </el-col>
@@ -66,7 +67,7 @@ import { calcImageSize } from '../../utils'
 export default {
   name: 'ImageSynthesizer',
   components: { Hints, ElementDrr, ImageRichText, TextSetting, UploadImage },
-  data () {
+  data() {
     return {
       container: { // 展示区（可拖拽区）样式
         width: 0,
@@ -80,7 +81,7 @@ export default {
   },
   computed: {
     // 展示区（可拖拽区）样式
-    containerStyle () {
+    containerStyle() {
       return {
         width: this.container.width + 'px',
         height: this.container.height + 'px',
@@ -88,13 +89,13 @@ export default {
       }
     },
     // 选择的文本
-    activeEleText () {
+    activeEleText() {
       if (this.activeEle.type === 'text') {
         return this.activeEle
       }
     }
   },
-  created () {
+  created() {
     this.getDragContainerSize(1920, 1200)
     this.addText()
     this.addImage({
@@ -107,13 +108,13 @@ export default {
   },
   methods: {
     // 拖动元素把柄
-    dragHandles (type) {
+    dragHandles(type) {
       if (type === 'text') {
         return ['e', 'w']
       }
     },
     // 元素层级排序
-    elementZIndex (type) {
+    elementZIndex(type) {
       let zIndex = 1
       switch (type) {
         case 'text':
@@ -128,7 +129,7 @@ export default {
       }
     },
     // 底图上传成功
-    handleSuccess (data) {
+    handleSuccess(data) {
       this.container.bgImageSrc = data
       const image = new Image()
       image.src = data
@@ -137,7 +138,7 @@ export default {
       }
     },
     // 计算底图展示宽高
-    getDragContainerSize (imageW, imageH) {
+    getDragContainerSize(imageW, imageH) {
       const [showAreaW, showAreaH] = [850, 550]
       const sizeObj = calcImageSize(imageW, imageH, showAreaW, showAreaH)
       // 更新图片展示区宽高
@@ -145,7 +146,7 @@ export default {
       this.container.height = sizeObj.height
     },
     // 添加文本
-    addText () {
+    addText() {
       const tagNum = ++this.eleNum
       const text = {
         active: true,
@@ -175,7 +176,7 @@ export default {
       }
     },
     // 添加图片
-    addImage (imgObj) {
+    addImage(imgObj) {
       const tagNum = ++this.eleNum
       const image = {
         active: imgObj.active,
@@ -198,7 +199,7 @@ export default {
       }
     },
     // 上传图片成功
-    handleAddImage (data) {
+    handleAddImage(data) {
       const dataStrLen = data.replace('data:image/jpeg;base64,', '').length
       const dataSize = parseInt(dataStrLen - (dataStrLen / 8) * 2)
       const img = new Image()
@@ -215,11 +216,11 @@ export default {
       }
     },
     // 更新当前选中的元素
-    updateActiveEle (element) {
+    updateActiveEle(element) {
       this.activeEle = element
     },
     // 删除图片上当前选择的元素
-    deleteActiveEle () {
+    deleteActiveEle() {
       const newElements = this.elements.filter(item => {
         return item.tag !== this.activeEle.tag
       })

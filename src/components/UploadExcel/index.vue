@@ -10,8 +10,9 @@
       :auto-upload="false"
       :limit="1"
       :on-exceed="handleLimit"
-      :on-change="handleChange">
-      <i class="el-icon-upload"></i>
+      :on-change="handleChange"
+    >
+      <i class="el-icon-upload" />
       <div class="el-upload__text">将Excel文件拖到此处，或<em>点击上传</em></div>
     </el-upload>
   </div>
@@ -23,11 +24,11 @@ import excel from '../../utils/excel'
 export default {
   name: 'UploadExcel',
   methods: {
-    handleLimit () {
+    handleLimit() {
       this.$message.warning('Excel文件只支持单个上传!')
       return false
     },
-    handleChange (file) {
+    handleChange(file) {
       const rawFile = file.raw
       if (!rawFile) return false
       if (!this.isExcel(rawFile)) {
@@ -38,7 +39,7 @@ export default {
         this.readFile(rawFile)
       }
     },
-    isLimit1M (file) {
+    isLimit1M(file) {
       const isLimit1M = file.size / 1024 / 1024 < 1
       if (isLimit1M) {
         return true
@@ -47,10 +48,10 @@ export default {
         return false
       }
     },
-    isExcel (file) {
+    isExcel(file) {
       return /\.(xlsx|xls|csv)$/.test(file.name)
     },
-    readFile (file) {
+    readFile(file) {
       const reader = new FileReader()
       reader.onload = e => {
         const data = e.target.result

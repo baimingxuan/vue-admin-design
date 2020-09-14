@@ -12,7 +12,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">基础用法</div>
           <div class="content-box" style="height: 360px;">
-            <el-transfer v-model="value1" :data="data"></el-transfer>
+            <el-transfer v-model="value1" :data="data" />
           </div>
         </el-card>
       </el-col>
@@ -20,9 +20,17 @@
         <el-card shadow="always">
           <div slot="header" class="title">可自定义</div>
           <div class="content-box" style="height: 360px;">
-            <el-transfer filterable v-model="value2" :data="data" :titles="['Source', 'Target']" :button-texts="['到左边', '到右边']"
-                         :format="{noChecked: '${total}',hasChecked: '${checked}/${total}'}" :left-default-checked="[2, 6]"
-                         :right-default-checked="[1]" @change="handleChange"></el-transfer>
+            <el-transfer
+              v-model="value2"
+              filterable
+              :data="data"
+              :titles="['Source', 'Target']"
+              :button-texts="['到左边', '到右边']"
+              :format="{noChecked: '${total}',hasChecked: '${checked}/${total}'}"
+              :left-default-checked="[2, 6]"
+              :right-default-checked="[1]"
+              @change="handleChange"
+            />
           </div>
         </el-card>
       </el-col>
@@ -36,7 +44,7 @@ import Hints from '../../components/Hints'
 export default {
   name: 'TransferPage',
   components: { Hints },
-  data () {
+  data() {
     const baseData = () => {
       const data = []
       for (let i = 1; i < 10; i++) {
@@ -54,7 +62,7 @@ export default {
     }
   },
   methods: {
-    handleChange (value, direction, movedKeys) {
+    handleChange(value, direction, movedKeys) {
       console.log(value, direction, movedKeys)
     }
   }

@@ -15,16 +15,16 @@
             <VueCropper
               ref="cropper"
               :img="configObj.imgSrc"
-              :canMove="configObj.canMove"
-              :autoCrop="configObj.autoCrop"
-              :centerBox="configObj.centerBox"
-              :infoTrue="configObj.infoTrue"
+              :can-move="configObj.canMove"
+              :auto-crop="configObj.autoCrop"
+              :center-box="configObj.centerBox"
+              :info-true="configObj.infoTrue"
               :full="configObj.full"
-              :autoCropWidth="configObj.autoCropWidth"
-              :autoCropHeight="configObj.autoCropHeight"
-              :outputType="configObj.outputType"
-              @realTime="realTime">
-            </VueCropper>
+              :auto-crop-width="configObj.autoCropWidth"
+              :auto-crop-height="configObj.autoCropHeight"
+              :output-type="configObj.outputType"
+              @realTime="realTime"
+            />
           </div>
         </el-card>
       </el-col>
@@ -33,11 +33,11 @@
           <div slot="header" class="title">设置区域</div>
           <div class="content-box" style=" height: 400px;">
             <div style="height: 100px;">
-              <UploadImage @on-success="handleSuccess"/>
+              <UploadImage @on-success="handleSuccess" />
               <el-button size="small" type="primary" style="margin-top: 20px">
                 <a @click="downloadImage">生成图片</a>
               </el-button>
-              <a :href="downImg" download="demo.png" ref="downloadDom"></a>
+              <a ref="downloadDom" :href="downImg" download="demo.png" />
             </div>
           </div>
         </el-card>
@@ -65,7 +65,8 @@ import UploadImage from '../../components/UploadImage'
 
 export default {
   name: 'ImageCropper',
-  data () {
+  components: { Hints, VueCropper, UploadImage },
+  data() {
     return {
       configObj: {
         imgSrc: 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/img02.jpg',
@@ -82,15 +83,14 @@ export default {
       previews: {}
     }
   },
-  components: { Hints, VueCropper, UploadImage },
   methods: {
-    handleSuccess (data) {
+    handleSuccess(data) {
       this.configObj.imgSrc = data
     },
-    realTime (data) {
+    realTime(data) {
       this.previews = data
     },
-    downloadImage () {
+    downloadImage() {
       this.$refs.cropper.getCropBlob(data => {
         this.downImg = window.URL.createObjectURL(data)
         if (window.navigator.msSaveBlob) {

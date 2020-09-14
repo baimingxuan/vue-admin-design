@@ -1,7 +1,7 @@
 <template>
   <!-- eslint-disable vue/require-component-is -->
   <component v-bind="renderTag(to)">
-    <slot/>
+    <slot />
   </component>
 </template>
 
@@ -15,7 +15,7 @@ export default {
     }
   },
   methods: {
-    renderTag (url) {
+    renderTag(url) {
       if (isExternal(url)) {
         return {
           is: 'a',

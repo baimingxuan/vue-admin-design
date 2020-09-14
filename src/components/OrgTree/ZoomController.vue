@@ -1,11 +1,11 @@
 <template>
   <div class="zoom-controller">
     <el-button type="text" @click="scale('cut')">
-      <i class="icon el-icon-remove"></i>
+      <i class="icon el-icon-remove" />
     </el-button>
     <span>{{ value }}%</span>
     <el-button type="text" @click="scale('add')">
-      <i class="icon el-icon-circle-plus"></i>
+      <i class="icon el-icon-circle-plus" />
     </el-button>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    scale (type) {
+    scale(type) {
       const zoom = this.value + (type === 'cut' ? -this.diff : this.diff)
       if ((zoom < this.min && type === 'cut') || (zoom > this.max && type === 'add')) {
         return false

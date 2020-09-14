@@ -11,7 +11,7 @@
         <el-card shadow="always">
           <div slot="header" class="title">图片区域</div>
           <div class="box-wrapper">
-            <div class="image-container" :style="imageStyle"></div>
+            <div class="image-container" :style="imageStyle" />
           </div>
         </el-card>
       </el-col>
@@ -21,13 +21,13 @@
           <div class="box-content">
             <el-form label-width="82px" label-position="left">
               <el-form-item label="选择图片：">
-                <UploadImage class="select-image" btnName="选择图片" @on-success="handleSuccess"/>
+                <UploadImage class="select-image" btn-name="选择图片" @on-success="handleSuccess" />
               </el-form-item>
               <el-form-item label="图片尺寸：">
                 <div class="ratio-size">
-                  <el-input v-model.number="imageObj.width" @keyup.native="bindInput('h')"/>
-                  <i class="vue-dsn-icon-edit-img-size-locking icon-link"></i>
-                  <el-input v-model.number="imageObj.height" @keyup.native="bindInput('w')"/>
+                  <el-input v-model.number="imageObj.width" @keyup.native="bindInput('h')" />
+                  <i class="vue-dsn-icon-edit-img-size-locking icon-link" />
+                  <el-input v-model.number="imageObj.height" @keyup.native="bindInput('w')" />
                   <ul class="ratio-type clearfix">
                     <li>宽</li>
                     <li>高</li>
@@ -35,7 +35,7 @@
                 </div>
               </el-form-item>
               <el-form-item label="压缩比例：" class="item-ratio">
-                <el-input v-model.number="imageObj.ratio" disabled/>
+                <el-input v-model.number="imageObj.ratio" disabled />
               </el-form-item>
               <el-form-item label="图片质量：">
                 <el-select v-model="imageObj.quality" placeholder="请选择">
@@ -43,8 +43,8 @@
                     v-for="item in qualityOptions"
                     :key="item.value"
                     :label="item.label"
-                    :value="item.value">
-                  </el-option>
+                    :value="item.value"
+                  />
                 </el-select>
               </el-form-item>
               <div>
@@ -73,7 +73,8 @@ const qualityOptions = [
 
 export default {
   name: 'ImageCompress',
-  data () {
+  components: { Hints, UploadImage },
+  data() {
     return {
       // 图片对象
       image: {
@@ -99,7 +100,7 @@ export default {
   },
   computed: {
     // 图片显示区样式
-    imageStyle () {
+    imageStyle() {
       return {
         width: this.imageShow.width + 'px',
         height: this.imageShow.height + 'px',
@@ -107,20 +108,13 @@ export default {
       }
     },
     // 图片宽高比率
-    imageRatio () {
+    imageRatio() {
       return this.image.width / this.image.height
     }
   },
-  components: { Hints, UploadImage },
-  created () {
-    this.getDragContainerSize(this.image.width, this.image.height)
-    this.imageShow.imgSrc = this.image.src
-    this.imageObj.width = this.image.width
-    this.imageObj.height = this.image.height
-  },
   watch: {
     image: {
-      handler (val) {
+      handler(val) {
         this.getDragContainerSize(val.width, val.height)
         this.imageShow.imgSrc = val.src
         this.imageObj.width = val.width
@@ -131,9 +125,15 @@ export default {
       deep: true
     }
   },
+  created() {
+    this.getDragContainerSize(this.image.width, this.image.height)
+    this.imageShow.imgSrc = this.image.src
+    this.imageObj.width = this.image.width
+    this.imageObj.height = this.image.height
+  },
   methods: {
     // 输入宽高关联
-    bindInput (type) {
+    bindInput(type) {
       if (type === 'h') {
         this.imageObj.height = Math.round(this.imageObj.width / this.imageRatio).toFixed(0)
       } else if (type === 'w') {
@@ -142,14 +142,14 @@ export default {
       this.imageObj.ratio = (this.imageObj.width / this.image.width * 100).toFixed(2) + '%'
     },
     // 计算图片显示宽高
-    getDragContainerSize (imageW, imageH) {
+    getDragContainerSize(imageW, imageH) {
       const [showAreaW, showAreaH] = [850, 550]
       const sizeObj = calcImageSize(imageW, imageH, showAreaW, showAreaH)
       // 更新图片展示区宽高
       this.imageShow.width = sizeObj.width
       this.imageShow.height = sizeObj.height
     },
-    handleSuccess (data) {
+    handleSuccess(data) {
       this.image.src = data
       const image = new Image()
       image.src = data
@@ -159,7 +159,7 @@ export default {
       }
     },
     // 图片压缩
-    compressImage () {
+    compressImage() {
       const width = this.imageObj.width
       const height = this.imageObj.height
       const quality = this.imageObj.quality
@@ -185,7 +185,7 @@ export default {
       }
     },
     // 下载压缩的图片
-    downloadImage (imageBase64) {
+    downloadImage(imageBase64) {
       const imageBlob = base64toBlob(imageBase64)
       const link = document.createElement('a')
       const event = document.createEvent('HTMLEvents')

@@ -9,7 +9,7 @@ const getters = {
 }
 
 const mutations = {
-  taggleSideMenu (state) {
+  taggleSideMenu(state) {
     state.collapsed = !state.collapsed
     if (state.collapsed) {
       Cookies.set('sideMenuStatus', 1)
@@ -17,11 +17,11 @@ const mutations = {
       Cookies.set('sideMenuStatus', 0)
     }
   },
-  openSideMenu (state) {
+  openSideMenu(state) {
     state.collapsed = false
     Cookies.set('sideMenuStatus', 0)
   },
-  closeSideMenu (state) {
+  closeSideMenu(state) {
     state.collapsed = true
     Cookies.set('sideMenuStatus', 1)
   }

@@ -4,9 +4,9 @@
       <div v-for="(item, index) in cardInfoData" :key="index" class="data-col">
         <el-card shadow="always" :body-style="{padding: '0px'}">
           <div class="date-block">
-            <i :class="[ item.icon ]" :style="{ background: item.color }" class="icon-box"></i>
+            <i :class="[ item.icon ]" :style="{ background: item.color }" class="icon-box" />
             <div class="date-cont">
-              <CountTo class="count" :startVal="0" :endVal="item.count" :duration="3000"/>
+              <CountTo class="count" :start-val="0" :end-val="item.count" :duration="3000" />
               <p class="title">{{ item.title }}</p>
             </div>
           </div>
@@ -16,7 +16,7 @@
     <el-row class="date-box" :gutter="20">
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie :title=text type="pie" :data="chartsPieData" class="data-desc"/>
+          <ChartsPie :title="text" type="pie" :data="chartsPieData" class="data-desc" />
         </el-card>
       </el-col>
       <el-col :span="8">
@@ -25,26 +25,26 @@
             <div class="data-lang-title">项目语言构成</div>
             <div v-for="(item, index) in langsData" :key="index" class="data-lang-item">
               <label>{{ item.name }}</label>
-              <el-progress :percentage="item.value" :stroke-width="16" :color="item.color"/>
+              <el-progress :percentage="item.value" :stroke-width="16" :color="item.color" />
             </div>
           </div>
         </el-card>
       </el-col>
       <el-col :span="8">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsPie :title=text type="ring" :data="chartsPieData" class="data-desc"/>
+          <ChartsPie :title="text" type="ring" :data="chartsPieData" class="data-desc" />
         </el-card>
       </el-col>
     </el-row>
     <el-row class="date-box" :gutter="20">
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsBar :title=title :data=commonChartsData class="data-chart"/>
+          <ChartsBar :title="title" :data="commonChartsData" class="data-chart" />
         </el-card>
       </el-col>
       <el-col :span="12">
         <el-card shadow="always" :body-style="{padding: '0px'}">
-          <ChartsLine :title=title :data=commonChartsData class="data-chart"/>
+          <ChartsLine :title="title" :data="commonChartsData" class="data-chart" />
         </el-card>
       </el-col>
     </el-row>
@@ -59,7 +59,7 @@ import ChartsLine from '../components/Charts/ChartsLine'
 export default {
   name: 'Home',
   components: { CountTo, ChartsPie, ChartsBar, ChartsLine },
-  data () {
+  data() {
     return {
       text: '用户访问来源',
       title: '近七天用户访问量条形图',

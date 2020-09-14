@@ -1,24 +1,24 @@
 <template>
   <div class="tags-nav-wrapper clear-fix">
     <el-button type="text" class="btn-con" @click="handleMove(240)">
-      <i class="icon el-icon-arrow-left"></i>
+      <i class="icon el-icon-arrow-left" />
     </el-button>
-    <div class="tags-views" ref="tagsViews" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
-      <div class="tags-cont" ref="tagsCont" :style="{left: tagsContLeft + 'px'}">
+    <div ref="tagsViews" class="tags-views" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
+      <div ref="tagsCont" class="tags-cont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
-          <router-link ref="tagsItem" v-for="item in visitedViews" :to="{ path: item.path }" :key="item.name">
+          <router-link v-for="item in visitedViews" ref="tagsItem" :key="item.name" :to="{ path: item.path }">
             <TagItem :class="{active: isActive(item)}" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{ item.title }}</TagItem>
           </router-link>
         </transition-group>
       </div>
     </div>
     <el-button type="text" class="btn-con" @click="handleMove(-240)">
-      <i class="icon el-icon-arrow-right"></i>
+      <i class="icon el-icon-arrow-right" />
     </el-button>
     <div class="btn-con btn-close">
       <el-dropdown @command="handleCloseCtrl">
         <span class="el-dropdown-link">
-          <i class="icon el-icon-circle-close"></i>
+          <i class="icon el-icon-circle-close" />
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="all">关闭所有</el-dropdown-item>
@@ -36,37 +36,37 @@ import TagItem from './TagItem'
 
 export default {
   name: 'TagsView',
-  data () {
+  components: { TagItem },
+  data() {
     return {
       tagsContLeft: 0,
       contPadding: 4,
       selectedTag: {}
     }
   },
-  components: { TagItem },
   computed: {
     ...mapGetters(['visitedViews']),
-    routes () {
+    routes() {
       return this.$router.options.routes
     }
   },
   watch: {
-    $route (val) {
+    $route(val) {
       this.addTags()
       this.getTagElement(val)
       this.selectedTag = val
     }
   },
-  mounted () {
+  mounted() {
     this.initTags()
     this.addTags()
   },
   methods: {
     ...mapMutations(['addVisitedView', 'delVisitedView', 'delAllVisitedView', 'delOthersVisitedView']),
-    isActive (tag) {
+    isActive(tag) {
       return tag.path === this.$route.path
     },
-    filterFixedTags (routes, basePath = '/') {
+    filterFixedTags(routes, basePath = '/') {
       let tags = []
       routes.forEach(item => {
         if (item.meta && item.meta.fixed) {
@@ -87,7 +87,7 @@ export default {
       })
       return tags
     },
-    initTags () {
+    initTags() {
       const fixedTags = this.filterFixedTags(this.routes)
       for (const tag of fixedTags) {
         if (tag.name) {
@@ -95,14 +95,14 @@ export default {
         }
       }
     },
-    addTags () {
+    addTags() {
       const { name } = this.$route
       if (name) {
         this.addVisitedView(this.$route)
       }
       return false
     },
-    handlescroll (e) {
+    handlescroll(e) {
       const type = e.type
       let distance = 0
       // mousewheel非火狐浏览器鼠标滚动事件; DOMMouseScroll火狐浏览器鼠标滚动事件
@@ -113,7 +113,7 @@ export default {
       }
       this.handleMove(distance)
     },
-    handleMove (offset) {
+    handleMove(offset) {
       const viewWidth = this.$refs.tagsViews.offsetWidth
       const contWidth = this.$refs.tagsCont.offsetWidth
       if (offset > 0) {
@@ -130,7 +130,7 @@ export default {
         }
       }
     },
-    getTagElement (route) {
+    getTagElement(route) {
       this.$nextTick(() => {
         const tagsItemArr = this.$refs.tagsItem
         const index = tagsItemArr.findIndex(item => {
@@ -140,7 +140,7 @@ export default {
         this.moveToCurrentTag(tag)
       })
     },
-    moveToCurrentTag (tag) {
+    moveToCurrentTag(tag) {
       const viewWidth = this.$refs.tagsViews.offsetWidth
       const contWidth = this.$refs.tagsCont.offsetWidth
       if (contWidth < viewWidth) {
@@ -156,19 +156,19 @@ export default {
         this.tagsContLeft = -(tag.offsetLeft - (viewWidth - this.contPadding - tag.offsetWidth))
       }
     },
-    handleSelectedClose (view) {
+    handleSelectedClose(view) {
       this.delVisitedView(view)
       if (this.isActive(view)) {
         this.showLastView()
       }
     },
-    showLastView () {
+    showLastView() {
       const lastView = this.visitedViews.slice(-1)[0]
       if (lastView) {
         this.$router.push(lastView.fullPath)
       }
     },
-    handleCloseCtrl (type) {
+    handleCloseCtrl(type) {
       if (type === 'all') {
         this.delAllVisitedView()
         this.showLastView()

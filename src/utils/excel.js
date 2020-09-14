@@ -2,7 +2,7 @@ import XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 
 // 自动宽度计算
-function AutoWidth (ws, arr) {
+function AutoWidth(ws, arr) {
   // 设置worksheet每列的最大宽度
   const colWidth = arr.map(row => row.map(val => {
     // 判断是否为null/undefined
@@ -27,12 +27,12 @@ function AutoWidth (ws, arr) {
 }
 
 // 数组转换成JSON
-function formatJSON (key, data) {
+function formatJSON(key, data) {
   return data.map(v => key.map(i => { return v[i] }))
 }
 
 // 字符串转ArrayBuffer
-function s2ab (s) {
+function s2ab(s) {
   const buf = new ArrayBuffer(s.length)
   const view = new Uint8Array(buf)
   for (let i = 0; i !== s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF
@@ -40,7 +40,7 @@ function s2ab (s) {
 }
 
 // 导出EXCEL表格
-export function exportDataToExcel (
+export function exportDataToExcel(
   {
     header, // 表头名数组
     key, // 列对应字段数组
@@ -74,7 +74,7 @@ export function exportDataToExcel (
 }
 
 // 从Excel文件中获取表格头
-function getHeaderRow (sheet) {
+function getHeaderRow(sheet) {
   const headers = []
   // 将 A1:G8 这种字符串转换为行列对象
   const range = XLSX.utils.decode_range(sheet['!ref'])
@@ -93,7 +93,7 @@ function getHeaderRow (sheet) {
 }
 
 // 读取Excel文件
-export function readDataFromExcel (data, type) {
+export function readDataFromExcel(data, type) {
   // 读取Excel文件并保存到Workbook对象
   const workbook = XLSX.read(data, { type: type })
   const firstSheetName = workbook.SheetNames[0]

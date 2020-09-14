@@ -1,6 +1,6 @@
 <template>
   <div class="fold-side-menu" :class="{'vertical': collapsed}" @click="taggleSideMenu">
-    <SvgIcon class="icon" icon-class="vue-dsn-icon-menu"></SvgIcon>
+    <SvgIcon class="icon" icon-class="vue-dsn-icon-menu" />
   </div>
 </template>
 
@@ -10,10 +10,10 @@ import SvgIcon from '../SvgIcon/index'
 
 export default {
   name: 'FoldSideMenu',
+  components: { SvgIcon },
   computed: {
     ...mapGetters('app', ['collapsed'])
   },
-  components: { SvgIcon },
   methods: {
     ...mapMutations('app', ['taggleSideMenu'])
   }

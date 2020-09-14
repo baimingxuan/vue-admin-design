@@ -2,12 +2,12 @@
   <div class="login-wrapper" :style="'background-image:url('+ Background +')'">
     <div class="form-box">
       <h3 class="form-title">账号登录</h3>
-      <el-form :model="loginForm" :rules="loginRules" ref="loginForm" label-width="0px" class="login-form">
+      <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-width="0px" class="login-form">
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="请输入账号" prefix-icon="el-icon-user"></el-input>
+          <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="请输入账号" prefix-icon="el-icon-user" />
         </el-form-item>
         <el-form-item prop="password">
-          <el-input v-model="loginForm.password" type="password" auto-complete="off" placeholder="请输入密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin"></el-input>
+          <el-input v-model="loginForm.password" type="password" auto-complete="off" placeholder="请输入密码" prefix-icon="el-icon-lock" @keyup.enter.native="handleLogin" />
         </el-form-item>
         <el-form-item>
           <el-checkbox v-model="loginForm.rememberMe">记住我</el-checkbox>
@@ -28,7 +28,7 @@ import Background from '../assets/img/login-background.jpg'
 
 export default {
   name: 'Login',
-  data () {
+  data() {
     return {
       Background,
       loginForm: {
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    handleLogin () {
+    handleLogin() {
       this.loading = true
       setTimeout(() => {
         this.loading = false

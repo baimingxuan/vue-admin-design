@@ -3,7 +3,7 @@
     <el-breadcrumb separator="/">
       <el-breadcrumb-item>
         <el-button type="text" class="home-link" :disabled="!hasClick" @click="goHome">
-          <i class="icon vue-dsn-icon-index"></i>
+          <i class="icon vue-dsn-icon-index" />
           首页
         </el-button>
       </el-breadcrumb-item>
@@ -15,34 +15,34 @@
 <script>
 export default {
   name: 'BreadCrumbs',
-  data () {
+  data() {
     return {
       levelList: [],
       hasClick: false
     }
   },
   watch: {
-    $route (route) {
+    $route(route) {
       this.getBreadCrumb()
       this.isHome(route.path)
     }
   },
-  created () {
+  created() {
     this.getBreadCrumb()
     this.isHome(this.$route.path)
   },
   methods: {
-    isHome (path) {
+    isHome(path) {
       if (path === '/home') {
         this.hasClick = false
       } else {
         this.hasClick = true
       }
     },
-    goHome () {
+    goHome() {
       this.$router.push('/')
     },
-    getBreadCrumb () {
+    getBreadCrumb() {
       const matched = this.$route.matched.filter(item => item.meta && item.meta.title)
       this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.title !== '首页')
     }

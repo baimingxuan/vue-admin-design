@@ -7,7 +7,8 @@
     :multiple="false"
     :show-file-list="false"
     :auto-upload="false"
-    :on-change="handleChange">
+    :on-change="handleChange"
+  >
     <el-button size="small" type="primary">{{ btnName }}</el-button>
   </el-upload>
 </template>
@@ -22,7 +23,7 @@ export default {
     }
   },
   methods: {
-    handleChange (image) {
+    handleChange(image) {
       const rawImage = image.raw
       if (!rawImage) return false
       if (!this.isImage(rawImage)) {
@@ -33,7 +34,7 @@ export default {
         this.readImage(rawImage)
       }
     },
-    isLimit5M (image) {
+    isLimit5M(image) {
       const isLimit5M = image.size / 1024 / 1024 < 5
       if (isLimit5M) {
         return true
@@ -42,10 +43,10 @@ export default {
         return false
       }
     },
-    isImage (image) {
+    isImage(image) {
       return /\.(jpg|png|bmp|jpeg|webp)$/.test(image.name)
     },
-    readImage (image) {
+    readImage(image) {
       const reader = new FileReader()
       reader.onload = e => {
         let data

@@ -8,11 +8,12 @@
       </template>
     </Hints>
     <mavonEditor
-      v-model="content"
       ref="markdownEle"
+      v-model="content"
+      style="min-height: 500px"
       @imgAdd="imageAdd"
       @imgDel="imageDel"
-      style="min-height: 500px"/>
+    />
   </div>
 </template>
 
@@ -24,16 +25,16 @@ import Hints from '../../components/Hints'
 
 export default {
   name: 'MarkdownEditor',
-  data () {
+  components: { mavonEditor, Hints },
+  data() {
     return {
       content: '',
       imageFile: {}
     }
   },
-  components: { mavonEditor, Hints },
   methods: {
     // 绑定@imgAdd event
-    imageAdd (pos, file) {
+    imageAdd(pos, file) {
       // 将图片上传到服务器
       const formData = new FormData()
       formData.append('image', file)
@@ -49,7 +50,7 @@ export default {
       })
     },
     // 绑定@imgDel event
-    imageDel (pos) {
+    imageDel(pos) {
       delete this.imageFile[pos]
     }
   }

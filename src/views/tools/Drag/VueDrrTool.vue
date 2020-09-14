@@ -22,7 +22,8 @@
           :parent="configObj.parent"
           @dragging="handleDragging"
           @resizing="handleResizing"
-          @rotating="handleRotating">
+          @rotating="handleRotating"
+        >
           <div class="drag-box">
             <p>x: {{ configObj.x }}</p>
             <p>y: {{ configObj.y }}</p>
@@ -42,7 +43,8 @@ import Hints from '../../../components/Hints'
 
 export default {
   name: 'VueDrrTool',
-  data () {
+  components: { Hints, VueDrr },
+  data() {
     return {
       configObj: {
         x: 650,
@@ -57,19 +59,18 @@ export default {
       }
     }
   },
-  components: { Hints, VueDrr },
   methods: {
-    handleResizing (x, y, width, height) {
+    handleResizing(x, y, width, height) {
       this.configObj.x = x
       this.configObj.y = y
       this.configObj.width = width
       this.configObj.height = height
     },
-    handleDragging (x, y) {
+    handleDragging(x, y) {
       this.configObj.x = x
       this.configObj.y = y
     },
-    handleRotating (angle) {
+    handleRotating(angle) {
       this.configObj.angle = angle
     }
   }

@@ -2,7 +2,7 @@
   <div class="main-view">
     <transition name="fade" mode="out-in">
       <keep-alive :include="cachedViews">
-        <router-view :key="key"/>
+        <router-view :key="key" />
       </keep-alive>
     </transition>
   </div>
@@ -12,10 +12,10 @@
 export default {
   name: 'MainView',
   computed: {
-    cachedViews () {
+    cachedViews() {
       return this.$store.state.tagsView.cachedViews
     },
-    key () {
+    key() {
       return this.$route.path
     }
   }

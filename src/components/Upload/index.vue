@@ -6,8 +6,9 @@
     :multiple="isMultiple"
     :show-file-list="isShowList"
     :on-success="uploadSuccess"
-    :on-error="uploadError">
-    <slot></slot>
+    :on-error="uploadError"
+  >
+    <slot />
   </el-upload>
 </template>
 
@@ -33,7 +34,7 @@ export default {
     }
   },
   methods: {
-    uploadSuccess (res, file) {
+    uploadSuccess(res, file) {
       if ([200, 0].includes(res.code)) {
         const data = res.data
         this.$emit('on-success', data)
@@ -42,7 +43,7 @@ export default {
         this.$message.error(res.msg)
       }
     },
-    uploadError (res, file) {
+    uploadError(res, file) {
       this.$emit('on-error')
     }
   }

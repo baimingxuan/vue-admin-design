@@ -8,15 +8,15 @@
       </template>
     </Hints>
     <el-card shadow="always">
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="230px" class="form-list">
+      <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="230px" class="form-list">
         <el-form-item label="输入框（长度限制）：" prop="inputLimit">
-          <el-input v-model="ruleForm.inputLimit" maxlength="15" show-word-limit placeholder="请输入"></el-input>
+          <el-input v-model="ruleForm.inputLimit" maxlength="15" show-word-limit placeholder="请输入" />
         </el-form-item>
         <el-form-item label="纯数字（纯数字）：" prop="inputNum">
-          <el-input v-model.number="ruleForm.inputNum" maxlength="11" placeholder="请输入数字"></el-input>
+          <el-input v-model.number="ruleForm.inputNum" maxlength="11" placeholder="请输入数字" />
         </el-form-item>
         <el-form-item label="输入框（密码隐藏）：" prop="password">
-          <el-input v-model="ruleForm.password" placeholder="请输入密码" maxlength="16" show-password></el-input>
+          <el-input v-model="ruleForm.password" placeholder="请输入密码" maxlength="16" show-password />
         </el-form-item>
         <el-form-item label="select选择器（自定义）：" required>
           <el-col :span="10">
@@ -33,7 +33,7 @@
           <el-col :span="10">
             <el-form-item prop="select2">
               <el-select v-model="ruleForm.select2" filterable placeholder="请选择或输入">
-                <el-option v-for="item in selectData" :key="item.value" :label="item.label" :value="item.value"></el-option>
+                <el-option v-for="item in selectData" :key="item.value" :label="item.label" :value="item.value" />
               </el-select>
             </el-form-item>
           </el-col>
@@ -41,22 +41,22 @@
         <el-form-item label="日期和时间选择器：" required>
           <el-col :span="11">
             <el-form-item prop="dateVal">
-              <el-date-picker type="date" placeholder="选择日期" v-model="ruleForm.dateVal" style="width: 100%;"></el-date-picker>
+              <el-date-picker v-model="ruleForm.dateVal" type="date" placeholder="选择日期" style="width: 100%;" />
             </el-form-item>
           </el-col>
           <el-col class="line" :span="2">-</el-col>
           <el-col :span="11">
             <el-form-item prop="timeVal">
-              <el-time-picker placeholder="选择时间" v-model="ruleForm.timeVal" style="width: 100%;"></el-time-picker>
+              <el-time-picker v-model="ruleForm.timeVal" placeholder="选择时间" style="width: 100%;" />
             </el-form-item>
           </el-col>
         </el-form-item>
         <el-form-item label="switch开关（隐藏下面表单）：" prop="switch">
-          <el-switch v-model="ruleForm.switch"></el-switch>
+          <el-switch v-model="ruleForm.switch" />
         </el-form-item>
         <div v-if="ruleForm.switch">
           <el-form-item label="滑块条（初始值）：" prop="slider">
-            <el-slider v-model="ruleForm.slider"></el-slider>
+            <el-slider v-model="ruleForm.slider" />
           </el-form-item>
           <el-form-item label="级联选择器（自定义）：">
             <el-col :span="10">
@@ -72,32 +72,38 @@
             <el-col class="tip-title" :span="4">（懒加载）</el-col>
             <el-col :span="10">
               <el-form-item prop="cascader2">
-                <el-cascader v-model="ruleForm.cascader2" :props="customProps"></el-cascader>
+                <el-cascader v-model="ruleForm.cascader2" :props="customProps" />
               </el-form-item>
             </el-col>
           </el-form-item>
           <el-form-item label="单选框（带禁止）：" prop="radio">
             <el-radio-group v-model="ruleForm.radio">
-              <el-radio label="免费"></el-radio>
-              <el-radio label="收费"></el-radio>
-              <el-radio label="赞助"></el-radio>
-              <el-radio label="线上" disabled></el-radio>
-              <el-radio label="线下" disabled></el-radio>
+              <el-radio label="免费" />
+              <el-radio label="收费" />
+              <el-radio label="赞助" />
+              <el-radio label="线上" disabled />
+              <el-radio label="线下" disabled />
             </el-radio-group>
           </el-form-item>
           <el-form-item label="多选框（带禁止）：" prop="checkbox">
             <el-checkbox-group v-model="ruleForm.checkbox">
-              <el-checkbox label="游泳"></el-checkbox>
-              <el-checkbox label="跑步"></el-checkbox>
-              <el-checkbox label="健身"></el-checkbox>
-              <el-checkbox label="阅读"></el-checkbox>
-              <el-checkbox label="电影" disabled></el-checkbox>
-              <el-checkbox label="音乐" disabled></el-checkbox>
+              <el-checkbox label="游泳" />
+              <el-checkbox label="跑步" />
+              <el-checkbox label="健身" />
+              <el-checkbox label="阅读" />
+              <el-checkbox label="电影" disabled />
+              <el-checkbox label="音乐" disabled />
             </el-checkbox-group>
           </el-form-item>
           <el-form-item label="文本域（长度限制）：" prop="content">
-            <el-input type="textarea" v-model="ruleForm.content" :autosize="{ minRows: 3, maxRows: 5 }" placeholder="请输入内容"
-              maxlength="50" show-word-limit></el-input>
+            <el-input
+              v-model="ruleForm.content"
+              type="textarea"
+              :autosize="{ minRows: 3, maxRows: 5 }"
+              placeholder="请输入内容"
+              maxlength="50"
+              show-word-limit
+            />
           </el-form-item>
         </div>
         <el-form-item class="submit-box">
@@ -116,7 +122,7 @@ import { selectData, cascaderData } from './data'
 export default {
   name: 'Form',
   components: { Hints },
-  data () {
+  data() {
     return {
       ruleForm: {
         inputLimit: '',
@@ -138,7 +144,7 @@ export default {
       colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
       customProps: {
         lazy: true,
-        lazyLoad (node, resolve) {
+        lazyLoad(node, resolve) {
           let id = 0
           const { level } = node
           setTimeout(() => {
@@ -182,7 +188,7 @@ export default {
     }
   },
   methods: {
-    submitForm (formName) {
+    submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           // 此处添加后端接口
@@ -193,7 +199,7 @@ export default {
         }
       })
     },
-    resetForm (formName) {
+    resetForm(formName) {
       this.$refs[formName].resetFields()
     }
   }

@@ -17,13 +17,13 @@
       </div>
       <div class="btn-item">
         <span>展开全部：</span>
-        <el-switch v-model="expandAll"/>
+        <el-switch v-model="expandAll" />
       </div>
     </div>
     <div class="zoom-box">
-      <ZoomController v-model="zoom" :min="80" :max="120" :diff="10"/>
+      <ZoomController v-model="zoom" :min="80" :max="120" :diff="10" />
     </div>
-    <OrgView :zoomVal="zoomVal" :expandAll="expandAll" :horizontal="horizontal"/>
+    <OrgView :zoom-val="zoomVal" :expand-all="expandAll" :horizontal="horizontal" />
   </div>
 </template>
 
@@ -34,19 +34,19 @@ import Hints from '../../components/Hints'
 
 export default {
   name: 'OrgTree',
-  data () {
+  components: { OrgView, ZoomController, Hints },
+  data() {
     return {
       expandAll: true,
       displayMode: 'vertical',
       zoom: 100
     }
   },
-  components: { OrgView, ZoomController, Hints },
   computed: {
-    zoomVal () {
+    zoomVal() {
       return this.zoom / 100
     },
-    horizontal () {
+    horizontal() {
       if (this.displayMode === 'vertical') {
         return false
       } else {

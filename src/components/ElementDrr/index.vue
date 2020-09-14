@@ -15,8 +15,9 @@
     @resizing="handleResizing"
     @resizestop="handleResizeStop"
     @deactivated="handleDeactivate"
-    @activated="handleActivated">
-    <slot></slot>
+    @activated="handleActivated"
+  >
+    <slot />
   </VueDrr>
 </template>
 
@@ -25,6 +26,7 @@ import VueDrr from '../../components/VueDrr'
 
 export default {
   name: 'ElementDrr',
+  components: { VueDrr },
   props: {
     element: {
       type: Object,
@@ -37,7 +39,7 @@ export default {
   },
   watch: {
     element: {
-      handler (val) {
+      handler(val) {
         this.$nextTick(() => {
           this.updateHeight()
         })
@@ -45,10 +47,9 @@ export default {
       deep: true
     }
   },
-  components: { VueDrr },
   methods: {
     // 同步更新容器高度
-    updateHeight () {
+    updateHeight() {
       if (this.element.type === 'text') {
         const node = this.$el
         this.$nextTick(() => {
@@ -63,20 +64,20 @@ export default {
       }
     },
     // 处理拖放
-    handleDragStop (x, y) {
+    handleDragStop(x, y) {
       if (this.element.x !== x || this.element.y !== y) {
         this.element.x = x
         this.element.y = y
       }
     },
     // 缩放文本时更新高度
-    handleResizing () {
+    handleResizing() {
       if (this.element.type === 'text') {
         this.updateHeight()
       }
     },
     // 处理缩放
-    handleResizeStop (x, y, w, h) {
+    handleResizeStop(x, y, w, h) {
       if (this.element.x !== x || this.element.y !== y || this.element.w !== w || this.element.h !== h) {
         this.element.x = x
         this.element.y = y
@@ -89,11 +90,11 @@ export default {
       }
     },
     // 处理失焦
-    handleDeactivate () {
+    handleDeactivate() {
       this.element.active = false
     },
     // 处理聚焦
-    handleActivated () {
+    handleActivated() {
       this.element.active = true
       this.$emit('updateActiveEle', this.element)
     }

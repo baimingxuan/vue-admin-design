@@ -8,13 +8,14 @@
       </template>
     </Hints>
     <el-card shadow="always">
-      <UploadExcel @on-success="handleSuccess"/>
+      <UploadExcel @on-success="handleSuccess" />
       <el-table
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
-        size="medium">
-        <el-table-column v-for="item in tableHeader" :key="item" :prop="item" :label="item" align="center"/>
+        size="medium"
+      >
+        <el-table-column v-for="item in tableHeader" :key="item" :prop="item" :label="item" align="center" />
       </el-table>
     </el-card>
   </div>
@@ -26,15 +27,15 @@ import Hints from '../../components/Hints'
 
 export default {
   name: 'ImportExcel',
-  data () {
+  components: { UploadExcel, Hints },
+  data() {
     return {
       tableHeader: [],
       tableData: []
     }
   },
-  components: { UploadExcel, Hints },
   methods: {
-    handleSuccess ({ header, results }) {
+    handleSuccess({ header, results }) {
       this.tableHeader = header
       this.tableData = results
     }

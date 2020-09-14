@@ -1,11 +1,11 @@
 <template>
   <div class="hints-wrapper">
     <div class="hint-title">
-      <i class="vue-dsn-icon-tishi"></i>
-      <span><slot name="hintName"></slot></span>
+      <i class="vue-dsn-icon-tishi" />
+      <span><slot name="hintName" /></span>
     </div>
     <div class="hint-info">
-      <slot name="hintInfo"></slot>
+      <slot name="hintInfo" />
     </div>
   </div>
 </template>

@@ -12,7 +12,7 @@
         <el-card shadow="always" :body-style="{padding: '0px'}">
           <div slot="header" class="title">正向增加</div>
           <div class="box-cont add">
-            <CountTo :startVal='0' :endVal='2020' :duration=4000 />
+            <CountTo :start-val="0" :end-val="2020" :duration="4000" />
           </div>
         </el-card>
       </el-col>
@@ -21,7 +21,7 @@
           <div slot="header" class="title">自定义配置</div>
           <div class="cont-wrapper">
             <div class="cont-set-data">
-              <CountTo ref="countBox" :start-val='startVal' :end-val='endVal' :duration='duration' :decimals='decimals' :separator='separator' :prefix='prefix' :suffix='suffix' :autoplay=false />
+              <CountTo ref="countBox" :start-val="startVal" :end-val="endVal" :duration="duration" :decimals="decimals" :separator="separator" :prefix="prefix" :suffix="suffix" :autoplay="false" />
             </div>
             <div class="box-cont-set">
               <div class="cont-set-item">
@@ -57,7 +57,7 @@
         <el-card shadow="always" :body-style="{padding: '0px'}">
           <div slot="header" class="title">反向减少</div>
           <div class="box-cont">
-            <CountTo :startVal='2020' :endVal='0' :duration=4000 />
+            <CountTo :start-val="2020" :end-val="0" :duration="4000" />
           </div>
         </el-card>
       </el-col>
@@ -71,7 +71,7 @@ import CountTo from 'vue-count-to'
 export default {
   name: 'CountToPage',
   components: { Hints, CountTo },
-  data () {
+  data() {
     return {
       startVal: 0,
       endVal: 2020,
@@ -83,10 +83,10 @@ export default {
     }
   },
   methods: {
-    handleStart () {
+    handleStart() {
       this.$refs.countBox.start()
     },
-    handlePause () {
+    handlePause() {
       this.$refs.countBox.pauseResume()
     }
   }

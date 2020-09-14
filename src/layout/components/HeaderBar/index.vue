@@ -1,11 +1,11 @@
 <template>
   <div class="header-bar clear-fix">
-    <FoldSideMenu/>
-    <BreadCrumbs/>
+    <FoldSideMenu />
+    <BreadCrumbs />
     <div class="header-right clear-fix">
-      <FullScreen/>
-      <LangSelect/>
-      <GitHubLink/>
+      <FullScreen />
+      <LangSelect />
+      <GitHubLink />
     </div>
   </div>
 </template>

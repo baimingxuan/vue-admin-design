@@ -1,15 +1,16 @@
 <template>
-  <div class="image-rich-text"
+  <div
+    class="image-rich-text"
     spellcheck="false"
     contenteditable="true"
     :style="element.style"
-    v-html="innerText"
     @focus="handleFocus"
     @keydown="$event.stopPropagation()"
     @keyup.stop="emitInput($event)"
     @paste="handlePaste($event)"
-    @click.stop>
-  </div>
+    @click.stop
+    v-html="innerText"
+  />
 </template>
 
 <script>
@@ -17,11 +18,6 @@ import { getPlainText, keepCursorEnd } from '../../utils'
 
 export default {
   name: 'ImageRichText',
-  data () {
-    return {
-      innerText: this.value.replace(/\n/g, '<br>')
-    }
-  },
   props: {
     value: {
       type: String,
@@ -40,30 +36,35 @@ export default {
       default: () => {}
     }
   },
+  data() {
+    return {
+      innerText: this.value.replace(/\n/g, '<br>')
+    }
+  },
   watch: {
-    value (val) {
+    value(val) {
       this.innerText = val
     }
   },
   methods: {
     // 输入文本
-    emitInput (event) {
+    emitInput(event) {
       this.$emit('input', event.target.innerHTML)
       this.keepCursorLast(event)
     },
     // 粘贴文本
-    handlePaste (event) {
+    handlePaste(event) {
       this.$emit('input', getPlainText(event))
       this.keepCursorLast(event)
     },
     // 光标定位到最后
-    keepCursorLast (event) {
+    keepCursorLast(event) {
       this.$nextTick(() => {
         keepCursorEnd(event.target)
       })
     },
     // 光标聚焦
-    handleFocus () {
+    handleFocus() {
       this.activeEleText.active = true
     }
   }

@@ -3,7 +3,7 @@
  * @param {Object} source
  * @returns {Object}
  */
-export function deepClone (source) {
+export function deepClone(source) {
   return JSON.parse(JSON.stringify(source))
 }
 
@@ -12,8 +12,8 @@ export function deepClone (source) {
  * @param e
  * @returns {string}
  */
-export function getPlainText (e) {
-  function uniform (str) {
+export function getPlainText(e) {
+  function uniform(str) {
     const _str = supportIE(str).replace(/</g, '&lt;').replace(/>/g, '&gt;')
     const arr = _str.split(/\r\n|\r|\n/)
     if (arr) {
@@ -60,7 +60,7 @@ export function getPlainText (e) {
  * @param str
  * @returns {*}
  */
-export function supportIE (str) {
+export function supportIE(str) {
   return str.replace(/<(\/?)p>/g, '<$1div>')
 }
 
@@ -68,7 +68,7 @@ export function supportIE (str) {
  * contenteditable 光标定位到最后
  * @param target
  * */
-export function keepCursorEnd (target) {
+export function keepCursorEnd(target) {
   // 非IE浏览器
   if (window.getSelection) {
     // 解决Firefox不获取焦点无法定位问题
@@ -95,7 +95,7 @@ export function keepCursorEnd (target) {
  * @param image
  * @returns {Blob}
  */
-export function base64toBlob (image) {
+export function base64toBlob(image) {
   const bytes = window.atob(image.split(',')[1])
   const array = []
   for (let i = 0; i < bytes.length; i++) {
@@ -111,7 +111,7 @@ export function base64toBlob (image) {
  * @param showAreaW 展示区宽度
  * @param showAreaH 展示区高度
  * */
-export function calcImageSize (imageTrueW, imageTrueH, showAreaW, showAreaH) {
+export function calcImageSize(imageTrueW, imageTrueH, showAreaW, showAreaH) {
   let [width, height, ratio] = [0, 0, 0]
   // 图片真实宽大于真实高
   if (imageTrueW > imageTrueH) {

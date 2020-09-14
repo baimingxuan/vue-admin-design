@@ -8,8 +8,8 @@
       :total="total"
       :layout="layout"
       @size-change="handleSizeChange"
-      @current-change="handleCurrentChange">
-    </el-pagination>
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 
@@ -47,27 +47,27 @@ export default {
   },
   computed: {
     currentPage: {
-      get () {
+      get() {
         return this.page
       },
-      set (val) {
+      set(val) {
         this.$emit('update:page', val)
       }
     },
     pageSize: {
-      get () {
+      get() {
         return this.limit
       },
-      set (val) {
+      set(val) {
         this.emit('update:limit', val)
       }
     }
   },
   methods: {
-    handleSizeChange (val) {
+    handleSizeChange(val) {
       this.$emit('pagination', { page: this.currentPage, limit: val })
     },
-    handleCurrentChange (val) {
+    handleCurrentChange(val) {
       this.$emit('pagination', { page: val, limit: this.pageSize })
     }
   }

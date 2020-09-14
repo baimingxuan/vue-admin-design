@@ -9,7 +9,7 @@
     </Hints>
     <el-card shadow="always">
       <el-table v-loading="listLoading" :data="tableList" tooltip-effect="dark" style="width: 100%" size="medium">
-        <el-table-column prop="id" label="编号" align="center" width="120"/>
+        <el-table-column prop="id" label="编号" align="center" width="120" />
         <el-table-column prop="name" label="姓名" align="center" />
         <el-table-column label="性别" align="center">
           <template slot-scope="{row}">{{ row.sex }}</template>
@@ -23,7 +23,7 @@
             <span v-else>{{ row.hobby }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="education" label="学历" align="center"/>
+        <el-table-column prop="education" label="学历" align="center" />
         <el-table-column align="center" label="操作" width="200">
           <template slot-scope="{row}">
             <el-button v-if="row.editable" type="success" size="small" @click="confirmEdit(row)">保存</el-button>
@@ -42,7 +42,7 @@ import Hints from '../../components/Hints'
 export default {
   name: 'TableInlineEdit',
   components: { Hints },
-  data () {
+  data() {
     return {
       listLoading: true,
       tableList: [],
@@ -52,12 +52,12 @@ export default {
       }
     }
   },
-  created () {
+  created() {
     this.fetchData()
   },
   methods: {
     // 获取数据列表
-    fetchData () {
+    fetchData() {
       this.listLoading = true
       // 获取数据列表接口
       getTableList(this.listQuery).then(res => {
@@ -75,11 +75,11 @@ export default {
         this.listLoading = false
       })
     },
-    cancelEdit (row) {
+    cancelEdit(row) {
       row.hobby = row.originalHobby
       row.editable = false
     },
-    confirmEdit (row) {
+    confirmEdit(row) {
       row.editable = false
       row.originalHobby = row.hobby
       // 此处添加 后端保存数据接口

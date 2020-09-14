@@ -19,8 +19,8 @@
               default-expand-all
               :default-checked-keys="[5]"
               :props="defaultProps"
-              @check-change="handleCheckChange">
-            </el-tree>
+              @check-change="handleCheckChange"
+            />
           </div>
         </el-card>
       </el-col>
@@ -33,8 +33,8 @@
               :load="loadNode"
               lazy
               show-checkbox
-              @check-change="handleCheckChange">
-            </el-tree>
+              @check-change="handleCheckChange"
+            />
           </div>
         </el-card>
       </el-col>
@@ -47,8 +47,8 @@
               node-key="id"
               default-expand-all
               :props="defaultProps"
-              draggable>
-            </el-tree>
+              draggable
+            />
           </div>
         </el-card>
       </el-col>
@@ -63,7 +63,7 @@ import { treeData } from './data'
 export default {
   name: 'EleTree',
   components: { Hints },
-  data () {
+  data() {
     return {
       treeData,
       props: {
@@ -79,7 +79,7 @@ export default {
     }
   },
   methods: {
-    loadNode (node, resolve) {
+    loadNode(node, resolve) {
       if (node.level === 0) {
         return resolve([{ name: 'region1' }, { name: 'region2' }])
       }
@@ -99,7 +99,7 @@ export default {
         resolve(data)
       }, 500)
     },
-    handleCheckChange (data, checked, indeterminate) {
+    handleCheckChange(data, checked, indeterminate) {
       console.log(data, checked, indeterminate)
     }
   }

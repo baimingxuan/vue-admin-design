@@ -2,7 +2,7 @@
   <div class="lang-select-wrapper">
     <el-tooltip effect="dark" content="语言切换" placement="bottom">
       <el-dropdown trigger="click" @command="handleSelect">
-        <i class="icon vue-dsn-icon-yuyan"></i>
+        <i class="icon vue-dsn-icon-yuyan" />
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item v-for="item in langOptions" :key="item.value" :command="item.value">
             {{ item.label }}
@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'LangSelect',
-  data () {
+  data() {
     return {
       langOptions: [
         { label: '中文简体', value: 'zh' },
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    handleSelect (lang) {}
+    handleSelect(lang) {}
   }
 }
 </script>

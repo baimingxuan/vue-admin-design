@@ -1,5 +1,5 @@
 <template>
-  <div ref="dom" class="charts-line"></div>
+  <div ref="dom" class="charts-line" />
 </template>
 
 <script>
@@ -7,11 +7,6 @@ import echarts from 'echarts'
 
 export default {
   name: 'ChartsLine',
-  data () {
-    return {
-      dom: null
-    }
-  },
   props: {
     title: {
       type: String,
@@ -22,17 +17,22 @@ export default {
       default: () => {}
     }
   },
-  mounted () {
+  data() {
+    return {
+      dom: null
+    }
+  },
+  mounted() {
     this.drawing()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.resize)
   },
   methods: {
-    resize () {
+    resize() {
       this.dom.resize()
     },
-    drawing () {
+    drawing() {
       const xAxisData = Object.keys(this.data)
       const seriesData = Object.values(this.data)
       const options = {

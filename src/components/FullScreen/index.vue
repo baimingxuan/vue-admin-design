@@ -1,7 +1,7 @@
 <template>
   <div class="full-screen-wrapper" @click="handleFullscreen">
     <el-tooltip effect="dark" :content="isFullscreen ? '退出全屏' : '全屏'" placement="bottom">
-      <i :class="['icon', !isFullscreen ? 'vue-dsn-icon-fullscreen' : 'vue-dsn-icon-tuichuquanping']"></i>
+      <i :class="['icon', !isFullscreen ? 'vue-dsn-icon-fullscreen' : 'vue-dsn-icon-tuichuquanping']" />
     </el-tooltip>
   </div>
 </template>
@@ -11,19 +11,19 @@ import screenfull from 'screenfull'
 
 export default {
   name: 'FullScreen',
-  data () {
+  data() {
     return {
       isFullscreen: false
     }
   },
-  mounted () {
+  mounted() {
     this.init()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     this.destroy()
   },
   methods: {
-    handleFullscreen () {
+    handleFullscreen() {
       if (screenfull.enabled) {
         this.$message({
           message: '不支持全屏!',
@@ -33,15 +33,15 @@ export default {
       }
       screenfull.toggle()
     },
-    change () {
+    change() {
       this.isFullscreen = screenfull.isFullscreen
     },
-    init () {
+    init() {
       if (!screenfull.enabled) {
         screenfull.on('change', this.change)
       }
     },
-    destroy () {
+    destroy() {
       if (!screenfull.enabled) {
         screenfull.off('change', this.change)
       }

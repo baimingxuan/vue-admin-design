@@ -6,16 +6,16 @@
           <img :src="imgSrc" alt="logo">
         </a>
       </div>
-      <SideMenu/>
+      <SideMenu />
     </div>
     <div class="main-container" :class="collapsed ? 'wider' : 'normal'">
       <div class="main-header">
-        <HeaderBar/>
-        <TagsNav/>
+        <HeaderBar />
+        <TagsNav />
       </div>
       <div class="main-content">
         <el-scrollbar wrap-class="scrollbar">
-          <MainView/>
+          <MainView />
         </el-scrollbar>
       </div>
     </div>
@@ -36,25 +36,25 @@ export default {
   components: { HeaderBar, SideMenu, TagsNav, MainView },
   computed: {
     ...mapGetters('app', ['collapsed']),
-    imgSrc () {
+    imgSrc() {
       if (this.collapsed) {
         return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo-icon.png'
       }
       return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo.png'
     }
   },
-  created () {
+  created() {
     this.handleResize()
   },
-  beforeMount () {
+  beforeMount() {
     window.addEventListener('resize', this.handleResize)
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.handleResize)
   },
   methods: {
     ...mapMutations('app', ['openSideMenu', 'closeSideMenu']),
-    handleResize () {
+    handleResize() {
       const width = document.body.getBoundingClientRect().width
       if (width <= RESIZE_WIDTH) {
         this.closeSideMenu()

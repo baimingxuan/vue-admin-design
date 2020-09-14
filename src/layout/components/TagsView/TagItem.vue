@@ -1,7 +1,7 @@
 <template>
   <el-tag class="tag-item-wrapper" :closable="!fixed" @close.prevent.stop="closeItem">
-    <span class="tag-item-dot"></span>
-    <slot></slot>
+    <span class="tag-item-dot" />
+    <slot />
   </el-tag>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    closeItem () {
+    closeItem() {
       this.$emit('on-close')
     }
   }

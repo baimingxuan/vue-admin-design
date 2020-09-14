@@ -13,9 +13,10 @@
         :inline="true"
         :model="exportParam"
         label-width="100px"
-        class="search-form">
+        class="search-form"
+      >
         <el-form-item label="文件名:">
-          <el-input v-model="exportParam.fileName" placeholder="文件名"></el-input>
+          <el-input v-model="exportParam.fileName" placeholder="文件名" />
         </el-form-item>
         <el-form-item label="自动宽度:">
           <el-radio-group v-model="exportParam.autoWidth">
@@ -25,9 +26,9 @@
         </el-form-item>
         <el-form-item label="文件类型:">
           <el-select v-model="exportParam.type" placeholder="文件类型">
-            <el-option value="xlsx" label="xlsx"/>
-            <el-option value="csv" label="csv"/>
-            <el-option value="txt" label="txt"/>
+            <el-option value="xlsx" label="xlsx" />
+            <el-option value="csv" label="csv" />
+            <el-option value="txt" label="txt" />
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -35,20 +36,21 @@
         </el-form-item>
       </el-form>
       <el-table
-        v-loading="listLoading"
         ref="multipleTable"
+        v-loading="listLoading"
         :data="tableData"
         tooltip-effect="dark"
         style="width: 100%"
         size="medium"
-        @selection-change="handleSelectionChange">
-        <el-table-column type="selection" width="50" align="center"/>
-        <el-table-column prop="id" label="编号" align="center"/>
-        <el-table-column prop="name" label="姓名" align="center"/>
-        <el-table-column prop="sex" label="性别" align="center"/>
-        <el-table-column prop="phone" label="手机" align="center"/>
-        <el-table-column prop="education" label="学历" align="center"/>
-        <el-table-column prop="hobby" label="爱好" align="center" width="300"/>
+        @selection-change="handleSelectionChange"
+      >
+        <el-table-column type="selection" width="50" align="center" />
+        <el-table-column prop="id" label="编号" align="center" />
+        <el-table-column prop="name" label="姓名" align="center" />
+        <el-table-column prop="sex" label="性别" align="center" />
+        <el-table-column prop="phone" label="手机" align="center" />
+        <el-table-column prop="education" label="学历" align="center" />
+        <el-table-column prop="hobby" label="爱好" align="center" width="300" />
       </el-table>
     </el-card>
   </div>
@@ -61,7 +63,8 @@ import Hints from '../../components/Hints'
 
 export default {
   name: 'ExportExcel',
-  data () {
+  components: { Hints },
+  data() {
     return {
       listLoading: true,
       exportParam: {
@@ -73,12 +76,11 @@ export default {
       multipleSelection: []
     }
   },
-  components: { Hints },
-  created () {
+  created() {
     this.fetchData()
   },
   methods: {
-    fetchData () {
+    fetchData() {
       this.listLoading = true
       getTableList(this.exportParam).then(res => {
         const data = res.data
@@ -93,10 +95,10 @@ export default {
         this.listLoading = false
       })
     },
-    handleSelectionChange (val) {
+    handleSelectionChange(val) {
       this.multipleSelection = val
     },
-    handleExport () {
+    handleExport() {
       if (this.multipleSelection.length) {
         const params = {
           header: ['编号', '姓名', '性别', '手机', '学历', '爱好'],

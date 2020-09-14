@@ -1,6 +1,6 @@
 <template>
-  <div class="z-drr-container"
-    @mousedown="elmDown"
+  <div
+    class="z-drr-container"
     :style="style"
     :class="{
       'z-draggable': draggable,
@@ -11,6 +11,7 @@
       'z-resizing': resizing,
       'z-rotating': rotating
     }"
+    @mousedown="elmDown"
   >
     <div
       v-if="rotatable"
@@ -19,18 +20,18 @@
       @touchstart.prevent.stop="elmDown"
       @mousedown.stop.prevent="rotating = true"
       @dblclick="fillParent"
-    ></div>
+    />
     <div
-      v-if="resizable"
-      class="z-resizeable-handle"
       v-for="handle in handles"
+      v-if="resizable"
       :key="handle"
+      class="z-resizeable-handle"
       :class="'z-handle-' + handle"
       :style="{ display: enabled ? 'block' : 'none'}"
       @touchstart.stop.prevent="handleDown(handle, $event)"
       @mousedown.stop.prevent="handleResizeStart(handle, $event)"
-    ></div>
-    <slot></slot>
+    />
+    <slot />
   </div>
 </template>
 
@@ -38,7 +39,7 @@
 import { matchesSelectorToParentElements } from './utils/dom'
 
 export default {
-  name: 'vue-drr',
+  name: 'VueDrr',
   props: {
     active: {
       type: Boolean,
@@ -67,7 +68,7 @@ export default {
     h: {
       type: [Number, String],
       default: 28,
-      validator: function (val) {
+      validator: function(val) {
         const valid = (typeof val === 'string') ? val === 'auto' : val >= 0
         return valid
       }
@@ -82,52 +83,52 @@ export default {
     minw: {
       type: Number,
       default: 28,
-      validator (val) {
+      validator(val) {
         return val > 0
       }
     },
     minh: {
       type: Number,
       default: 28,
-      validator (val) {
+      validator(val) {
         return val > 0
       }
     },
     angle: {
       type: Number,
       default: 0,
-      validator (val) {
+      validator(val) {
         return typeof val === 'number'
       }
     },
     x: {
       type: Number,
       default: 0,
-      validator (val) {
+      validator(val) {
         return typeof val === 'number'
       }
     },
     y: {
       type: Number,
       default: 0,
-      validator (val) {
+      validator(val) {
         return typeof val === 'number'
       }
     },
     z: {
       type: [String, Number],
       default: 'auto',
-      validator: function (val) {
+      validator: function(val) {
         const valid = (typeof val === 'string') ? val === 'auto' : val >= 0
         return valid
       }
     },
     handles: {
       type: Array,
-      default () {
+      default() {
         return ['n', 'e', 's', 'w', 'nw', 'ne', 'se', 'sw']
       },
-      validator: function (val) {
+      validator: function(val) {
         const s = new Set(['n', 'e', 's', 'w', 'nw', 'ne', 'se', 'sw'])
 
         return new Set(val.filter(h => s.has(h))).size === val.length
@@ -144,13 +145,13 @@ export default {
     axis: {
       type: String,
       default: 'both',
-      validator (val) {
+      validator(val) {
         return ['x', 'y', 'both'].indexOf(val) !== -1
       }
     },
     grid: {
       type: Array,
-      default () {
+      default() {
         return [1, 1]
       }
     },
@@ -163,36 +164,7 @@ export default {
       default: ''
     }
   },
-  mounted () {
-    const container = document.querySelector('.editor-mask') || document.documentElement
-    container.addEventListener('mousedown', this.deselect, false)
-    container.addEventListener('mousemove', this.handleMove, false)
-    container.addEventListener('mouseup', this.handleUp, false)
-
-    // touch events bindings
-    container.addEventListener('touchmove', this.handleMove, false)
-    container.addEventListener('touchend touchcancel', this.deselect, false)
-    container.addEventListener('touchstart', this.handleUp, false)
-
-    this.elmX = parseInt(this.$el.style.left)
-    this.elmY = parseInt(this.$el.style.top)
-    this.elmW = this.$el.offsetWidth || this.$el.clientWidth
-    this.elmH = this.$el.offsetHeight || this.$el.clientHeight
-
-    this.reviewDimensions()
-  },
-  beforeDestroy () {
-    const container = document.querySelector('.editor-mask') || document.documentElement
-    container.removeEventListener('mousedown', this.deselect, false)
-    container.removeEventListener('mousemove', this.handleMove, false)
-    container.removeEventListener('mouseup', this.handleUp, false)
-
-    // touch events bindings removed
-    container.addEventListener('touchmove', this.handleMove, false)
-    container.addEventListener('touchend touchcancel', this.deselect, false)
-    container.addEventListener('touchstart', this.handleUp, false)
-  },
-  data () {
+  data() {
     return {
       top: this.y,
       left: this.x,
@@ -219,8 +191,80 @@ export default {
       elmH: 0
     }
   },
+  computed: {
+    style() {
+      return {
+        top: this.top + 'px',
+        left: this.left + 'px',
+        width: this.width + 'px',
+        height: this.height + 'px',
+        transform: 'rotate(' + this.rotateAngle + 'deg)',
+        zIndex: this.zIndex,
+        overflowY: this.overflowY,
+        overflowX: ''
+      }
+    }
+  },
+  watch: {
+    active(val) {
+      this.enabled = val
+    },
+    x(val) {
+      this.left = val
+      this.elmX = val
+    },
+    y(val) {
+      this.top = val
+      this.elmY = val
+    },
+    z: function(val) {
+      if (val >= 0 || val === 'auto') {
+        this.zIndex = val
+      }
+    },
+    w(val) {
+      this.width = val
+      this.elmW = val
+    },
+    h(val) {
+      this.height = val
+      this.elmH = val
+    },
+    angle(val) {
+      this.rotateAngle = val
+    }
+  },
+  mounted() {
+    const container = document.querySelector('.editor-mask') || document.documentElement
+    container.addEventListener('mousedown', this.deselect, false)
+    container.addEventListener('mousemove', this.handleMove, false)
+    container.addEventListener('mouseup', this.handleUp, false)
+
+    // touch events bindings
+    container.addEventListener('touchmove', this.handleMove, false)
+    container.addEventListener('touchend touchcancel', this.deselect, false)
+    container.addEventListener('touchstart', this.handleUp, false)
+
+    this.elmX = parseInt(this.$el.style.left)
+    this.elmY = parseInt(this.$el.style.top)
+    this.elmW = this.$el.offsetWidth || this.$el.clientWidth
+    this.elmH = this.$el.offsetHeight || this.$el.clientHeight
+
+    this.reviewDimensions()
+  },
+  beforeDestroy() {
+    const container = document.querySelector('.editor-mask') || document.documentElement
+    container.removeEventListener('mousedown', this.deselect, false)
+    container.removeEventListener('mousemove', this.handleMove, false)
+    container.removeEventListener('mouseup', this.handleUp, false)
+
+    // touch events bindings removed
+    container.addEventListener('touchmove', this.handleMove, false)
+    container.addEventListener('touchend touchcancel', this.deselect, false)
+    container.addEventListener('touchstart', this.handleUp, false)
+  },
   methods: {
-    reviewDimensions () {
+    reviewDimensions() {
       if (this.minw > this.w) {
         this.width = this.minw
       }
@@ -258,7 +302,7 @@ export default {
 
       this.$emit('resizing', this.left, this.top, this.width, this.height)
     },
-    elmDown (e) {
+    elmDown(e) {
       const target = e.target || e.srcElement
       if (this.$el.contains(target)) {
         if (
@@ -278,7 +322,7 @@ export default {
         }
       }
     },
-    deselect (e) {
+    deselect(e) {
       if (e.type.indexOf('touch') !== -1) {
         this.mouseX = e.changedTouches[0].clientX
         this.mouseY = e.changedTouches[0].clientY
@@ -303,7 +347,7 @@ export default {
         }
       }
     },
-    handleResizeStart (handle, e) {
+    handleResizeStart(handle, e) {
       this.handle = handle
 
       if (e.stopPropagation) e.stopPropagation()
@@ -312,7 +356,7 @@ export default {
       this.resizing = true
     },
 
-    handleDown: function (handle, e) {
+    handleDown: function(handle, e) {
       this.handle = handle
 
       if (e.stopPropagation) e.stopPropagation()
@@ -320,7 +364,7 @@ export default {
 
       this.resizing = true
     },
-    fillParent: function (e) {
+    fillParent: function(e) {
       if (!this.parent || !this.resizable || !this.maximize) return
 
       let done = false
@@ -382,14 +426,14 @@ export default {
 
       window.requestAnimationFrame(animate)
     },
-    getOrigin () {
+    getOrigin() {
       const rect = this.$el.getBoundingClientRect()
       return {
         x: (rect.left + rect.right) / 2,
         y: (rect.bottom + rect.top) / 2
       }
     },
-    handleMove (e) {
+    handleMove(e) {
       const lastMouseX = this.lastMouseX
       const lastMouseY = this.lastMouseY
       const isTouchMove = e.type.indexOf('touchmove') !== -1
@@ -489,7 +533,7 @@ export default {
         this.$emit('rotating', this.rotateAngle)
       }
     },
-    handleUp (e) {
+    handleUp(e) {
       if (e.type.indexOf('touch') !== -1) {
         this.lastMouseX = e.changedTouches[0].clientX
         this.lastMouseY = e.changedTouches[0].clientY
@@ -511,49 +555,6 @@ export default {
 
       this.elmX = this.left
       this.elmY = this.top
-    }
-  },
-  computed: {
-    style () {
-      return {
-        top: this.top + 'px',
-        left: this.left + 'px',
-        width: this.width + 'px',
-        height: this.height + 'px',
-        transform: 'rotate(' + this.rotateAngle + 'deg)',
-        zIndex: this.zIndex,
-        overflowY: this.overflowY,
-        overflowX: ''
-      }
-    }
-  },
-  watch: {
-    active (val) {
-      this.enabled = val
-    },
-    x (val) {
-      this.left = val
-      this.elmX = val
-    },
-    y (val) {
-      this.top = val
-      this.elmY = val
-    },
-    z: function (val) {
-      if (val >= 0 || val === 'auto') {
-        this.zIndex = val
-      }
-    },
-    w (val) {
-      this.width = val
-      this.elmW = val
-    },
-    h (val) {
-      this.height = val
-      this.elmH = val
-    },
-    angle (val) {
-      this.rotateAngle = val
     }
   }
 }

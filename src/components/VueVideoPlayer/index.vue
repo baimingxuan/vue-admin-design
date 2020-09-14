@@ -1,5 +1,5 @@
 <template>
-  <videoPlayer class="video-player vjs-custom-skin" ref="videoPlayer" :playsinline="true" :options="playerOptions"/>
+  <videoPlayer ref="videoPlayer" class="video-player vjs-custom-skin" :playsinline="true" :options="playerOptions" />
 </template>
 
 <script>
@@ -8,7 +8,8 @@ import 'video.js/dist/video-js.css'
 
 export default {
   name: 'VueVideoPlayer',
-  data () {
+  components: { videoPlayer },
+  data() {
     return {
       playerOptions: {
         playbackRates: [0.7, 1.0, 1.5, 2.0], // 可选的播放速度
@@ -33,7 +34,6 @@ export default {
         }
       }
     }
-  },
-  components: { videoPlayer }
+  }
 }
 </script>

@@ -1,13 +1,15 @@
 <template>
   <div class="org-tree-view-wrapper" :style="orgTreeStyle">
-    <OrgTree :data="data"
-             collapsable
-             :node-render="nodeRender"
-             :expand-all="expandAll"
-             :horizontal="horizontal"
-             :props="props"
-             @on-expand="onExpand"
-             @on-node-click="onNodeClick"/>
+    <OrgTree
+      :data="data"
+      collapsable
+      :node-render="nodeRender"
+      :expand-all="expandAll"
+      :horizontal="horizontal"
+      :props="props"
+      @on-expand="onExpand"
+      @on-node-click="onNodeClick"
+    />
   </div>
 </template>
 
@@ -17,17 +19,7 @@ import 'v-org-tree/dist/v-org-tree.css'
 import { data } from './tree-data'
 export default {
   name: 'OrgView',
-  data () {
-    return {
-      data,
-      props: {
-        id: 'id',
-        label: 'label',
-        expand: 'expand',
-        children: 'children'
-      }
-    }
-  },
+  components: { OrgTree },
   props: {
     expandAll: {
       type: Boolean,
@@ -42,22 +34,32 @@ export default {
       default: 1
     }
   },
-  components: { OrgTree },
+  data() {
+    return {
+      data,
+      props: {
+        id: 'id',
+        label: 'label',
+        expand: 'expand',
+        children: 'children'
+      }
+    }
+  },
   computed: {
-    orgTreeStyle () {
+    orgTreeStyle() {
       return {
         transform: `scale(${this.zoomVal}, ${this.zoomVal})`
       }
     }
   },
   methods: {
-    nodeRender (h, data) {
+    nodeRender(h, data) {
       return data.label
     },
-    onExpand (val, status) {
+    onExpand(val, status) {
       console.log(val, status)
     },
-    onNodeClick (e, data) {
+    onNodeClick(e, data) {
       console.log(data)
     }
   }

@@ -4,7 +4,7 @@
       <el-row :gutter="15">
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
           <div class="pic-error">
-            <img src="../../assets/img/error-images/401.png" alt="401"/>
+            <img src="../../assets/img/error-images/401.png" alt="401">
           </div>
         </el-col>
         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">

@@ -1,6 +1,6 @@
 <template>
   <div class="drag-wrapper">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 

@@ -3,7 +3,7 @@
     <el-form label-width="70px">
       <!--文本-->
       <el-form-item label="文本">
-        <ImageRichText class="text-editable" v-model="activeEleText.text" :activeEleText="activeEleText"/>
+        <ImageRichText v-model="activeEleText.text" class="text-editable" :active-ele-text="activeEleText" />
       </el-form-item>
       <!--字体-->
       <el-form-item label="字体">
@@ -13,44 +13,45 @@
             :key="item.value"
             :label="item.value"
             :value="item.value"
-            :style="{'fontFamily': item.value}">
-          </el-option>
+            :style="{'fontFamily': item.value}"
+          />
         </el-select>
       </el-form-item>
       <!--字号-->
       <el-form-item label="字号">
         <el-select
           v-model="activeEleText.style.fontSize"
-          size="small">
+          size="small"
+        >
           <el-option
             v-for="item in fontSizeData"
             :key="item.value"
             :label="item.value"
-            :value="item.value">
-          </el-option>
+            :value="item.value"
+          />
         </el-select>
       </el-form-item>
       <!--颜色-->
       <el-form-item label="颜色">
         <!-- 字体颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.style.color}"></i>
-          <el-color-picker v-model="activeEleText.style.color"/>
+          <i class="vue-dsn-icon-wenzise color-icon" :style="{'color': activeEleText.style.color}" />
+          <el-color-picker v-model="activeEleText.style.color" />
         </div>
         <!-- 背景颜色 -->
         <div class="color-box">
-          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.style.backgroundColor}"></i>
-          <el-color-picker v-model="activeEleText.style.backgroundColor"/>
+          <i class="vue-dsn-icon-beijingse color-icon icon-bg" :style="{'color': activeEleText.style.backgroundColor}" />
+          <el-color-picker v-model="activeEleText.style.backgroundColor" />
         </div>
         <div class="style-box">
           <!-- 加粗 -->
           <span :class="['style-item', fontWeight ? 'active' : '']" @click="setFontWeight">
-            <i class="vue-dsn-icon-jiacu style-icon"></i>
+            <i class="vue-dsn-icon-jiacu style-icon" />
           </span>
           <!-- 对齐 -->
           <div class="style-item">
             <el-dropdown trigger="click" @command="handleCommand">
-              <i class="vue-dsn-icon-duiqi style-icon"></i>
+              <i class="vue-dsn-icon-duiqi style-icon" />
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="left" :style="setAlignActive('left')">左对齐</el-dropdown-item>
                 <el-dropdown-item command="center" :style="setAlignActive('center')">居中</el-dropdown-item>
@@ -92,21 +93,22 @@ const fontSizeData = [
 
 export default {
   name: 'TextSetting',
-  data () {
-    return {
-      fontFamilyData,
-      fontSizeData
-    }
-  },
+  components: { ImageRichText },
   props: {
     activeEleText: {
       type: Object,
       default: () => {}
     }
   },
+  data() {
+    return {
+      fontFamilyData,
+      fontSizeData
+    }
+  },
   computed: {
     // 字体是否加粗
-    fontWeight () {
+    fontWeight() {
       if (+this.activeEleText.style.fontWeight === 400) {
         return false
       } else {
@@ -117,16 +119,15 @@ export default {
   watch: {
     // 文字大小变化时行高一起变化
     activeEleText: {
-      handler (val) {
+      handler(val) {
         this.activeEleText.style.lineHeight = val.style.fontSize
       },
       deep: true
     }
   },
-  components: { ImageRichText },
   methods: {
     // 设置粗体
-    setFontWeight () {
+    setFontWeight() {
       if (+this.activeEleText.style.fontWeight === 400) {
         this.activeEleText.style.fontWeight = 600
       } else {
@@ -134,11 +135,11 @@ export default {
       }
     },
     // 设置对齐
-    handleCommand (command) {
+    handleCommand(command) {
       this.activeEleText.style.textAlign = command
     },
     // 当前对齐方式
-    setAlignActive (type) {
+    setAlignActive(type) {
       if (this.activeEleText.style.textAlign === type) {
         return {
           backgroundColor: '#409eff',
@@ -152,7 +153,7 @@ export default {
       }
     },
     // 文本生成图片
-    textBecomeImg (obj) {
+    textBecomeImg(obj) {
       const canvas = document.createElement('canvas')
       canvas.width = obj.w
       canvas.height = obj.h
@@ -201,7 +202,7 @@ export default {
       return canvas.toDataURL('image/png')
     },
     // 下载生成的图片
-    downloadImage () {
+    downloadImage() {
       const imageBase64 = this.textBecomeImg(this.activeEleText)
       const imageBlob = base64toBlob(imageBase64)
       const link = document.createElement('a')

@@ -11,7 +11,7 @@
       <el-col :span="5">
         <el-card shadow="always">
           <div slot="header" class="title">列表1事项</div>
-          <Draggable v-model="listOne" group="list" @end="handleChange($event, '列表1')" class="list-cont list1">
+          <Draggable v-model="listOne" group="list" class="list-cont list1" @end="handleChange($event, '列表1')">
             <el-card v-for="(item, index) in listOne" :key="index" shadow="hover">{{ item.name }}</el-card>
           </Draggable>
         </el-card>
@@ -19,7 +19,7 @@
       <el-col :span="5">
         <el-card shadow="always">
           <div slot="header" class="title">列表2事项</div>
-          <Draggable v-model="listTwo" group="list" @end="handleChange($event, '列表2')" class="list-cont list2">
+          <Draggable v-model="listTwo" group="list" class="list-cont list2" @end="handleChange($event, '列表2')">
             <el-card v-for="(item, index) in listTwo" :key="index" shadow="hover">{{ item.name }}</el-card>
           </Draggable>
         </el-card>
@@ -63,7 +63,8 @@ const message = [
 
 export default {
   name: 'DragList',
-  data () {
+  components: { Draggable, Hints },
+  data() {
     return {
       listOne: message.map((name, index) => {
         return { name, order: index + 1 }
@@ -72,9 +73,8 @@ export default {
       handleList: []
     }
   },
-  components: { Draggable, Hints },
   methods: {
-    handleChange (event, type) {
+    handleChange(event, type) {
       const srcClassName = event.from.classList[1]
       const targetClassName = event.to.classList[1]
       let from = ''

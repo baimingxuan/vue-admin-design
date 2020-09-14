@@ -1,6 +1,6 @@
 import { isFunction } from './fns'
 
-export function matchesSelectorToParentElements (el, selector, baseNode) {
+export function matchesSelectorToParentElements(el, selector, baseNode) {
   let node = el
 
   const matchesSelectorFunc = [

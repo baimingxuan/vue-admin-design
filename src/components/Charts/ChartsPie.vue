@@ -1,5 +1,5 @@
 <template>
-  <div ref="dom" class="charts-pie"></div>
+  <div ref="dom" class="charts-pie" />
 </template>
 
 <script>
@@ -7,11 +7,6 @@ import echarts from 'echarts'
 
 export default {
   name: 'ChartsPie',
-  data () {
-    return {
-      dom: null
-    }
-  },
   props: {
     title: {
       type: String,
@@ -26,17 +21,22 @@ export default {
       default: () => []
     }
   },
-  mounted () {
+  data() {
+    return {
+      dom: null
+    }
+  },
+  mounted() {
     this.drawing()
   },
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('resize', this.resize)
   },
   methods: {
-    resize () {
+    resize() {
       this.dom.resize()
     },
-    drawing () {
+    drawing() {
       const legendData = this.data.map(item => item.name)
       const radius = this.type === 'pie' ? '70%' : ['50%', '70%']
       const options = {
