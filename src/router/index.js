@@ -23,8 +23,15 @@ export const constantRoutes = [
     meta: { title: '登录' }
   },
   {
-    path: 'page-404',
-    name: 'Page404',
+    path: '401',
+    name: '401',
+    component: () => import('../views/error-page/401'),
+    hidden: true,
+    meta: { title: '401' }
+  },
+  {
+    path: '404',
+    name: '404',
     component: () => import('../views/error-page/404'),
     hidden: true,
     meta: { title: '404' }

@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { login } from '../api/login'
 import Background from '../assets/img/login-background.jpg'
 
 export default {
@@ -33,8 +34,8 @@ export default {
       Background,
       loginForm: {
         username: 'admin',
-        password: '123456',
-        rememberMe: false
+        password: 'admin123',
+        rememberMe: true
       },
       loginRules: {
         username: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
@@ -45,11 +46,19 @@ export default {
   },
   methods: {
     handleLogin() {
-      this.loading = true
-      setTimeout(() => {
-        this.loading = false
-        this.$router.push('/')
-      }, 1000)
+      this.$refs.loginForm.validate(valid => {
+        const data = {
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        }
+        if (valid) {
+          this.loading = true
+          login(data).then(res => {
+            this.loading = false
+            console.log(res)
+          })
+        }
+      })
     }
   }
 }
