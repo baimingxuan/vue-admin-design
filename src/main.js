@@ -3,7 +3,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 
-import './router/auth'
+// import './router/auth'
 
 import './assets/icon-fonts/iconfont.css'
 import './assets/icon-fonts/iconfont'

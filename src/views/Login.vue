@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrapper" :style="'background-image:url('+ Background +')'">
     <div class="form-box">
-      <h3 class="form-title">账号登录</h3>
+      <h3 class="form-title">登录Vue-Admin-Design账号</h3>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-width="0px" class="login-form">
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="请输入账号" prefix-icon="el-icon-user" />
@@ -13,7 +13,7 @@
           <el-checkbox v-model="loginForm.rememberMe">记住我</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button :loading="loading" size="medium" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
+          <el-button :loading="loading" size="small" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
             <span v-if="!loading">登 录</span>
             <span v-else>登 录 中...</span>
           </el-button>
@@ -56,6 +56,8 @@ export default {
           login(data).then(res => {
             this.loading = false
             console.log(res)
+          }).catch(() => {
+            this.loading = false
           })
         }
       })
@@ -79,9 +81,10 @@ export default {
     border-radius: 4px;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 1, .1);
     .form-title {
-      margin: 0 auto 30px;
+      margin: 0 auto 35px;
       text-align: center;
       color: #707070;
+      font-size: 18px;
     }
   }
 }

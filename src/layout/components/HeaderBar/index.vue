@@ -6,6 +6,7 @@
       <FullScreen />
       <LangSelect />
       <GitHubLink />
+      <UserAvatar />
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ import BreadCrumbs from '../../../components/BreadCrumbs'
 import FullScreen from '../../../components/FullScreen'
 import LangSelect from '../../../components/LangSelect'
 import GitHubLink from '../../../components/GitHubLink'
+import UserAvatar from '../../../components/UserAvatar'
 
 export default {
   components: {
@@ -23,7 +25,8 @@ export default {
     BreadCrumbs,
     FullScreen,
     LangSelect,
-    GitHubLink
+    GitHubLink,
+    UserAvatar
   }
 }
 </script>
@@ -34,7 +37,7 @@ export default {
     padding: 16px 20px;
     .header-right {
       float: right;
-      width: 130px;
+      width: 200px;
     }
   }
 </style>
