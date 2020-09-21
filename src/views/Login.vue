@@ -1,7 +1,10 @@
 <template>
   <div class="login-wrapper" :style="'background-image:url('+ Background +')'">
     <div class="form-box">
-      <h3 class="form-title">登录Vue-Admin-Design账号</h3>
+      <div class="form-title">
+        <img src="../assets/img/logo.png" alt="icon">
+        <p>账 号 登 录</p>
+      </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-width="0px" class="login-form">
         <el-form-item prop="username">
           <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="请输入账号" prefix-icon="el-icon-user" />
@@ -25,6 +28,7 @@
 
 <script>
 import { login } from '../api/login'
+import { setToken } from '../utils/cookie'
 import Background from '../assets/img/login-background.jpg'
 
 export default {
@@ -41,7 +45,16 @@ export default {
         username: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
         password: [{ required: true, trigger: 'blur', message: '密码不能为空' }]
       },
-      loading: false
+      loading: false,
+      redirect: undefined
+    }
+  },
+  watch: {
+    $route: {
+      handler: function(route) {
+        this.redirect = route.query && route.query.redirect
+      },
+      immediate: true
     }
   },
   methods: {
@@ -55,7 +68,8 @@ export default {
           this.loading = true
           login(data).then(res => {
             this.loading = false
-            console.log(res)
+            setToken(res.token)
+            this.$router.push({ path: this.redirect || '/' })
           }).catch(() => {
             this.loading = false
           })
@@ -76,7 +90,7 @@ export default {
   background-size: cover;
   .form-box {
     width: 320px;
-    padding: 30px 30px 20px;
+    padding: 15px 30px 20px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 1, .1);
@@ -85,6 +99,7 @@ export default {
       text-align: center;
       color: #707070;
       font-size: 18px;
+      letter-spacing: 2px;
     }
   }
 }

@@ -28,6 +28,8 @@ import HeaderBar from './components/HeaderBar/index'
 import SideMenu from './components/SideMenu/index'
 import TagsNav from './components/TagsView/index'
 import MainView from './components/MainView/index'
+import Logo from '../assets/img/logo.png'
+import LogoIcon from '../assets/img/logo-icon.png'
 
 const RESIZE_WIDTH = 1440
 
@@ -38,9 +40,9 @@ export default {
     ...mapGetters('app', ['collapsed']),
     imgSrc() {
       if (this.collapsed) {
-        return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo-icon.png'
+        return LogoIcon
       }
-      return 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/logo.png'
+      return Logo
     }
   },
   created() {

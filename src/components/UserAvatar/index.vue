@@ -13,6 +13,7 @@
 
 <script>
 import Avatar from '../../assets/img/avatar.png'
+import { removeToken } from '../../utils/cookie'
 
 export default {
   name: 'UserAvatar',
@@ -23,6 +24,9 @@ export default {
   },
   methods: {
     handleCommand(command) {
+      if (command === 'userCenter') {
+        this.$router.push({ path: '/user-center' })
+      }
       if (command === 'loginOut') {
         this.loginOut()
       }
@@ -33,6 +37,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
+        removeToken()
+        location.reload()
       })
     }
   }

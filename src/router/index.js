@@ -60,6 +60,21 @@ export const constantRoutes = [
       title: '文档',
       icon: 'vue-dsn-icon-wendang'
     }
+  },
+  {
+    path: '/',
+    name: 'Layout',
+    component: Layout,
+    redirect: '/user-center',
+    hidden: true,
+    children: [{
+      path: 'user-center',
+      name: 'UserCenter',
+      component: () => import('../views/UserCenter'),
+      meta: {
+        title: '个人中心'
+      }
+    }]
   }
 ]
 
