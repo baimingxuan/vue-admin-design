@@ -28,15 +28,26 @@
 
 
 
-> 一个基于vue + elementUI的后台管理系统解决方案
+> vue-admin-design是一个基于vue + elementUI的后台管理系统的解决方案，它使用了最新的前端技术栈，并且提供了丰富的功能组件模块，可以帮助你快速搭建企业级中后台的前端架构。
 >
 > 预览地址： [http://baimingxuan.net/page-admin-design/](http://baimingxuan.net/page-admin-design/)
 >
-> 备用地址：[http://baimingxuan.net/page-admin-design/](http://baimingxuan.net/page-admin-design/)
+> 备用地址：[http://42.194.194.178/](http://42.194.194.178/)
 
-![](https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/home.png)
+
+
+## 预览图
+
+![](https://cdn.jsdelivr.net/gh/baimingxuan/media-store@master/images/home.png)
+
+
 
 ## 功能
+
+```text
+- 登录 / 注销
+
+- 路由权限
 
 - 表格&表单
   - 综合表格
@@ -44,44 +55,40 @@
   - 行内编辑表格
 
 - 图片处理
-
   - 图片裁剪
-
+  - 图片压缩
   - 图片合成
+
+- 视频处理
+  - 视频播放器
+  - 视频水印
 
 - 组件
   - 图片上传
-
   - 拖拽
-
-  - 列表拖拽
-
-    - 组件拖拽
-
+  	- 列表拖拽
+		- 组件拖拽
   - 穿梭框
-
   - 数字滚动
 
 - 编辑器
-
   - Markdown编辑器
-
   - 富文本编辑器
 
 - 树形结构
   - 组织树
-
   - 控件树
 
 - Excel
-  - Excel导出
-- Excel导入
+  - 导出Excel
+  - 导入Excel
 
 - 错误页面
+	- 401页面
+	- 404页面
+	
+```
 
-  - 401页面
-
-  - 404页面
 
 ## 开发
 
@@ -95,6 +102,8 @@ npm install
 // develop
 npm run dev
 ```
+
+
 
 ## 发布
 
