@@ -4,7 +4,7 @@ import { getToken } from './utils/cookie'
 
 // 创建axios实例
 const service = axois.create({
-  baseURL: process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_API : '/', // api 的 base_url
+  baseURL: process.env.VUE_APP_BASE_API, // api 的 base_url
   timeout: 120000 // 请求超时时间
 })
 
@@ -12,7 +12,7 @@ const service = axois.create({
 service.interceptors.request.use(
   config => {
     if (getToken()) {
-      config.headers['Authorization'] = getToken() // 请求头设置自带 token
+      config.headers['Authorization'] = 'Bearer ' + getToken() // 请求头设置自带 token
     }
     config.headers['Content-Type'] = 'application/json' // 请求的数据格式为 json
     return config
@@ -26,10 +26,11 @@ service.interceptors.request.use(
 // response 拦截器设置
 service.interceptors.response.use(
   response => {
-    const code = response.code
-    const message = response.msg
+    const data = response.data
+    const code = data.code
+    const message = data.msg
     if (code === 0) {
-      return response.data
+      return data.data
     } else {
       Message({
         type: 'error',
