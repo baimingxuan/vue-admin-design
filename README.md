@@ -1,6 +1,7 @@
 <p align="center">
-  <img width="420" src="https://github.com/baimingxuan/media-store/blob/master/images/logo-md.png?raw=true">
+  <img width="420" src="https://baimingxuan.gitee.io/media-store/images/logo-md.png">
 </p>
+
 
 <p align="center">
   <a href="https://github.com/vuejs/vue">
@@ -27,18 +28,26 @@
 </p>  
 
 
+#### vue-admin-design是一个基于vue + elementUI的后台管理系统的解决方案，它使用了最新的前端技术栈，并且提供了丰富的功能组件模块，可以帮助你快速搭建企业级中后台的前端架构。
 
-> vue-admin-design是一个基于vue + elementUI的后台管理系统的解决方案，它使用了最新的前端技术栈，并且提供了丰富的功能组件模块，可以帮助你快速搭建企业级中后台的前端架构。
+
+
+
+> ##### 项目演示地址：[http://42.194.194.178/](http://42.194.194.178/)（1M带宽初次访问比较慢）
 >
-> 预览地址： [http://baimingxuan.net/page-admin-design/](http://baimingxuan.net/page-admin-design/)
+> ##### github项目地址： [https://github.com/baimingxuan/vue-admin-design](https://github.com/baimingxuan/vue-admin-design)
 >
-> 备用地址：[http://42.194.194.178/](http://42.194.194.178/)
+> ##### github接口地址： [https://github.com/baimingxuan/node-admin-design](https://github.com/baimingxuan/node-admin-design)
+>
+> ##### gitee项目地址： [https://gitee.com/baimingxuan/vue-admin-design](https://gitee.com/baimingxuan/vue-admin-design)
+>
+> ##### gitee接口地址： [https://github.com/baimingxuan/node-admin-design](https://github.com/baimingxuan/node-admin-design)
 
 
 
 ## 预览图
 
-![](https://cdn.jsdelivr.net/gh/baimingxuan/media-store@master/images/home.png)
+![](https://baimingxuan.gitee.io/media-store/images/home.png)
 
 
 
@@ -66,8 +75,8 @@
 - 组件
   - 图片上传
   - 拖拽
-  	- 列表拖拽
-		- 组件拖拽
+    - 列表拖拽
+    - 组件拖拽
   - 穿梭框
   - 数字滚动
 
@@ -84,8 +93,8 @@
   - 导入Excel
 
 - 错误页面
-	- 401页面
-	- 404页面
+  - 401页面
+  - 404页面
 	
 ```
 
@@ -93,13 +102,13 @@
 ## 开发
 
 ``` bash
-# clone the project
+// 克隆项目
 git clone https://github.com/baimingxuan/vue-admin-design.git
 
-// install dependencies
+// 安装依赖
 npm install
 
-// develop
+// 开发
 npm run dev
 ```
 
@@ -108,6 +117,7 @@ npm run dev
 ## 发布
 
 ```bash
+// 构建
 npm run build
 ```
 
