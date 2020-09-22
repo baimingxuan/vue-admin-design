@@ -2,7 +2,7 @@
   <div class="login-wrapper" :style="'background-image:url('+ Background +')'">
     <div class="form-box">
       <div class="form-title">
-        <img src="../assets/img/logo.png" alt="icon">
+        <img src="../assets/img/logo2.png" alt="icon">
         <p>账 号 登 录</p>
       </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-width="0px" class="login-form">
