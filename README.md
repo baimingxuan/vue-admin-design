@@ -33,7 +33,11 @@
 
 
 
-> ##### 项目演示地址：[http://42.194.194.178/](http://42.194.194.178/)（1M带宽初次访问比较慢）
+> ##### 完整演示地址：[http://42.194.194.178/](http://42.194.194.178/)（1M带宽初次访问比较慢）
+>
+> ##### 前端演示地址1：[https://baimingxuan.net/page-admin-design](https://baimingxuan.net/page-admin-design)
+>
+> ##### 前端演示地址2：[https://baimingxuan.gitee.io/page-admin-design](https://baimingxuan.gitee.io/page-admin-design)
 >
 > ##### github项目地址： [https://github.com/baimingxuan/vue-admin-design](https://github.com/baimingxuan/vue-admin-design)
 >
