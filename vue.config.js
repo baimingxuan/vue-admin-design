@@ -2,6 +2,15 @@
 
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
+const cdn = {
+  js: [
+    'https://lib.baomitu.com/vue/2.6.11/vue.min.js',
+    'https://lib.baomitu.com/vue-router/3.2.0/vue-router.min.js',
+    'https://lib.baomitu.com/vuex/3.5.1/vuex.min.js',
+    'https://lib.baomitu.com/axios/0.20.0/axios.min.js'
+  ]
+}
+
 module.exports = {
   publicPath: './', // 部署应用包时的基本 url
   outputDir: 'dist', // build 构建文件目录
@@ -40,6 +49,25 @@ module.exports = {
           deleteOriginalAssets: false
         })
       )
+      Object.assign(config, {
+        externals: {
+          'vue': 'Vue',
+          'vue-router': 'VueRouter',
+          'vuex': 'Vuex',
+          'axios': 'axios'
+        }
+      })
     }
+  },
+  chainWebpack(config) {
+    config
+      .when(process.env.NODE_ENV === 'production',
+        config => {
+          config.plugin('html').tap(args => { // 引入CDN
+            args[0].cdn = cdn
+            return args
+          })
+        }
+      )
   }
 }
