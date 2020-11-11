@@ -1,5 +1,5 @@
 'use strict'
-
+const path = require('path')
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 const cdn = {
@@ -9,6 +9,10 @@ const cdn = {
     'https://lib.baomitu.com/vuex/3.5.1/vuex.min.js',
     'https://lib.baomitu.com/axios/0.20.0/axios.min.js'
   ]
+}
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -43,8 +47,8 @@ module.exports = {
         new CompressionWebpackPlugin({
           // 正则匹配需要压缩的文件后缀
           test: /\.(js|css|svg|woff|ttf|json|html)$/,
-          // 大于20kb的会压缩
-          threshold: 20480,
+          // 大于10kb的会压缩
+          threshold: 10240,
           // 是否删除原文件
           deleteOriginalAssets: false
         })
@@ -67,6 +71,30 @@ module.exports = {
             args[0].cdn = cdn
             return args
           })
+          config.optimization.splitChunks({
+            chunks: 'all',
+            cacheGroups: {
+              libs: {
+                name: 'chunk-libs',
+                test: /[\\/]node_modules[\\/]/,
+                priority: 10,
+                chunks: 'initial'
+              },
+              elementUI: {
+                name: 'chunk-elementUI',
+                priority: 20,
+                test: /[\\/]node_modules[\\/]_?element-ui(.*)/
+              },
+              commons: {
+                name: 'chunk_commons',
+                test: resolve('src/components'),
+                minChunks: 3,
+                priority: 5,
+                reuseExistingChunk: true
+              }
+            }
+          })
+          config.optimization.runtimeChunk('single')
         }
       )
   }
