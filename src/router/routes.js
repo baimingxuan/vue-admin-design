@@ -230,6 +230,34 @@ export const asyncRoutes = [
     ]
   },
   {
+    path: '/graph-editors',
+    name: 'GraphEditors',
+    component: Layout,
+    redirect: '/graph-editors/flow',
+    meta: {
+      title: 'GraphEditors',
+      icon: 'vue-dsn-icon-excel'
+    },
+    children: [
+      {
+        path: 'flow',
+        name: 'Flow',
+        component: () => import('../views/graph-editors/FlowEditor'),
+        meta: {
+          title: '流程图'
+        }
+      },
+      {
+        path: 'mind-editor',
+        name: 'MindEditor',
+        component: () => import('../views/graph-editors/MindEditor'),
+        meta: {
+          title: '思维导图'
+        }
+      }
+    ]
+  },
+  {
     path: '/excel',
     name: 'Excel',
     component: Layout,
