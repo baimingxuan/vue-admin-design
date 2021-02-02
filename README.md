@@ -45,7 +45,7 @@
 >
 > ##### gitee项目地址： [https://gitee.com/baimingxuan/vue-admin-design](https://gitee.com/baimingxuan/vue-admin-design)
 >
-> ##### gitee接口地址： [https://github.com/baimingxuan/node-admin-design](https://github.com/baimingxuan/node-admin-design)
+> ##### gitee接口地址： [https://gitee.com/baimingxuan/node-admin-design](https://github.com/baimingxuan/node-admin-design)
 
 
 
