@@ -1,34 +1,43 @@
 <template>
   <div class="flow-editor">
-    <VGEditor ref="flowChart" class="editor">
-      <div class="editor-container">
-        <div class="editor-container__header">
-          <FlowToolbar graph-type="flow" />
+    <Hints>
+      <template slot="hintName">VG-Editor</template>
+      <template slot="hintInfo">
+        <p>VG-Editor：基于G6和Vue的可视化图形编辑器，是对GG-Editor的Vue组件化封装。</p>
+        <p>github地址：访问 <el-link type="success" href="https://github.com/ChrisShen93/VGEditor" target="_blank">VG-Editor</el-link></p>
+      </template>
+    </Hints>
+    <el-card shadow="always">
+      <VGEditor ref="flowChart" class="editor">
+        <div class="editor-container">
+          <div class="editor-container__header">
+            <FlowToolbar graph-type="flow" />
+          </div>
+          <div class="editor-container__container">
+            <div class="editor-container__sidebar">
+              <FlowPanelItem />
+            </div>
+            <div class="editor-container__main">
+              <Flow
+                :data="flowData"
+                :graph="{ mode: 'readOnly' }"
+                :on-node-click="handleNodeClick"
+              />
+            </div>
+            <div class="editor-container__panel">
+              <FlowPanelDetail />
+              <Minimap :height="200" />
+            </div>
+          </div>
         </div>
-        <div class="editor-container__container">
-          <div class="editor-container__sidebar">
-            <FlowPanelItem />
-          </div>
-          <div class="editor-container__main">
-            <Flow
-              :data="flowData"
-              :graph="{ mode: 'readOnly' }"
-              :on-node-click="handleNodeClick"
-            />
-          </div>
-          <div class="editor-container__panel">
-            <FlowPanelDetail />
-            <Minimap :height="200" />
-          </div>
-        </div>
-      </div>
-      <FlowContextMenu graph-type="flow" />
-      <RegisterEdge
-        name="custom-polyline"
-        extend="flow-polyline"
-        :config="customEdgeConfig"
-      />
-    </VGEditor>
+        <FlowContextMenu graph-type="flow" />
+        <RegisterEdge
+          name="custom-polyline"
+          extend="flow-polyline"
+          :config="customEdgeConfig"
+        />
+      </VGEditor>
+    </el-card>
   </div>
 </template>
 
@@ -38,11 +47,13 @@ import FlowToolbar from '../../components/GraphEditorEle/ToolBar'
 import { FlowPanelItem } from '../../components/GraphEditorEle/PanelItem'
 import { FlowPanelDetail } from '../../components/GraphEditorEle/PanelDetail'
 import FlowContextMenu from '../../components/GraphEditorEle/ContextMenu'
+import Hints from '../../components/Hints'
 import flowData from './flow-data'
 
 export default {
   name: 'FlowEditor',
   components: {
+    Hints,
     VGEditor,
     Flow,
     Minimap,
@@ -80,35 +91,41 @@ export default {
 <style lang="less">
 .flow-editor {
   display: flex;
-  height: 700px;
   flex-direction: column;
+  .el-card {
+    min-height: 650px;
+  }
   .editor {
     flex: 1;
     &-container {
       position: relative;
-      width: 100%;
-      height: 100%;
       display: flex;
       flex-direction: column;
+      width: 100%;
+      height: 600px;
       &__header {
-        border: 1px solid #e6e9ed;
+        border: 1px solid #e6f7ff;
         padding: 8px;
+        background-color: #fafafa;
       }
       &__container {
         flex: 1;
         display: flex;
+        border-bottom: 1px solid #e6f7ff;
       }
       &__sidebar {
-        width: 150px;
-        background-color: #fafafa;
-        border-right: 1px solid #e6e9ed;
         display: flex;
         justify-content: center;
+        width: 275px;
+        background-color: #fff;
+        border-left: 1px solid #e6f7ff;
+        border-right: 1px solid #e6f7ff;
       }
       &__panel {
-        width: 16.6%;
-        background-color: #fafafa;
-        border-left: 1px solid #e6e9ed;
+        width: 275px;
+        background-color: #fff;
+        border-left: 1px solid #e6f7ff;
+        border-right: 1px solid #e6f7ff;
       }
       &__main {
         flex: 1;

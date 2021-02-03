@@ -43,7 +43,7 @@
 import { ItemPanel, Item } from 'vg-editor'
 
 export default {
-  name: 'MindPanelItem',
+  name: 'KoniPanelItem',
   components: { ItemPanel, Item }
 }
 </script>

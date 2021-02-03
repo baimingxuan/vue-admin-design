@@ -46,10 +46,9 @@ export default {
     display: inline-block;
     width: 27px;
     height: 27px;
-    margin: 0 6px;
+    margin: 0 8px;
     padding-top: 10px;
     text-align: center;
-    border: 1px solid #fff;
     cursor: pointer;
     &:hover {
       border: 1px solid #e6e9ed;
