@@ -235,7 +235,7 @@ export const asyncRoutes = [
     component: Layout,
     redirect: '/graph-editors/flow',
     meta: {
-      title: 'GraphEditors',
+      title: '图形编辑器',
       icon: 'vue-dsn-icon-excel'
     },
     children: [

@@ -19,6 +19,7 @@
     "js-cookie": "^2.2.1",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
+    "lodash": "^4.17.20",
     "mavon-editor": "^2.9.0",
     "screenfull": "^5.0.2",
     "v-org-tree": "^1.0.12",
