@@ -1,0 +1,37 @@
+.editor {
+  flex: 1;
+  &-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 600px;
+    &__header {
+      border: 1px solid #e6f7ff;
+      padding: 8px;
+      background-color: #fafafa;
+    }
+    &__container {
+      flex: 1;
+      display: flex;
+      border-bottom: 1px solid #e6f7ff;
+    }
+    &__sidebar {
+      display: flex;
+      justify-content: center;
+      width: 275px;
+      background-color: #fff;
+      border-left: 1px solid #e6f7ff;
+      border-right: 1px solid #e6f7ff;
+    }
+    &__panel {
+      width: 275px;
+      background-color: #fff;
+      border-left: 1px solid #e6f7ff;
+      border-right: 1px solid #e6f7ff;
+    }
+    &__main {
+      flex: 1;
+    }
+  }
+}

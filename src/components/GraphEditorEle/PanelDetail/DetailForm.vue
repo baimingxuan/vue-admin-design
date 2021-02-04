@@ -44,7 +44,6 @@ export default {
         const item = getSelected()[0]
         if (!item) return
         executeCommand(() => {
-          // this is for duplicate node in mind chart
           update(item, { ...omit(formModel, 'children') })
         })
       }, 0)
