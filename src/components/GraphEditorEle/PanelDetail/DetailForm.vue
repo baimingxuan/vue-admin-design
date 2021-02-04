@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <form @submit.prevent="handleSubmit">
-      <div v-if="type === 'node'">
-        <input v-model="formModel.label" @blur.prevent="handleSubmit" />
-      </div>
-      <div v-else-if="type === 'edge'">
-        <input v-model="formModel.label" @blur.prevent="handleSubmit" />
-        <select v-model="formModel.shape" @change.prevent="handleSubmit">
+  <div class="detail-form">
+    <el-form @submit.prevent="handleSubmit">
+      <el-form-item v-if="type === 'node'">
+        <el-input v-model="formModel.label" @blur.prevent="handleSubmit" />
+      </el-form-item>
+      <el-form-item v-else-if="type === 'edge'">
+        <el-input v-model="formModel.label" @blur.prevent="handleSubmit" />
+        <el-select v-model="formModel.shape" @change.prevent="handleSubmit">
           <option value="flow-smooth">Smooth</option>
           <option value="flow-polyline">Polyline</option>
           <option value="custom-polyline">Custom Polyline</option>
           <option value="flow-polyline-round">Polyline Round</option>
-        </select>
-      </div>
-      <div v-else-if="type === 'group'">
-        <input v-model="formModel.label" @blur.prevent="handleSubmit" />
-      </div>
-    </form>
+        </el-select>
+      </el-form-item>
+      <el-form-item v-else-if="type === 'group'">
+        <el-input v-model="formModel.label" @blur.prevent="handleSubmit" />
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 

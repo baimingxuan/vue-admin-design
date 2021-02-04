@@ -1,19 +1,21 @@
 <template>
-  <detail-panel>
-    <template v-slot="{ status }">
-      <node-panel :status="status">
-        <detail-form type="node" />
-      </node-panel>
-      <edge-panel :status="status">
-        <detail-form type="edge" />
-      </edge-panel>
-      <group-panel :status="status">
-        <detail-form type="group" />
-      </group-panel>
-      <multi-panel :status="status" />
-      <canvas-panel :status="status" />
-    </template>
-  </detail-panel>
+  <div class="flow-panel-detail">
+    <detail-panel>
+      <template v-slot="{ status }">
+        <node-panel :status="status">
+          <detail-form type="node" />
+        </node-panel>
+        <edge-panel :status="status">
+          <detail-form type="edge" />
+        </edge-panel>
+        <group-panel :status="status">
+          <detail-form type="group" />
+        </group-panel>
+        <multi-panel :status="status" />
+        <canvas-panel :status="status" />
+      </template>
+    </detail-panel>
+  </div>
 </template>
 
 <script>
@@ -33,3 +35,14 @@ export default {
   }
 }
 </script>
+
+<style lang="less">
+.flow-panel-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 230px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid #e6f7ff;
+}
+</style>
