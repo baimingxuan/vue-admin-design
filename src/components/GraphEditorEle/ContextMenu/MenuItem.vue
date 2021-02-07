@@ -1,7 +1,7 @@
 <template>
   <command :name="command">
     <div class="item">
-      <icon :type="iconType"/>
+      <icon :type="iconType" />
       <span>{{ label }}</span>
     </div>
   </command>
