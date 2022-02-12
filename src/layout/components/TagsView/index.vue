@@ -3,7 +3,7 @@
     <el-button type="text" class="btn-con" @click="handleMove(240)">
       <i class="icon el-icon-arrow-left" />
     </el-button>
-    <div ref="tagsViews" class="tags-views" @DOMMouseScroll="handlescroll" @mousewheel="handlescroll">
+    <div ref="tagsViews" class="tags-views" @DOMMouseScroll="handleScroll" @mousewheel="handleScroll">
       <div ref="tagsCont" class="tags-cont" :style="{left: tagsContLeft + 'px'}">
         <transition-group>
           <router-link v-for="item in visitedViews" ref="tagsItem" :key="item.name" :to="{ path: item.path }">
@@ -16,7 +16,7 @@
       <i class="icon el-icon-arrow-right" />
     </el-button>
     <div class="btn-con btn-close">
-      <el-dropdown @command="handleCloseCtrl">
+      <el-dropdown @command="handleClose">
         <span class="el-dropdown-link">
           <i class="icon el-icon-circle-close" />
         </span>
@@ -102,7 +102,7 @@ export default {
       }
       return false
     },
-    handlescroll(e) {
+    handleScroll(e) {
       const type = e.type
       let distance = 0
       // mousewheel非火狐浏览器鼠标滚动事件; DOMMouseScroll火狐浏览器鼠标滚动事件
@@ -168,7 +168,7 @@ export default {
         this.$router.push(lastView.fullPath)
       }
     },
-    handleCloseCtrl(type) {
+    handleClose(type) {
       if (type === 'all') {
         this.delAllVisitedView()
         this.showLastView()
