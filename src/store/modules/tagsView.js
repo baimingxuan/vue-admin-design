@@ -1,9 +1,11 @@
 const state = {
-  visitedViews: []
+  visitedViews: [],
+  cachedViews: []
 }
 
 const getters = {
-  visitedViews: (state, getters) => state.visitedViews
+  visitedViews: (state) => state.visitedViews,
+  cachedViews: (state) => state.cachedViews
 }
 
 const mutations = {
