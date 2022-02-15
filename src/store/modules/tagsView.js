@@ -31,6 +31,16 @@ const mutations = {
     state.visitedViews = state.visitedViews.filter(item => {
       return item.meta.fixed || item.path === payload.path
     })
+  },
+  addCachedViews(state, payload) {
+    if (state.cachedViews.includes(payload.name)) return false
+    if (!payload.meta.noCache) {
+      state.cachedViews.push(payload.name)
+    }
+  },
+  delCachedViews(state, payload) {
+    const index = state.cachedViews.indexOf(payload.name)
+    index > -1 && state.cachedViews.splice(index, 1)
   }
 }
 
