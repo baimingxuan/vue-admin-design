@@ -44,9 +44,17 @@ const mutations = {
   }
 }
 
+const actions = {
+  addTagViews({ commit }, view) {
+    commit('addVisitedView', view)
+    commit('addCachedViews', view)
+  }
+}
+
 export default {
   namespace: true,
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }
