@@ -1,11 +1,9 @@
 const state = {
-  visitedViews: [],
-  cachedViews: []
+  visitedViews: []
 }
 
 const getters = {
-  visitedViews: (state) => state.visitedViews,
-  cachedViews: (state) => state.cachedViews
+  visitedViews: (state) => state.visitedViews
 }
 
 const mutations = {
@@ -31,23 +29,6 @@ const mutations = {
     state.visitedViews = state.visitedViews.filter(item => {
       return item.meta.fixed || item.path === view.path
     })
-  },
-  addCachedViews(state, view) {
-    if (state.cachedViews.includes(view.name)) return false
-    if (!view.meta.noCache) {
-      state.cachedViews.push(view.name)
-    }
-  },
-  delCachedViews(state, view) {
-    const index = state.cachedViews.indexOf(view.name)
-    index > -1 && state.cachedViews.splice(index, 1)
-  }
-}
-
-const actions = {
-  addTagViews({ commit }, view) {
-    commit('addVisitedView', view)
-    commit('addCachedViews', view)
   }
 }
 
@@ -55,6 +36,5 @@ export default {
   namespace: true,
   state,
   getters,
-  mutations,
-  actions
+  mutations
 }
