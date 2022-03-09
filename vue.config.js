@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   configureWebpack(config) {
-    // 生产环境配置 Gzip 压缩
+    // production configuration Gzip compression
     if (process.env.NODE_ENV === 'production') {
       config.plugins.push(
         new CompressionWebpackPlugin({
@@ -55,6 +55,11 @@ module.exports = {
         })
       )
       Object.assign(config, {
+        resolve: {
+          alias: {
+            '@': resolve('src')
+          }
+        },
         externals: {
           'vue': 'Vue',
           'vue-router': 'VueRouter',
@@ -68,7 +73,7 @@ module.exports = {
     config
       .when(process.env.NODE_ENV === 'production',
         config => {
-          config.plugin('html').tap(args => { // 引入CDN
+          config.plugin('html').tap(args => { // dynamic import CDN
             args[0].cdn = cdn
             return args
           })
