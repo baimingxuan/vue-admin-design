@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import VueDrr from '../../components/VueDrr'
+import VueDrr from '@/components/VueDrr'
 
 export default {
   name: 'ElementDrr',

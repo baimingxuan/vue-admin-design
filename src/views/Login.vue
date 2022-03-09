@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import { login } from '../api/login'
-import { setToken } from '../utils/cookie'
+import { login } from '@/api/login'
+import { setToken } from '@/utils/cookie'
 import Background from '../assets/img/login-background.jpg'
 
 export default {

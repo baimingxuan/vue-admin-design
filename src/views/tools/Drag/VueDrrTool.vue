@@ -39,7 +39,7 @@
 
 <script>
 import VueDrr from 'vue-drr'
-import Hints from '../../../components/Hints'
+import Hints from '@/components/Hints'
 
 export default {
   name: 'VueDrrTool',

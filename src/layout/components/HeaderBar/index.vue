@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import FoldSideMenu from '../../../components/FoldSideMenu'
-import BreadCrumbs from '../../../components/BreadCrumbs'
-import FullScreen from '../../../components/FullScreen'
-import LangSelect from '../../../components/LangSelect'
-import GitHubLink from '../../../components/GitHubLink'
-import UserAvatar from '../../../components/UserAvatar'
+import FoldSideMenu from '@/components/FoldSideMenu'
+import BreadCrumbs from '@/components/BreadCrumbs'
+import FullScreen from '@/components/FullScreen'
+import LangSelect from '@/components/LangSelect'
+import GitHubLink from '@/components/GitHubLink'
+import UserAvatar from '@/components/UserAvatar'
 
 export default {
   components: {

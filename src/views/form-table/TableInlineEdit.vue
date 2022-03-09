@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import { getTableList } from '../../api'
-import Hints from '../../components/Hints'
+import { getTableList } from '@/api'
+import Hints from '@/components/Hints'
 
 export default {
   name: 'TableInlineEdit',

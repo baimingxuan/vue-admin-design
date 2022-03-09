@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { getTableList } from '../../api'
+import { getTableList } from '@/api'
 import excel from '../../utils/excel'
 import Hints from '../../components/Hints'
 

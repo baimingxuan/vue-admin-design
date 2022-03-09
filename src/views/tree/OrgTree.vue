@@ -28,9 +28,9 @@
 </template>
 
 <script>
-import OrgView from '../../components/OrgTree/OrgView'
-import ZoomController from '../../components/OrgTree/ZoomController'
-import Hints from '../../components/Hints'
+import OrgView from '@/components/OrgTree/OrgView'
+import ZoomController from '@/components/OrgTree/ZoomController'
+import Hints from '@/components/Hints'
 
 export default {
   name: 'OrgTree',

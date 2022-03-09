@@ -13,7 +13,7 @@
 
 <script>
 import Avatar from '../../assets/img/avatar.png'
-import { removeToken } from '../../utils/cookie'
+import { removeToken } from '@/utils/cookie'
 
 export default {
   name: 'UserAvatar',

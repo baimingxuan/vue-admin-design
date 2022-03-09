@@ -31,10 +31,10 @@
 
 <script>
 import VGEditor, { Mind, Minimap } from 'vg-editor'
-import MindToolbar from '../../components/GraphEditorEle/ToolBar'
-import { MindPanelDetail } from '../../components/GraphEditorEle/PanelDetail'
-import MindContextMenu from '../../components/GraphEditorEle/ContextMenu'
-import Hints from '../../components/Hints'
+import MindToolbar from '@/components/GraphEditorEle/ToolBar'
+import { MindPanelDetail } from '@/components/GraphEditorEle/PanelDetail'
+import MindContextMenu from '@/components/GraphEditorEle/ContextMenu'
+import Hints from '@/components/Hints'
 import mockData from './mind-data'
 
 export default {

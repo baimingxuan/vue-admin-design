@@ -59,9 +59,9 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
-import UploadImage from '../../components/UploadImage'
-import { base64toBlob, calcImageSize } from '../../utils'
+import Hints from '@/components/Hints'
+import UploadImage from '@/components/UploadImage'
+import { base64toBlob, calcImageSize } from '@/utils'
 const qualityOptions = [
   { label: 100, value: 1 },
   { label: 90, value: 0.9 },

@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import UploadExcel from '../../components/UploadExcel'
-import Hints from '../../components/Hints'
+import UploadExcel from '@/components/UploadExcel'
+import Hints from '@/components/Hints'
 
 export default {
   name: 'ImportExcel',

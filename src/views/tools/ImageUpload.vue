@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
+import Hints from '@/components/Hints'
 
 export default {
   name: 'AvatarUpload',

@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { base64toBlob } from '../../utils'
+import { base64toBlob } from '@/utils'
 import ImageRichText from '../ImageRichText'
 
 const fontFamilyData = [

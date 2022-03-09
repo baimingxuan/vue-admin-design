@@ -50,7 +50,7 @@
 
 <script>
 import Draggable from 'vuedraggable'
-import Hints from '../../../components/Hints'
+import Hints from '@/components/Hints'
 const message = [
   'ECMAScript6',
   'VueJS',

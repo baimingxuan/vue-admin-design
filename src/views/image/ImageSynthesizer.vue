@@ -57,12 +57,12 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
-import ElementDrr from '../../components/ElementDrr'
-import ImageRichText from '../../components/ImageRichText'
-import TextSetting from '../../components/TextSetting'
-import UploadImage from '../../components/UploadImage'
-import { calcImageSize } from '../../utils'
+import Hints from '@/components/Hints'
+import ElementDrr from '@/components/ElementDrr'
+import ImageRichText from '@/components/ImageRichText'
+import TextSetting from '@/components/TextSetting'
+import UploadImage from '@/components/UploadImage'
+import { calcImageSize } from '@/utils'
 
 export default {
   name: 'ImageSynthesizer',
@@ -90,9 +90,11 @@ export default {
     },
     // 选择的文本
     activeEleText() {
+      let active = {}
       if (this.activeEle.type === 'text') {
-        return this.activeEle
+        active = this.activeEle
       }
+      return active
     }
   },
   created() {

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { getPlainText, keepCursorEnd } from '../../utils'
+import { getPlainText, keepCursorEnd } from '@/utils'
 
 export default {
   name: 'ImageRichText',

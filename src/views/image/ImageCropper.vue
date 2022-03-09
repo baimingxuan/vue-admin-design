@@ -60,8 +60,8 @@
 
 <script>
 import { VueCropper } from 'vue-cropper'
-import Hints from '../../components/Hints'
-import UploadImage from '../../components/UploadImage'
+import Hints from '@/components/Hints'
+import UploadImage from '@/components/UploadImage'
 
 export default {
   name: 'ImageCropper',

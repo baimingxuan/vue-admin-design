@@ -43,11 +43,11 @@
 
 <script>
 import VGEditor, { Flow, RegisterEdge, Minimap } from 'vg-editor'
-import FlowToolbar from '../../components/GraphEditorEle/ToolBar'
-import { FlowPanelItem } from '../../components/GraphEditorEle/PanelItem'
-import { FlowPanelDetail } from '../../components/GraphEditorEle/PanelDetail'
-import FlowContextMenu from '../../components/GraphEditorEle/ContextMenu'
-import Hints from '../../components/Hints'
+import FlowToolbar from '@/components/GraphEditorEle/ToolBar'
+import { FlowPanelItem } from '@/components/GraphEditorEle/PanelItem'
+import { FlowPanelDetail } from '@/components/GraphEditorEle/PanelDetail'
+import FlowContextMenu from '@/components/GraphEditorEle/ContextMenu'
+import Hints from '@/components/Hints'
 import flowData from './flow-data'
 
 export default {

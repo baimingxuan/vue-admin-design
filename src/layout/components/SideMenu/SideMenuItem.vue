@@ -24,7 +24,7 @@
 
 <script>
 import path from 'path'
-import { isExternal } from '../../../utils/validate'
+import { isExternal } from '@/utils/validate'
 import LinkItem from './LinkItem'
 import Item from './Item'
 export default {

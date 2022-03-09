@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import excel from '../../utils/excel'
+import excel from '@/utils/excel'
 
 export default {
   name: 'UploadExcel',

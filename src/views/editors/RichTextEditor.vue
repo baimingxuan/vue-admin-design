@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Hints from '../../components/Hints'
-import Editor from '../../components/Editor'
+import Hints from '@/components/Hints'
+import Editor from '@/components/Editor'
 
 export default {
   name: 'RichTextEditor',
