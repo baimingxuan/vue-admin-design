@@ -32,7 +32,7 @@
     "vue-video-player": "^5.0.2",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.5.1",
-    "wangeditor": "^3.1.1",
+    "wangeditor": "^4.7.10",
     "xlsx": "^0.17.0"
   },
   "devDependencies": {
