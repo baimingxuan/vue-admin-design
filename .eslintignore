@@ -1,5 +1,6 @@
 build/*.js
 src/assets
+src/libs
 public
 dist
 tests

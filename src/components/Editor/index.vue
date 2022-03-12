@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import E from 'wangeditor'
+import WangEditor from '@/libs/wangEditor-4.7.12/wangEditor'
 
 export default {
   name: 'Editor',
@@ -30,14 +30,14 @@ export default {
     }
   },
   mounted() {
-    this.editor = new E(this.$refs.editorEle)
-    this.editor.customConfig.onchange = (html) => {
+    this.editor = new WangEditor(this.$refs.editorEle)
+    this.editor.config.onchange = (html) => {
       this.$emit('input', html)
     }
-    this.editor.customConfig.uploadImgServer = '你的上传图片的接口'
-    this.editor.customConfig.uploadFileName = '你自定义的文件名'
+    this.editor.config.uploadImgServer = '你的上传图片的接口'
+    this.editor.config.uploadFileName = '你自定义的文件名'
     // 下面是最重要的的方法
-    this.editor.customConfig.uploadImgHooks = {
+    this.editor.config.uploadImgHooks = {
       before: function(xhr, editor, files) {
         // 图片上传之前触发
         // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
