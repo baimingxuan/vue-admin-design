@@ -1,95 +1,56 @@
 <template>
   <div class="editor-wrapper">
-    <div ref="editorEle" class="editor-container" />
+    <div style="border: 1px solid #ccc;">
+      <Toolbar
+        style="border-bottom: 1px solid #ccc"
+        :editor="editor"
+        :default-config="toolbarConfig"
+        :mode="mode"
+      />
+      <Editor
+        v-model="html"
+        style="height: 500px; overflow-y: hidden;"
+        :default-config="editorConfig"
+        :mode="mode"
+        @onCreated="onCreated"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import WangEditor from '@/libs/wangEditor-4.7.12/wangEditor'
+import Vue from 'vue'
+import '@wangeditor/editor/dist/css/style.css'
+import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
-export default {
-  name: 'Editor',
-  props: {
-    value: {
-      type: String,
-      default: ''
-    },
-    placeholder: {
-      type: String,
-      default: ''
-    }
-  },
+export default Vue.extend({
+  components: { Editor, Toolbar },
   data() {
     return {
-      editor: null
-    }
-  },
-  watch: {
-    value(val) {
-      this.editor.txt.html(val)
+      editor: null,
+      html: '<p>hello</p>',
+      toolbarConfig: { },
+      editorConfig: { placeholder: '请输入内容...' },
+      mode: 'default' // or 'simple'
     }
   },
   mounted() {
-    this.editor = new WangEditor(this.$refs.editorEle)
-    this.editor.config.onchange = (html) => {
-      this.$emit('input', html)
-    }
-    this.editor.config.uploadImgServer = '你的上传图片的接口'
-    this.editor.config.uploadFileName = '你自定义的文件名'
-    // 下面是最重要的的方法
-    this.editor.config.uploadImgHooks = {
-      before: function(xhr, editor, files) {
-        // 图片上传之前触发
-        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
-
-        // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
-        // return {
-        //     prevent: true,
-        //     msg: '放弃上传'
-        // }
-      },
-      success: function(xhr, editor, result) {
-        // 图片上传并返回结果，图片插入成功之后触发
-        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-        this.imgUrl = Object.values(result.data).toString()
-      },
-      fail: function(xhr, editor, result) {
-        // 图片上传并返回结果，但图片插入错误时触发
-        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
-      },
-      error: function(xhr, editor) {
-        // 图片上传出错时触发
-        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-      },
-      timeout: function(xhr, editor) {
-        // 图片上传超时时触发
-        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
-      },
-
-      // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
-      // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
-      customInsert: function(insertImg, result, editor) {
-        // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
-        // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
-
-        // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
-        // result.data就是服务器返回的图片名字和链接
-        const url = Object.values(result.data)
-        // 在这里转成JSON格式
-        JSON.stringify(url)
-        insertImg(url)
-        // result 必须是一个 JSON 格式字符串！！！否则报错
-      }
-    }
-
-    // 创建富文本实例
-    this.editor.create()
-    this.editor.txt.html(this.placeholder)
+    // 模拟 ajax 请求，异步渲染编辑器
+    setTimeout(() => {
+      this.html = '<p>模拟 Ajax 异步设置内容 HTML</p>'
+    }, 1500)
   },
   beforeDestroy() {
-    this.editor.destroy()
+    const editor = this.editor
+    if (editor == null) return
+    editor.destroy() // 组件销毁时，及时销毁编辑器
+  },
+  methods: {
+    onCreated(editor) {
+      this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+    }
   }
-}
+})
 </script>
 
 <style lang="less">
