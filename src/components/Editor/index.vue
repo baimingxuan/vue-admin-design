@@ -1,20 +1,17 @@
 <template>
   <div class="editor-wrapper">
-    <div style="border: 1px solid #ccc;">
-      <Toolbar
-        style="border-bottom: 1px solid #ccc"
-        :editor="editor"
-        :default-config="toolbarConfig"
-        :mode="mode"
-      />
-      <Editor
-        v-model="html"
-        style="height: 500px; overflow-y: hidden;"
-        :default-config="editorConfig"
-        :mode="mode"
-        @onCreated="onCreated"
-      />
-    </div>
+    <Toolbar
+      :editor="editor"
+      :mode="mode"
+      :default-config="toolbarConfig"
+    />
+    <Editor
+      v-model="html"
+      :mode="mode"
+      :default-config="editorConfig"
+      @onCreated="onCreated"
+      @onChange="onChange"
+    />
   </div>
 </template>
 
@@ -25,20 +22,31 @@ import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 
 export default Vue.extend({
   components: { Editor, Toolbar },
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+  props: {
+    value: {
+      type: String,
+      default: ''
+    }
+  },
   data() {
     return {
       editor: null,
-      html: '<p>hello</p>',
+      mode: 'simple', // or 'default'
+      html: '请输入内容...',
       toolbarConfig: { },
-      editorConfig: { placeholder: '请输入内容...' },
-      mode: 'default' // or 'simple'
+      editorConfig: {
+        placeholder: '请输入内容...'
+      }
     }
   },
-  mounted() {
-    // 模拟 ajax 请求，异步渲染编辑器
-    setTimeout(() => {
-      this.html = '<p>模拟 Ajax 异步设置内容 HTML</p>'
-    }, 1500)
+  watch: {
+    value(val) {
+      this.html = val
+    }
   },
   beforeDestroy() {
     const editor = this.editor
@@ -48,6 +56,9 @@ export default Vue.extend({
   methods: {
     onCreated(editor) {
       this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
+    },
+    onChange(editor) {
+      this.$emit('input', editor.getHtml())
     }
   }
 })
@@ -55,21 +66,12 @@ export default Vue.extend({
 
 <style lang="less">
   .editor-wrapper{
-    .editor-container{
-      text-align:left;
-      box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0;
-      .w-e-toolbar{
-        padding: 5px;
-        border: none!important;
-      }
-      .w-e-text-container{
-        min-height: 450px !important;
-        border: none!important;
-        .w-e-text{
-          padding: 10px;
-          overflow-y: auto;
-        }
-      }
+    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 12px 0;
+    .w-e-toolbar{
+      background-color:#f1f1f1;
+    }
+    .w-e-text-container{
+      min-height: 450px !important;
     }
   }
 </style>

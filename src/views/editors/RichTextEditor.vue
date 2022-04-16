@@ -8,7 +8,7 @@
         <p>官方地址：访问 <el-link type="success" href="http://www.wangeditor.com/" target="_blank">wangEditor</el-link></p>
       </template>
     </Hints>
-    <Editor v-model="content" :placeholder="placeholder" />
+    <Editor v-model="content" />
   </div>
 </template>
 
@@ -21,8 +21,7 @@ export default {
   components: { Editor, Hints },
   data() {
     return {
-      content: '',
-      placeholder: '<b style="font-size: 16px">请输入内容...</b>'
+      content: '请输入内容...'
     }
   }
 }
