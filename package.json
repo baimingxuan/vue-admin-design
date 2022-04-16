@@ -11,6 +11,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@wangeditor/editor": "^5.0.0",
     "@wangeditor/editor-for-vue": "^1.0.0",
     "axios": "^0.21.2",
     "core-js": "^3.6.5",
