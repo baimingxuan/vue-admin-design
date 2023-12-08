@@ -2,7 +2,7 @@
   <div class="login-wrapper" :style="'background-image:url('+ Background +')'">
     <div class="form-box">
       <div class="form-title">
-        <img src="../assets/img/logo2.png" alt="icon">
+        <img src="../assets/img/logo_name.png" alt="icon">
         <p>账 号 登 录</p>
       </div>
       <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-width="0px" class="login-form">
@@ -90,7 +90,7 @@ export default {
   background-size: cover;
   .form-box {
     width: 320px;
-    padding: 15px 30px 20px;
+    padding: 16px 30px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 1, .1);
@@ -100,6 +100,12 @@ export default {
       color: #707070;
       font-size: 18px;
       letter-spacing: 2px;
+
+      img {
+        width: 200px;
+        height: 82px;
+        margin: 14px auto 0;
+      }
     }
   }
 }

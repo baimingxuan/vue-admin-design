@@ -4,7 +4,7 @@
       <div class="form-box-left" />
       <div class="form-box-right">
         <div class="form-title">
-          <p>5G消息运营管理系统</p>
+          <p>vue admin design管理系统</p>
         </div>
         <el-form ref="loginForm" label-width="0px" class="login-form">
           <el-form-item prop="username">
