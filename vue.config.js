@@ -56,6 +56,7 @@ module.exports = {
       )
       Object.assign(config, {
         resolve: {
+          extensions: ['.js', '.vue'],
           alias: {
             '@': resolve('src')
           }
