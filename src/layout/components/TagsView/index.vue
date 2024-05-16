@@ -70,7 +70,7 @@ export default {
       let tags = []
       routes.forEach(item => {
         if (item.meta && item.meta.fixed) {
-          const tagPath = path.resolve(basePath, item.path)
+          const tagPath = item.fullPath
           tags.push({
             fullPath: tagPath,
             path: tagPath,

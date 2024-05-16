@@ -9,7 +9,7 @@
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
-      <template slot="title">
+      <template v-slot:title>
         <Item :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title" />
       </template>
       <SideMenuItem
@@ -71,6 +71,3 @@ export default {
 }
 </script>
 
-<style lang="less">
-
-</style>

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import echarts from 'echarts'
+import * as echarts from 'echarts/core'
 
 export default {
   name: 'ChartsPie',
