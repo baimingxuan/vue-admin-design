@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import path from 'path'
+import path from 'path-browserify'
 import { isExternal } from '@/utils/validate'
 import LinkItem from './LinkItem'
 import Item from './Item'

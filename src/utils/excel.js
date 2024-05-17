@@ -1,4 +1,4 @@
-import XLSX from 'xlsx'
+import * as XLSX from 'xlsx'
 import { saveAs } from 'file-saver'
 
 // 自动宽度计算

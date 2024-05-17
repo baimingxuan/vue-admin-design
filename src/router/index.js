@@ -16,6 +16,15 @@ Vue.use(Router)
 
 export const constantRoutes = [
   {
+    path: '/',
+    name: 'Root',
+    redirect: '/home',
+    hidden: true,
+    meta: {
+      title: '首页'
+    }
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('../views/Login'),
@@ -37,13 +46,13 @@ export const constantRoutes = [
     meta: { title: '404' }
   },
   {
-    path: '/',
-    name: 'Layout',
+    path: '/home',
+    name: 'Home',
     component: Layout,
     redirect: '/home',
     children: [{
-      path: 'home',
-      name: 'Home',
+      path: '',
+      name: 'HomePage',
       component: () => import('../views/Home'),
       meta: {
         title: '首页',

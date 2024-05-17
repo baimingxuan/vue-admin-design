@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import path from 'path'
+import path from 'path-browserify'
 import { mapGetters, mapMutations } from 'vuex'
 import TagItem from './TagItem'
 
@@ -70,7 +70,7 @@ export default {
       let tags = []
       routes.forEach(item => {
         if (item.meta && item.meta.fixed) {
-          const tagPath = item.fullPath
+          const tagPath = path.resolve(basePath, item.path)
           tags.push({
             fullPath: tagPath,
             path: tagPath,
