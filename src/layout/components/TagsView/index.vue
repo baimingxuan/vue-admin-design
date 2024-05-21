@@ -4,10 +4,12 @@
       <i class="icon el-icon-arrow-left" />
     </el-button>
     <div ref="tagsViews" class="tags-views" @DOMMouseScroll="handleScroll" @mousewheel="handleScroll">
-      <div ref="tagsCont" class="tags-cont" :style="{left: tagsContLeft + 'px'}">
+      <div ref="tagsCont" class="tags-cont" :style="{ left: tagsContLeft + 'px' }">
         <transition-group>
           <router-link v-for="item in visitedViews" ref="tagsItem" :key="item.name" :to="{ path: item.path }">
-            <TagItem :class="{active: isActive(item)}" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)">{{ item.title }}</TagItem>
+            <TagItem :class="{ active: isActive(item) }" :fixed="item.meta.fixed" @on-close="handleSelectedClose(item)"
+              >{{ item.title }}
+            </TagItem>
           </router-link>
         </transition-group>
       </div>
@@ -109,7 +111,7 @@ export default {
       if (type === 'mousewheel' || type === 'DOMMouseScroll') {
         // mousewheel 事件中的 event.wheelDelta 属性值：若滚轮是向上滚动，返回值为正，反之为负；且返回的值，均为 120 的倍数，即：幅度大小 = 返回的值 / 120
         // DOMMouseScroll 事件中的 event.detail 属性值：返回的值，与 event.wheelDelta 正好相反，即滚轮是向上滚动，返回值为负，反之为正；返回的值，均为 3 的倍数，即：幅度大小 = 返回的值 / 3
-        distance = (e.wheelDelta) ? e.wheelDelta : -(e.detail || 0) * 40
+        distance = e.wheelDelta ? e.wheelDelta : -(e.detail || 0) * 40
       }
       this.handleMove(distance)
     },
@@ -148,7 +150,10 @@ export default {
       } else if (tag.offsetLeft < -this.tagsContLeft) {
         // 标签在可视区域左侧
         this.tagsContLeft = -tag.offsetLeft + this.contPadding
-      } else if (tag.offsetLeft > -this.tagsContLeft && tag.offsetLeft + tag.offsetWidth < -this.tagsContLeft + viewWidth) {
+      } else if (
+        tag.offsetLeft > -this.tagsContLeft &&
+        tag.offsetLeft + tag.offsetWidth < -this.tagsContLeft + viewWidth
+      ) {
         // 标签在可视区域
         this.tagsContLeft = Math.min(0, viewWidth - tag.offsetWidth - tag.offsetLeft - this.contPadding)
       } else {
@@ -220,7 +225,7 @@ export default {
       padding: 0 4px;
       overflow: visible;
       white-space: nowrap;
-      transition: left .5s ease;
+      transition: left 0.5s ease;
     }
   }
 }

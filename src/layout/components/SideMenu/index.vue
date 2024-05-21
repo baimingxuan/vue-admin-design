@@ -9,12 +9,7 @@
         text-color="#fff"
         active-text-color="#409eff"
       >
-        <SideMenuItem
-          v-for="route in routes"
-          :key="route.path"
-          :item="route"
-          :base-path="route.path"
-        />
+        <SideMenuItem v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
   </div>
@@ -45,5 +40,5 @@ export default {
 </script>
 
 <style lang="less">
-@import "../../../assets/less/side-menu";
+@import '../../../assets/less/side-menu';
 </style>
