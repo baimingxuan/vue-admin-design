@@ -196,6 +196,8 @@ export default defineFlatConfig([
     languageOptions: {
       parser: parserVue,
       globals: {
+        window: 'readonly',
+        document: 'readonly',
         console: 'readonly'
       }
     },
@@ -211,8 +213,8 @@ export default defineFlatConfig([
        */
       // 禁止在模板中的自定义组件上强制实施属性命名样式
       'vue/attribute-hyphenation': 'off',
-      // 禁止强制执行属性的顺序
-      'vue/attributes-order': 'off',
+      // 强制执行属性的顺序
+      'vue/attributes-order': 'warn',
       // 强制执行在<template>中使用驼峰命名
       'vue/camelcase': ['error', {
         'properties': 'always'

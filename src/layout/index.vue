@@ -3,7 +3,7 @@
     <div class="side-container" :class="collapsed ? 'folded' : 'unfolded'">
       <div class="logo">
         <a href="/">
-          <img :src="imgSrc" alt="logo">
+          <img :src="imgSrc" alt="logo" />
         </a>
       </div>
       <SideMenu />
@@ -69,12 +69,12 @@ export default {
 </script>
 
 <style lang="less">
-@import "../assets/less/scroll-bar";
-.app-wrapper{
+@import '../assets/less/scroll-bar';
+.app-wrapper {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  .side-container{
+  .side-container {
     float: left;
     height: 100vh;
     transition: width 0.5s;
@@ -101,7 +101,7 @@ export default {
       height: 100%;
     }
   }
-  .main-container{
+  .main-container {
     float: left;
     height: 100vh;
     transition: width 0.5s;
@@ -111,11 +111,11 @@ export default {
     &.wider {
       width: calc(100% - 64px);
     }
-    .main-content{
-      .el-scrollbar{
+    .main-content {
+      .el-scrollbar {
         height: calc(100vh - 64px - 40px);
         .scroll-bar;
-        .scrollbar{
+        .scrollbar {
           height: 100%;
           overflow-x: hidden;
         }

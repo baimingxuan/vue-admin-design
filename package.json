@@ -10,8 +10,11 @@
   "description": "基于vue + elementUI的管理系统模板",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "rimraf dist && vite build",
+    "preview": "vite preview",
+    "clean:cache": "rimraf .eslintcache && rimraf node_modules && pnpm install",
+    "lint:eslint": "eslint --cache \"{src,mock,build}/**/*.{vue,js}\" --fix",
+    "lint:prettier": "prettier --write \"src/**/*.{js,jsx,json,css,less,html}\""
   },
   "dependencies": {
     "@wangeditor/editor": "^5.0.0",
