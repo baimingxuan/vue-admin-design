@@ -3,13 +3,13 @@
     <template v-if="hasOnlyOneChild(item, item.children) && (onlyOneChild.noChildren || !onlyOneChild.children)">
       <LinkItem v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
-          <Item :icon="onlyOneChild.meta.icon||(item.meta&&item.meta.icon)" :title="onlyOneChild.meta.title" />
+          <Item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title" />
         </el-menu-item>
       </LinkItem>
     </template>
 
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
-      <template v-slot:title>
+      <template #title>
         <Item :icon="item.meta && item.meta.icon" :title="item.meta && item.meta.title" />
       </template>
       <SideMenuItem
@@ -70,4 +70,3 @@ export default {
   }
 }
 </script>
-

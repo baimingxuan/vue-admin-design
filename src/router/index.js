@@ -50,16 +50,18 @@ export const constantRoutes = [
     name: 'Home',
     component: Layout,
     redirect: '/home',
-    children: [{
-      path: '',
-      name: 'HomePage',
-      component: () => import('../views/Home'),
-      meta: {
-        title: '首页',
-        icon: 'vue-dsn-icon-index',
-        fixed: true
+    children: [
+      {
+        path: '',
+        name: 'HomePage',
+        component: () => import('../views/Home'),
+        meta: {
+          title: '首页',
+          icon: 'vue-dsn-icon-index',
+          fixed: true
+        }
       }
-    }]
+    ]
   },
   {
     path: 'https://github.com/baimingxuan/vue-admin-design.git',
@@ -76,14 +78,16 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/user-center',
     hidden: true,
-    children: [{
-      path: 'user-center',
-      name: 'UserCenter',
-      component: () => import('../views/UserCenter'),
-      meta: {
-        title: '个人中心'
+    children: [
+      {
+        path: 'user-center',
+        name: 'UserCenter',
+        component: () => import('../views/UserCenter'),
+        meta: {
+          title: '个人中心'
+        }
       }
-    }]
+    ]
   }
 ]
 
@@ -92,4 +96,3 @@ const routes = [...constantRoutes, ...asyncRoutes]
 export default new Router({
   routes
 })
-

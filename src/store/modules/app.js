@@ -5,7 +5,7 @@ const state = {
 }
 
 const getters = {
-  collapsed: (state) => state.collapsed
+  collapsed: state => state.collapsed
 }
 
 const mutations = {

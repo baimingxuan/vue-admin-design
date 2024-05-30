@@ -3,7 +3,7 @@ const state = {
 }
 
 const getters = {
-  visitedViews: (state) => state.visitedViews
+  visitedViews: state => state.visitedViews
 }
 
 const mutations = {
