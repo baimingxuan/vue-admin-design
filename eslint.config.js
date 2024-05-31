@@ -21,38 +21,8 @@ export default defineFlatConfig([
        * Eslint规则配置
        * 配置文档: https://eslint.nodejs.cn/docs/latest/rules/
        */
-      // 强制数组括号内间距一致
-      // 'array-bracket-spacing': ['error', 'never'],
-      // 强制执行箭头函数中保持箭头前后一样的间距
-      // 'arrow-spacing': ['error', {
-      //   'before': true,
-      //   'after': true
-      // }],
-      // 强制执行块内的空格
-      // 'block-spacing': ['error', 'always'],
-      // 禁止在对象和数组字面量中使用尾随逗号
-      // 'comma-dangle': 'error',
-      // 强制使用一致的逗号样式(逗号在后面)
-      // 'comma-style': ['error', 'last'],
       // 必须使用 === 和 !==
       'eqeqeq': ['error', 'always'],
-      // 强制执行generator函数周围的 * 间距
-      // 'generator-star-spacing': ['error', {
-      //   'before': true,
-      //   'after': true
-      // }],
-      // 强制在 JSX 属性中一致使用双引号或单引号
-      // 'jsx-quotes': ['error', 'prefer-single'],
-      // 强制在对象文本属性中键和值之间保持一样的间距
-      // 'key-spacing': ['error', {
-      //   'beforeColon': false,
-      //   'afterColon': true
-      // }],
-      // 强制在关键字前后保持一致的间距
-      // 'keyword-spacing': ['error', {
-      //   'before': true,
-      //   'after': true
-      // }],
       // 强制构造函数名称以大写字母开头
       'new-cap': ['error', {
         'newIsCap': true,
@@ -60,68 +30,24 @@ export default defineFlatConfig([
       }],
       // 禁止使用console
       'no-console': 'warn',
-      // 禁止条件表达式中的赋值运算符
-      // 'no-cond-assign': 'error',
-      // 禁止重新分配 const 变量
-      // 'no-const-assign': 'error',
-      // 禁止使用 debugger
-      // 'no-debugger': 'warn',
-      // 禁止 function 定义中的重复参数
-      // 'no-dupe-args': 'error',
-      // 禁止重复的类成员
-      // 'no-dupe-class-members': 'error',
-      // 禁止对象字面量中的重复键
-      // 'no-dupe-keys': 'error',
-      // 禁止重复的case标签
-      // 'no-duplicate-case': 'error',
-      // 禁止空解构模式
-      // 'no-empty-pattern': 'error',
-      // 禁止function不必要的括号
-      // 'no-extra-parens': ['error', 'functions'],
-      // 禁止数字字面中的前导或尾随小数点
-      // 'no-floating-decimal': 'error',
-      // 禁止不规则空格
-      // 'no-irregular-whitespace': 'off',
       // 禁止不必要的嵌套块
       'no-lone-blocks': 'error',
-      // 禁止使用混合空格和制表符进行缩进
-      // 'no-mixed-spaces-and-tabs': 'error',
-      // 禁止多个空格
-      // 'no-multi-spaces': 'error',
       // 禁止使用多行字符串
       'no-multi-str': 'error',
-      // 禁止多行空行
-      // 'no-multiple-empty-lines': ['error', {
-      //   'max': 1
-      // }],
-      // 禁止对 in 表达式中的左操作数求反
-      // 'no-negated-in-lhs': 'error',
       // 禁止使用 __proto__ 属性
       'no-proto': 'error',
-      // 禁止变量重新声明
-      // 'no-redeclare': 'error',
       // 禁止在 return 语句中使用赋值运算符
       'no-return-assign': ['error', 'except-parens'],
-      // 禁止函数标识符及其应用之间的空格
-      // 'no-spaced-func': 'error',
-      // 禁止在构造函数中调用 super() 之前禁止 this/super
-      // 'no-this-before-super': 'error',
       // 禁止将字面作为异常抛出
       'no-throw-literal': 'error',
-      // 禁止在行尾尾随空格
-      // 'no-trailing-spaces': 'error',
       // 需要 let 或 const 而不是 var
       'no-var': 'error',
-      // 禁止使用未定义的变量
-      // 'no-undef': 'error',
       // 禁止将变量初始化为 undefined
       'no-undef-init': 'error',
       // 禁止在更简单的替代方案中使用三元运算符
       'no-unneeded-ternary': ['error', {
         'defaultAssignment': false
       }],
-      // 禁止在 return、throw、continue 和 break 语句后出现无法访问的代码
-      // 'no-unreachable': 'error',
       // 禁止在定义变量之前使用变量
       'no-use-before-define': 'off',
       // 禁止未使用的变量
@@ -132,19 +58,6 @@ export default defineFlatConfig([
           varsIgnorePattern: '^_'
         }
       ],
-      // 禁止属性前有空格
-      // 'no-whitespace-before-property': 'error',
-      // 强制大括号内间距一致
-      // 'object-curly-spacing': ['error', 'always'],
-      // 强制实施一致的换行符样式
-      // 'operator-linebreak': ['error', 'after', {
-      //   'overrides': {
-      //     '?': 'before',
-      //     ':': 'before'
-      //   }
-      // }],
-      // 禁止在块内有空行
-      // 'padded-blocks': ['error', 'never'],
       // 声明后永远不会重新分配的变量需要 const 声明
       'prefer-const': 'error',
       // 使用 prettier 插件
@@ -154,39 +67,6 @@ export default defineFlatConfig([
           endOfLine: 'auto'
         }
       ],
-      // 强制使用单引号
-      // 'quotes': ['error', 'single', {
-      //   'avoidEscape': true,
-      //   'allowTemplateLiterals': true
-      // }],
-      // 禁止行尾使用分号
-      // 'semi': ['error', 'never'],
-      // 强制在分号前后使用一致的间距
-      // 'semi-spacing': ['error', {
-      //   'before': false,
-      //   'after': true
-      // }],
-      // 强制执行在块之前保持一致的间距
-      // 'space-before-blocks': ['error', 'always'],
-      // 禁止在function左括号之前有间距
-      // 'space-before-function-paren': ['error', 'never'],
-      // 禁止在函数括号内有间距
-      // 'space-in-parens': ['error', 'never'],
-      // 强制运算符周围有间距
-      // 'space-infix-ops': 'error',
-      // 强制在一元运算符之前或之后有一样的间距
-      // 'space-unary-ops': ['error', {
-      //   'words': true,
-      //   'nonwords': false
-      // }],
-      // 强制在注释中 // or /* 之后有一样的间距
-      // 'spaced-comment': ['error', 'always', {
-      //   'markers': ['global', 'globals', 'eslint', 'eslint-disable', '*package', '!', ',']
-      // }],
-      // 禁止模板字符串的嵌入表达式周围有间距
-      // 'template-curly-spacing': ['error', 'never'],
-      // 强制在 yield* 表达式中 * 周围使用空格
-      // 'yield-star-spacing': ['error', 'both'],
       // 禁止使用 Yoda 条件
       'yoda': ['error', 'never']
     }
@@ -198,6 +78,12 @@ export default defineFlatConfig([
       globals: {
         window: 'readonly',
         document: 'readonly',
+        location: 'readonly',
+        navigator: 'readonly',
+        setImmediate: 'readonly',
+        setTimeout: 'readonly',
+        setInterval: 'readonly',
+        alert: 'readonly',
         console: 'readonly'
       }
     },
